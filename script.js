@@ -65,3 +65,17 @@ links.forEach(link => {
     }
   });
 });
+
+// Products popup: show once after a short delay; remembered per browser
+const popup = document.getElementById('products-popup');
+let popupSeen = false;
+try { popupSeen = localStorage.getItem('products-popup-seen') === '1'; } catch (e) {}
+const closePopup = () => {
+  popup.hidden = true;
+  try { localStorage.setItem('products-popup-seen', '1'); } catch (e) {}
+};
+if (popup && !popupSeen) {
+  setTimeout(() => { popup.hidden = false; }, 3000);
+  document.getElementById('popup-dismiss').addEventListener('click', closePopup);
+  popup.querySelector('.primary').addEventListener('click', closePopup);
+}
