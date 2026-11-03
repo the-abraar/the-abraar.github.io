@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Tin Shotti: brand guidelines (v3, 4 Nov 2026)</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="icon" type="image/png" href="../../../assets/logo.png">
+  <style>
+    main { padding: 40px 0 80px; max-width: 960px; }
+    .crumbs a { color: var(--accent-blue); }
+    .doc { margin-top: 24px; }
+    .doc h1 { font-size: clamp(1.3rem, 4vw, 1.9rem); margin: 0 0 20px; }
+    .doc h2 { color: var(--accent-green); font-size: 1.2rem; margin: 40px 0 12px; }
+    .doc h3, .doc h4 { color: var(--text-primary); font-size: 1rem; margin: 28px 0 10px; }
+    .doc p, .doc li { color: var(--text-secondary); margin-bottom: 12px; }
+    .doc ul, .doc ol { padding-left: 1.4em; margin-bottom: 12px; }
+    .doc a { color: var(--accent-blue); }
+    .doc strong { color: var(--text-primary); }
+    .doc code { background: var(--bg-panel); padding: 1px 5px; color: var(--accent-purple); }
+    .doc pre { background: var(--bg-panel); padding: 12px; overflow-x: auto; margin-bottom: 16px; }
+    .doc pre code { padding: 0; }
+    .doc blockquote { border-left: 3px solid var(--accent-green); padding-left: 14px; margin: 0 0 16px; }
+    .doc hr { border: 0; border-top: 1px solid #333; margin: 32px 0; }
+    /* block + overflow so wide tables scroll on phones instead of widening the page */
+    .doc table { display: block; overflow-x: auto; border-collapse: collapse; font-size: .85rem; margin-bottom: 20px; }
+    .doc th, .doc td { border: 1px solid #333; padding: 6px 10px; text-align: left; vertical-align: top; color: var(--text-secondary); }
+    .doc th { background: var(--bg-panel); color: var(--text-primary); }
+  </style>
+</head>
+<body>
+<main class="container">
+  <p class="crumbs"><span class="logo-prompt">abraar@root:</span><span class="logo-dir">~/assignments/nagorik</span>$ <a href="../">cd ..</a> · <a href="../docs/brand-guidelines.md">raw markdown</a></p>
+  <article class="doc">
+<h1 id="tin-shotti-brand-guidelines-v3-4-nov-2026">Tin Shotti: brand
+guidelines (v3, 4 Nov 2026)</h1>
+<p>Tin Shotti (তিন সত্যি) is the childhood "triple swear": say it three
+times and the promise holds. The brand should feel like that promise:
+<strong>calm, warm and dependable</strong>. A parent trusts it with
+their child; a child feels safe, not watched.</p>
+<p>Three promises, kept openly:</p>
+<ol type="1">
+<li>Only the apps you chose open.</li>
+<li>The time light is always on the screen.</li>
+<li>Every session ends the same kind way.</li>
+</ol>
+<p>Earlier versions: v1 (three dots) and v2 (the "Held" arcs, shown in
+<code>concepts.png</code>).</p>
+<blockquote>
+<p>Nothing here was tested with parents or children. The closed test in
+week 5 is the first check (see "To check").</p>
+</blockquote>
+<hr />
+<h2 id="1-personality">1. Personality</h2>
+<table>
+<thead>
+<tr>
+<th>We are</th>
+<th>We are not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Calm</strong>: deep ink, soft cream, plenty of space</td>
+<td>Clinical, alarming, "security software"</td>
+</tr>
+<tr>
+<td><strong>Warm</strong>: one violet accent, rounded shapes, a friendly
+geometric sans</td>
+<td>Childish: rainbows, cartoon mascots, shouting colours</td>
+</tr>
+<tr>
+<td><strong>Honest</strong>: we say exactly what the app does</td>
+<td>Salesy: "100% safe", fear, guilt</td>
+</tr>
+<tr>
+<td><strong>Together, not watching</strong>: a parent and a child;
+nothing has eyes</td>
+<td>Surveillance: padlocks, eyes, shields with alarms</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-logo">2. Logo</h2>
+<p><strong>The mark: "Together".</strong> Two figures, a parent and a
+smaller child, side by side. The curves of their bodies meet and make a
+heart in the space between them. Tin Shotti is something a parent and a
+child do together each evening, not something done to the child. Cream
+parent and Lilac child, on a Violet tile or on Ink.</p>
+<p>The shape comes from the icon the owner chose on 3 Nov 2026 (an image
+exploration; the others are in <code>logo/other_ideas/</code>).
+<code>source/build.py</code> redraws it as clean vectors in the brand
+colours.</p>
+<table>
+<thead>
+<tr>
+<th>File (<code>logo/</code>)</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tin-shotti-mark</code></td>
+<td>The mark on its Violet tile: social avatars, favicons, small
+spaces</td>
+</tr>
+<tr>
+<td><code>tin-shotti-app-icon</code></td>
+<td>Play Store and launcher. Full-bleed Violet square; Android applies
+the mask. The figures sit inside the adaptive-icon safe zone.</td>
+</tr>
+<tr>
+<td><code>tin-shotti-logo-horizontal</code></td>
+<td>The main logo, on Cream or white: Ink wordmark, Violet Bangla</td>
+</tr>
+<tr>
+<td><code>tin-shotti-logo-reversed</code></td>
+<td>On Ink: the mark without its tile (Cream parent, Lilac child), Cream
+wordmark, Lilac Bangla</td>
+</tr>
+<tr>
+<td><code>tin-shotti-logo-stacked</code></td>
+<td>Square spaces: splash screen, posters, the landing-page hero</td>
+</tr>
+<tr>
+<td><code>tin-shotti-logo-mono</code></td>
+<td>One colour (Ink) on light backgrounds: print, stamps, receipts</td>
+</tr>
+</tbody>
+</table>
+<p>Each comes as SVG and PNG. <strong>All text is already converted to
+outlines</strong>, so the files look the same everywhere. Rebuild them
+with <code>source/build.sh</code>.</p>
+<p><code>concepts.png</code> records the directions explored for v2 and
+v3 and which one won.</p>
+<p><strong>The app design file</strong> is in <code>figma/</code>: six
+Figma-ready pages (foundations and components, flows, 26 screens,
+do/don't, corner cases). See <code>figma/README.md</code>.</p>
+<p><strong>Rules</strong></p>
+<ul>
+<li>Pair the name with a descriptor until people know it: <strong>"Tin
+Shotti: child mode for your phone"</strong> / <strong>"তিন সত্যি: ফোনের
+শিশু মোড"</strong>.</li>
+<li>Spell it <strong>Tin Shotti</strong> (two words). Handles and
+domains: <code>tinshotti</code>. Never "Teen Shotti" (too close to Teen
+Patti).</li>
+<li>Clear space: at least the diameter of the child's head on every
+side.</li>
+<li>Smallest size: mark 24 px; horizontal logo 140 px wide. At 24 px the
+two heads and the heart must stay distinct.</li>
+<li>Don't: swap the parent and the child, close the gap at the bottom of
+the heart, add faces or eyes, put the mark on a photo, stretch it, or
+add shadows or gradients.</li>
+</ul>
+<hr />
+<h2 id="3-colour">3. Colour</h2>
+<p>The palette deliberately follows Nagorik Technologies' own
+(nagorik.tech), so Tin Shotti reads as part of the Nagorik portfolio. A
+consumer launch brand would be revisited with research.</p>
+<p>Deep ink and violet on a warm cream, with lavender tints: calm and
+trustworthy for the parent, bright enough to feel friendly to the child.
+No warm accent: warmth comes from the cream, the rounded shapes and the
+voice.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Hex</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ink</strong></td>
+<td><code>#080033</code></td>
+<td>Body text, headings on light screens, the dark end screen and dark
+backgrounds</td>
+</tr>
+<tr>
+<td><strong>Ink Deep</strong></td>
+<td><code>#04001A</code></td>
+<td>Fields and pressed states on Ink</td>
+</tr>
+<tr>
+<td><strong>Violet</strong></td>
+<td><code>#5533FF</code></td>
+<td>The brand colour: primary buttons, page titles, the logo tile, the
+child's own "+5 min" button, the middle of the time light</td>
+</tr>
+<tr>
+<td><strong>Electric</strong></td>
+<td><code>#2B00FF</code></td>
+<td>Links, screen and test IDs, small labels on Cream; the end of the
+time light</td>
+</tr>
+<tr>
+<td><strong>Lilac</strong></td>
+<td><code>#D4CCFF</code></td>
+<td>Borders, light fills, light text on Ink, the child in the mark, the
+start of the time light</td>
+</tr>
+<tr>
+<td><strong>Lavender</strong></td>
+<td><code>#EAE5FF</code></td>
+<td>Parent-screen cards and chips, the grown-up cover, info cards,
+document backgrounds</td>
+</tr>
+<tr>
+<td><strong>Cream</strong></td>
+<td><code>#F7F3EA</code></td>
+<td>The main background. Warmer than white.</td>
+</tr>
+<tr>
+<td><strong>Muted</strong></td>
+<td><code>#4F4C70</code></td>
+<td>Secondary text, hints, timestamps</td>
+</tr>
+<tr>
+<td><strong>Protected</strong></td>
+<td><code>#1E6A47</code> on <code>#E2F2E8</code></td>
+<td>"Protected" status only</td>
+</tr>
+<tr>
+<td><strong>Not protected</strong></td>
+<td><code>#B42318</code> on <code>#FDECEA</code></td>
+<td>"Not protected yet", errors</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Contrast.</strong> <code>source/build.py</code> checks every
+text pairing below against WCAG AA (4.5:1) on each build and fails if
+one drops: Ink on Cream 17.9 · Cream on Ink 17.9 · Ink on Lavender 16.2
+· Ink on Lilac 13.1 · Lilac on Ink 13.1 · Violet on Cream 5.7 · Cream on
+Violet 5.7 · Violet on Lavender 5.2 · Electric on Cream 7.5 · Electric
+on Lavender 6.7 · white on Electric 8.3 · Muted on Cream 7.3 · Muted on
+Lavender 6.6 · Protected 5.6 · Not protected 5.8. <strong>Not allowed
+for text:</strong> Ink on Violet (3.1), Violet or Electric on Ink (3.1 /
+2.4), Lilac or Lavender on anything light.</p>
+<p><strong>Proportions:</strong> roughly 60% Cream and Lavender, 20%
+Ink, 15% Violet, 5% Electric and Lilac.</p>
+<p><strong>Status is never colour alone.</strong> Always an icon (✓ / ✕)
+and words.</p>
+<hr />
+<h2 id="4-type">4. Type</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Latin</th>
+<th>Bangla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wordmark, display, big numbers</td>
+<td><strong>Plus Jakarta Sans</strong> ExtraBold (800)</td>
+<td><strong>Hind Siliguri</strong> SemiBold</td>
+</tr>
+<tr>
+<td>UI and body</td>
+<td><strong>Plus Jakarta Sans</strong> (500 / 600 / 700)</td>
+<td><strong>Hind Siliguri</strong> (Regular / SemiBold)</td>
+</tr>
+</tbody>
+</table>
+<p>Both families are free under the SIL Open Font License (Google Fonts)
+and can ship inside the app. Bundling Hind Siliguri avoids broken
+conjuncts on phones with poor system fonts (test L-01).</p>
+<ul>
+<li>Nagorik's own typeface is RM Neue, a proprietary geometric sans.
+Plus Jakarta Sans at 800 is the closest open geometric sans, so the
+wordmark and titles sit next to Nagorik's material without a licence.
+Use 800 only for the wordmark, page titles and large numbers; UI text
+stays at 500–700.</li>
+<li><strong>Scale (sp):</strong> Display 40 · Title 28 · Heading 22 ·
+Body 18 · Label 16 · Caption 13. Body is 18, not 16: Bangla needs the
+extra size on low-cost screens.</li>
+<li><strong>Line height:</strong> 1.5× for Bangla, 1.4× for Latin.
+Bangla vowel signs reach above and below the line.</li>
+<li><strong>Child screens:</strong> at most 3 words, 28 sp or larger,
+always spoken by the voice line.</li>
+</ul>
+<hr />
+<h2 id="5-shape-and-layout">5. Shape and layout</h2>
+<ul>
+<li><strong>Rounded everywhere:</strong> cards 22–24 dp radius, buttons
+fully rounded (pill), chips 22 dp. Echoes the curves of the mark.</li>
+<li><strong>One primary action per screen.</strong> Violet marks it: the
+main button, or on child screens the one thing that matters to the child
+(the +5 button).</li>
+<li><strong>Generous space:</strong> 20 dp screen margins, 24 dp between
+groups. Calm comes from space, not decoration.</li>
+<li><strong>Illustration:</strong> flat, solid shapes in Ink, Violet,
+Lilac and Lavender. People are simple silhouettes with no facial
+features, like the mark. No photos of children, ever.</li>
+<li><strong>Icons:</strong> rounded line icons at 2–2.5 dp stroke, or
+filled when they need to read from far away (child screens).</li>
+</ul>
+<h3 id="the-time-light">The time light</h3>
+<p>The child's timer is a line of light around the screen edge, not a
+number (see <code>ui-ux-principles.md</code>, principle 8).</p>
+<ul>
+<li><strong>Path:</strong> starts at the top-left corner, grows
+clockwise, and closes the loop at 0 minutes. The child's "+5 min" starts
+a new short loop.</li>
+<li><strong>Colour along the line:</strong> Lilac <code>#D4CCFF</code>
+for the first 30%, Violet <code>#5533FF</code> around the middle (always
+Violet at half time), Electric <code>#2B00FF</code> for the last
+quarter, with short blends between them. The line deepens as time runs
+out; the head of the line shows how far the session has gone.</li>
+<li><strong>Form:</strong> a 6–7 dp line with a soft 16–20 dp glow on
+the inside edge, at most 80% opacity, following the screen's own corner
+radius. It sits on the edge, never across content.</li>
+<li><strong>Always fully visible:</strong> on curved glass, under a
+thick case, or behind the status and navigation bars, the light moves in
+onto the flat, visible part of the screen: 8 dp per "Part is hidden" tap
+in the setup's light check, up to 24 dp. Move it in; never make it
+brighter. Above 80% opacity, Android 12+ stops touches reaching the app
+below (PRD TMR-02b, TMR-02c, SET-25).</li>
+<li><strong>Contrast:</strong> check it on a white screen and on a dark
+video (T-18). Lilac is pale on white (1.5:1), so the line carries a thin
+Ink edge; Violet (6.4:1) and Electric (8.3:1) read on white
+(TMR-02d).</li>
+<li><strong>Last 2 minutes:</strong> a slow pulse (about one every 2
+seconds). At the end, the full loop glows once for 1 second.</li>
+</ul>
+<h3 id="confetti">Confetti</h3>
+<ul>
+<li>Brand colours only: Violet, Electric, Lilac, Cream and Lavender, on
+Ink. Rounded dots and short curved strokes that echo the curves of the
+mark; no glitter, stars or flashing.</li>
+<li>Falls slowly for 3 seconds around the mark on the end screen, then
+settles. Shown still when "Remove animations" is on.</li>
+</ul>
+<p>See <code>ui-samples.png</code> for five screens in this style.</p>
+<hr />
+<h2 id="6-voice-and-tone">6. Voice and tone</h2>
+<p>We sound like <strong>a calm older cousin</strong>: warm, short, on
+the child's side and the parent's side at once.</p>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Don't</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"দারুণ! আজকের সময় শেষ" / "Well done! Time's up for today."</td>
+<td>"Screen time limit exceeded."</td>
+</tr>
+<tr>
+<td>"এটা বড়দের অ্যাপ" / "This one is for grown-ups"</td>
+<td>"Blocked!", "Access denied"</td>
+</tr>
+<tr>
+<td>"এখনও সুরক্ষিত নয়। এটা চালু করুন:" / "Not protected yet. Turn this
+on:"</td>
+<td>"Error: permission missing"</td>
+</tr>
+<tr>
+<td>"শুধু এই ফোনেই সেভ থাকে" / "Saved on this phone only"</td>
+<td>"We respect your privacy."</td>
+</tr>
+<tr>
+<td>"ফোনটা আব্বু-আম্মুকে দাও" / "Give the phone to Abbu or Ammu"</td>
+<td>"Return device to parent"</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Bangla first.</strong> Write the Bangla, then the English;
+don't translate English copy word for word.</li>
+<li><strong>Say what happens.</strong> Never "protected" unless the
+guard test just passed.</li>
+<li><strong>No guilt, no fear.</strong> No "danger", no "addicted", no
+shaming the parent for +2 min.</li>
+<li>Address the parent as আপনি and the child as তুমি.</li>
+</ul>
+<hr />
+<h2 id="7-sound">7. Sound</h2>
+<ul>
+<li>A soft two-note chime at 2 minutes left; a warm three-note rising
+phrase on the end screen (the three promises).</li>
+<li>One recorded Bangla voice, slow and warm. The same line for the same
+event, every time.</li>
+<li>Sound never overrides silent mode; the visual cue still shows.</li>
+</ul>
+<hr />
+<h2 id="8-applying-the-brand">8. Applying the brand</h2>
+<table>
+<thead>
+<tr>
+<th>Place</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Play Store icon</td>
+<td><code>tin-shotti-app-icon</code></td>
+</tr>
+<tr>
+<td>Play Store feature graphic</td>
+<td>Ink background, the reversed logo, "তিন সত্যি: ফোনের শিশু মোড" in
+Cream</td>
+</tr>
+<tr>
+<td>Splash screen</td>
+<td>Cream background, the stacked logo</td>
+</tr>
+<tr>
+<td>Landing page (payment test)</td>
+<td>Cream background, horizontal logo, a Violet "Reserve with bKash"
+button</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>A single-colour silhouette of the mark (Android requires it). The
+session notification uses Violet as its accent colour, with a
+Lilac-to-Electric progress bar where Android allows it.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="to-check">To check</h2>
+<ul>
+<li>Do parents read the mark as "a parent and a child" and see the
+heart? Show it to 5 parents in the closed test, without explanation.
+Check it at 24 px on a launcher.</li>
+<li>Does the Nagorik violet feel calm and friendly to parents, or too
+"tech"? Ask the same 5 parents what the colours remind them of.</li>
+<li>Is the heavy sans wordmark warm enough for a family product? Compare
+it with a softer weight on the landing page.</li>
+<li>Is Hind Siliguri at 18 sp readable on a 720p Tecno screen? Test
+L-01.</li>
+<li>Trademark search for the name and the mark (Nice classes 9 and 42)
+before launch. Two figures making a heart is a common family motif, so
+check for close marks.</li>
+</ul>
+<h2 id="what-changed">What changed</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>v1</th>
+<th>v2</th>
+<th>v3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Palette</td>
+<td>Indigo, yellow, lavender</td>
+<td>Evergreen, apricot, cream</td>
+<td>Nagorik's own: Ink, Violet, Electric, Lilac, Lavender, Cream</td>
+</tr>
+<tr>
+<td>Mark</td>
+<td>Three yellow dots on indigo</td>
+<td>A child held by three arcs</td>
+<td>"Together": a parent and a child whose bodies make a heart</td>
+</tr>
+<tr>
+<td>Wordmark</td>
+<td>Live text, rounded sans</td>
+<td>Serif, outlined</td>
+<td>Plus Jakarta Sans 800, outlined, in Ink and Violet</td>
+</tr>
+<tr>
+<td>Time light</td>
+<td>(a timer bubble)</td>
+<td>Lagoon → Pistachio → Apricot</td>
+<td>Lilac → Violet → Electric</td>
+</tr>
+<tr>
+<td>Feel</td>
+<td>Playful app</td>
+<td>Trusted family product</td>
+<td>A family thing you do together</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <p style="margin-top:48px"><a href="../">← back to the submission</a></p>
+</main>
+</body>
+</html>

@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Tin Shotti: acceptance test cases</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="icon" type="image/png" href="../../../assets/logo.png">
+  <style>
+    main { padding: 40px 0 80px; max-width: 960px; }
+    .crumbs a { color: var(--accent-blue); }
+    .doc { margin-top: 24px; }
+    .doc h1 { font-size: clamp(1.3rem, 4vw, 1.9rem); margin: 0 0 20px; }
+    .doc h2 { color: var(--accent-green); font-size: 1.2rem; margin: 40px 0 12px; }
+    .doc h3, .doc h4 { color: var(--text-primary); font-size: 1rem; margin: 28px 0 10px; }
+    .doc p, .doc li { color: var(--text-secondary); margin-bottom: 12px; }
+    .doc ul, .doc ol { padding-left: 1.4em; margin-bottom: 12px; }
+    .doc a { color: var(--accent-blue); }
+    .doc strong { color: var(--text-primary); }
+    .doc code { background: var(--bg-panel); padding: 1px 5px; color: var(--accent-purple); }
+    .doc pre { background: var(--bg-panel); padding: 12px; overflow-x: auto; margin-bottom: 16px; }
+    .doc pre code { padding: 0; }
+    .doc blockquote { border-left: 3px solid var(--accent-green); padding-left: 14px; margin: 0 0 16px; }
+    .doc hr { border: 0; border-top: 1px solid #333; margin: 32px 0; }
+    /* block + overflow so wide tables scroll on phones instead of widening the page */
+    .doc table { display: block; overflow-x: auto; border-collapse: collapse; font-size: .85rem; margin-bottom: 20px; }
+    .doc th, .doc td { border: 1px solid #333; padding: 6px 10px; text-align: left; vertical-align: top; color: var(--text-secondary); }
+    .doc th { background: var(--bg-panel); color: var(--text-primary); }
+  </style>
+</head>
+<body>
+<main class="container">
+  <p class="crumbs"><span class="logo-prompt">abraar@root:</span><span class="logo-dir">~/assignments/nagorik</span>$ <a href="../">cd ..</a> · <a href="../docs/test-cases.md">raw markdown</a></p>
+  <article class="doc">
+<h1 id="tin-shotti-acceptance-test-cases">Tin Shotti: acceptance test
+cases</h1>
+<p><strong>112 test cases for the MVP and 10 for v2.</strong> P0 blocks
+launch, P1 is fixed before the closed test, P2 if time allows.</p>
+<p>These are product-level acceptance tests for the Tin Shotti MVP: what
+a parent or child does, and what must happen. They are not unit tests.
+Use them three ways:</p>
+<ul>
+<li><strong>Week 1 (spike):</strong> run section 1 first. Its results
+decide the gate at the end of week 2.</li>
+<li><strong>Weeks 2–5 (build):</strong> each capability has its own
+section. A feature is done when its P0 cases pass on every test
+phone.</li>
+<li><strong>Week 5 (closed test):</strong> rerun all P0 and P1 cases on
+the families' own phones where possible.</li>
+</ul>
+<p><strong>Priority:</strong> <strong>P0</strong> blocks launch ·
+<strong>P1</strong> fix before the closed test · <strong>P2</strong> fix
+if time allows. <strong>Targets marked "target"</strong> are my guesses,
+set before testing so the results can't be argued away. Change them only
+with a reason written next to them. <strong>Proposed</strong> means a
+product decision I've suggested but not confirmed. Raise it if it's
+wrong.</p>
+<hr />
+<h2 id="0--test-setup">0 · Test setup</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phones</td>
+<td>4 low-cost Android phones, one each from <strong>Xiaomi/Redmi,
+Samsung, Realme, Tecno</strong>, covering Android 10 to 15. Confirm the
+models in week 1 from what parents actually own (open question in the
+competitor scan). At least one must have <strong>curved edges</strong>
+(add a fifth phone if none of the four does), and run the light tests
+with both <strong>gesture navigation</strong> and <strong>3-button
+navigation</strong>.</td>
+</tr>
+<tr>
+<td>Phone state</td>
+<td>Factory battery saver <strong>on</strong> for one run and
+<strong>off</strong> for another. A normal parent's phone: WhatsApp,
+Facebook, bKash, YouTube and YouTube Kids installed.</td>
+</tr>
+<tr>
+<td>Child apps</td>
+<td>YouTube Kids (Approved content only on) and one learning app.</td>
+</tr>
+<tr>
+<td>Tools</td>
+<td>A stopwatch or screen recording with on-screen time (to measure how
+fast blocked apps are covered); Firebase DebugView or a network proxy
+(privacy checks); a 7-year-old's curiosity (escape tests: ask a
+colleague's child, with the parent present).</td>
+</tr>
+<tr>
+<td>Record</td>
+<td>Phone model, Android version, battery-saver state, pass/fail, and a
+screen recording for every fail.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2
+id="1--spike-can-a-play-store-app-keep-a-child-inside-allowed-apps-week-1-gate">1
+· Spike: can a Play Store app keep a child inside allowed apps? (week 1,
+gate)</h2>
+<p>The riskiest assumption in the plan. Build the smallest guard that
+works, then run these on all 4 phones, once with <strong>Usage access +
+overlay</strong> and once with an <strong>Accessibility
+service</strong>. The Accessibility route needs a Play declaration, an
+in-app disclosure and the user's consent (Play Console Help
+10964491).</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S-01</td>
+<td>A session is running with only YouTube Kids allowed</td>
+<td>The child opens Facebook from the home screen</td>
+<td>The "grown-up app" cover appears within <strong>1 second</strong>
+(target) in 19 of 20 tries; Facebook content is never usable</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-02</td>
+<td>A session is running</td>
+<td>The child opens a blocked app from the recent-apps list</td>
+<td>Covered as in S-01</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-03</td>
+<td>A session is running</td>
+<td>The child pulls down the notification shade and taps a WhatsApp
+notification</td>
+<td>WhatsApp is covered as in S-01</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-04</td>
+<td>A session is running</td>
+<td>The child opens quick settings and taps Settings (gear)</td>
+<td>Settings is covered</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-05</td>
+<td>A session is running</td>
+<td>The child tries split screen or a floating window with a blocked
+app</td>
+<td>The blocked app is covered or closed</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-06</td>
+<td>A session is running</td>
+<td>The child long-presses home or power to open the Assistant and says
+"open Facebook"</td>
+<td>Facebook is covered</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>S-07</td>
+<td>A session is running</td>
+<td>The child restarts the phone</td>
+<td>After restart the guard is back <strong>before</strong> the child
+can use a blocked app, <strong>or</strong> this is recorded as a known
+escape (feeds the "mid-session failure" decision)</td>
+<td>P0 (to measure)</td>
+</tr>
+<tr>
+<td>S-08</td>
+<td>A session is running, battery saver <strong>on</strong></td>
+<td>45 minutes pass with YouTube Kids playing</td>
+<td>The guard is still active at minute 45 (S-01 still passes)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-09</td>
+<td>A session is running, screen locked for 10 minutes</td>
+<td>The phone is unlocked</td>
+<td>The guard is still active</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-10</td>
+<td>A session is running</td>
+<td>A phone call comes in and is answered, then ended</td>
+<td>The call works; after the call the guard is still active</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-11</td>
+<td>Guard running for 45 min</td>
+<td>Measure battery used versus YouTube Kids alone</td>
+<td>Extra drain under <strong>5%</strong> of battery (target)</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>S-12</td>
+<td>Both guard routes tested</td>
+<td>Compare S-01 to S-11 results</td>
+<td>Write one line per route: pass/fail per phone, cover time, escapes
+found. <strong>Decision input for the gate.</strong></td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-18</td>
+<td>Time light running; Android 12, 13, 14 and 15; both guard
+routes</td>
+<td>The child taps, scrolls and uses video controls, including at the
+screen edges</td>
+<td>Every touch reaches the allowed app; nothing is blocked or ignored.
+If Usage access + overlay fails, record it: the light may need the
+Accessibility route (PRD A-10)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-19</td>
+<td>Phones with round corners, a camera cutout, curved edges, and one in
+a thick case; gesture and 3-button navigation</td>
+<td>A session runs in portrait, then a full-screen video in
+landscape</td>
+<td>Every part of the light is visible: it follows the round corners, is
+not hidden by the cutout or the curved glass, and the status bar and
+navigation bar don't cover it (with Usage access + overlay they are
+drawn on top of it, PRD V16). It turns with the screen</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-20</td>
+<td>A session is running; WhatsApp, Messenger and bKash installed</td>
+<td>A WhatsApp message and a bKash notification arrive, then a phone
+call comes in</td>
+<td>No pop-up, nothing in the shade or on the lock screen, no Reply
+button. The phone call rings and can be answered. After the session, Do
+not disturb is back to what the parent had before. Repeat on Android 15
+(the app's own Do not disturb rule, PRD V17)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-21</td>
+<td>A session is running</td>
+<td>The child opens quick settings and taps Airplane mode, Wi-Fi, mobile
+data and the flashlight, then long-presses a tile</td>
+<td>Record which tiles work: a known MVP limit (PRD HND-27). A
+long-press that opens Settings is covered. 999 still connects in
+airplane mode</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>S-22</td>
+<td>A cloned WhatsApp is installed (Xiaomi Dual apps, Realme App Clone,
+Tecno App Twin, Samsung Dual Messenger)</td>
+<td>The child opens the clone from the home screen, recent apps and its
+notification</td>
+<td>Covered as in S-01, with both guard routes</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-23</td>
+<td>A session is running</td>
+<td>The child long-presses the Tin Shotti icon (or any icon) and taps
+Uninstall, App info or Pause app, or drags the icon to Uninstall</td>
+<td>The dialog or App info is covered; Tin Shotti stays installed and
+the session continues</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>S-24</td>
+<td>Messenger chat heads on; a WhatsApp chat bubble open (Android
+11+)</td>
+<td>A session starts with a chat head or bubble on the screen, and the
+child taps it</td>
+<td>The chat is covered or closed, and the grown-up cover stays on top
+of the chat head</td>
+<td>P0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Play review checklist (spike question c), answer in
+writing:</strong></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question</th>
+<th>Answer needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S-13</td>
+<td>Which foreground-service type does the guard need, and what does
+Play ask for it?</td>
+<td>Type + declaration text</td>
+</tr>
+<tr>
+<td>S-14</td>
+<td><code>isMonitoringTool = child_monitoring</code> (Play Console Help
+12955211): what else does it require?</td>
+<td>List</td>
+</tr>
+<tr>
+<td>S-15</td>
+<td>Does Play treat Tin Shotti as an app for children (stricter rules
+for SDKs such as Firebase)? Which target audience do we declare?</td>
+<td>Decision + reason</td>
+</tr>
+<tr>
+<td>S-16</td>
+<td>If we use an Accessibility service: draft the in-app disclosure and
+consent screen, and record the review video Play asks for</td>
+<td>Draft + video</td>
+</tr>
+<tr>
+<td>S-17</td>
+<td>How long did review take for a similar test build (internal or
+closed track)?</td>
+<td>Days</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gate rule:</strong> if S-01, S-03, S-08 or S-09 fails on 2 or
+more of the 4 phones with both routes, the guard fails → ship the
+fallback (guided setup of the free tools).</p>
+<hr />
+<h2
+id="2--capability-3-guided-setup-in-bangla-built-in-week-2-needed-in-every-version">2
+· Capability 3: guided setup in Bangla (built in week 2, needed in every
+version)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G-01</td>
+<td>First launch, phone language Bangla or English</td>
+<td>The app opens</td>
+<td>Bangla is the default; a বাংলা/English switch is visible on the
+first screen</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-02</td>
+<td>First launch</td>
+<td>The parent picks the child's age band (3–5, 6–8 or 9–14) and daily
+time</td>
+<td>A default daily time is suggested by age (proposed: 30 / 45 / 60
+min); for 9–14 the parent can allow up to two more apps, never a
+grown-up app; no name, photo or sign-up is asked for</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-02b</td>
+<td>First launch</td>
+<td>The parent turns on the optional active window and sets 6–10 pm</td>
+<td>The window is saved and shown on the Hand over screen; leaving it
+off means minutes can be used any time that day</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-03</td>
+<td>Setup, allowed-apps step</td>
+<td>The screen loads</td>
+<td>YouTube Kids is pre-ticked if installed; installed learning apps are
+listed; WhatsApp, IMO, Messenger, Facebook, bKash, YouTube, Settings and
+Play Store are listed as blocked and <strong>cannot</strong> be ticked
+as allowed; phone calls and 999 are shown as "always on", with one line
+saying WhatsApp, IMO and Messenger calls can't be answered during a
+session</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-04</td>
+<td>YouTube Kids is not installed</td>
+<td>The parent reaches the allowed-apps step</td>
+<td>The app explains why and offers a button to its Play Store page;
+setup can continue without it</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>G-05</td>
+<td>Setup, PIN step</td>
+<td>The parent enters a 4-digit PIN twice</td>
+<td>PIN saved; mismatched entries show "PINs don't match" and clear both
+fields</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-06</td>
+<td>Setup, PIN step</td>
+<td>The parent enters 0000, 1234 or 1111</td>
+<td>A gentle warning ("easy to guess") with the option to keep it
+(proposed)</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>G-07</td>
+<td>Setup, permissions step on a Xiaomi phone</td>
+<td>The screen loads</td>
+<td>It shows <strong>Xiaomi</strong>-specific pictures and the steps for
+each permission the guard needs, including Autostart</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-08</td>
+<td>Same, on Samsung, Realme and Tecno</td>
+<td>The screen loads</td>
+<td>Brand-specific steps for each; an unknown brand gets generic Android
+steps</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-09</td>
+<td>A permission is switched on in system settings</td>
+<td>The parent comes back to the app</td>
+<td>That row flips to ON without restarting setup</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-10</td>
+<td>All permissions ON</td>
+<td>The parent taps <strong>Test it now</strong></td>
+<td>The app tries to open a blocked app and confirms it was covered;
+shows "Protected · test passed" with the time</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-11</td>
+<td>One permission still OFF, or the test fails</td>
+<td>The parent taps <strong>Test it now</strong></td>
+<td>"Not protected yet" with the one fix for their brand; <strong>Give
+to child stays disabled</strong></td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-12</td>
+<td>5 parents who have never seen the app (closed test)</td>
+<td>They complete setup unaided</td>
+<td>Median time <strong>3 minutes or less</strong> (target); note where
+each one hesitates</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>G-13</td>
+<td>Setup half-finished</td>
+<td>The parent closes the app and reopens it later</td>
+<td>Setup resumes at the same step; nothing already done is lost</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>G-14</td>
+<td>Any parent screen</td>
+<td>TalkBack is on</td>
+<td>Every button and ON/OFF state is read out in the selected
+language</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>G-15</td>
+<td>Setup, guard test passed</td>
+<td>The light check runs</td>
+<td>The light goes round the edge once in about 5 seconds, then "আলোটা
+পুরোটা দেখা যাচ্ছে? / Can you see all of the light?" <strong>Yes</strong>
+goes to Protected. <strong>Part is hidden</strong> moves the light 8 dp
+in and runs it again (up to 24 dp). The choice is used in every
+session</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>G-16</td>
+<td>Setup done, a new thick case on the phone</td>
+<td>The parent enters the PIN and runs the light check again</td>
+<td>Same as G-15; the new position is used from the next session</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>G-17</td>
+<td>Setup, permissions step</td>
+<td>The screen loads, then Do not disturb access is left OFF</td>
+<td>A "Do not disturb" row with the brand's pictures; with it OFF,
+<strong>Test it now</strong> fails as in G-11 and <strong>Give to
+child</strong> stays off</td>
+<td>P0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3--capability-1-one-tap-handover-with-allowed-apps">3 ·
+Capability 1: one-tap handover with allowed apps</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H-01</td>
+<td>Setup done, guard test passed</td>
+<td>The parent opens the app</td>
+<td>The Hand over screen shows: protected status, minutes left today
+(and the window, if set), minute choices no larger than what's left, and
+<strong>Give to child</strong></td>
+<td>P0</td>
+</tr>
+<tr>
+<td>H-02</td>
+<td>Hand over screen</td>
+<td>The parent taps <strong>Give to child</strong></td>
+<td>The guard test runs again silently; if it passes, YouTube Kids opens
+and the session starts. <strong>2 taps total</strong> from opening the
+app</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>H-03</td>
+<td>Hand over screen, guard test fails (e.g. battery saver killed the
+service)</td>
+<td>The parent taps <strong>Give to child</strong></td>
+<td>No session starts; "Not protected yet" with the fix; the app never
+shows "protected" when it isn't</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>H-04</td>
+<td>A session is running</td>
+<td>The child opens an allowed app other than YouTube Kids</td>
+<td>It opens normally</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>H-05</td>
+<td>A session is running</td>
+<td>The child opens any app not on the allowed list</td>
+<td>Grown-up cover: icon, "এটা বড়দের অ্যাপ / This one is for grown-ups",
+voice line in Bangla, <strong>Back to my videos</strong> button</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>H-06</td>
+<td>Grown-up cover showing</td>
+<td>The child taps <strong>Back to my videos</strong></td>
+<td>Returns to the last allowed app</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>H-07</td>
+<td>A session is running</td>
+<td>A blocked app is opened 5 times in a row</td>
+<td>Covered every time; the count is stored on the phone only (shown in
+today's summary)</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>H-08</td>
+<td>A session is running</td>
+<td>A link inside an allowed app tries to open a blocked app or the
+browser</td>
+<td>The target is covered</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>H-09</td>
+<td>A session is running</td>
+<td>The parent needs the phone urgently (incoming call, or they take it
+back)</td>
+<td>A parent exit is reachable from the session notification and the Tin
+Shotti icon: PIN, then the session ends as "stopped early"</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>H-10</td>
+<td>A session is running in a learning app with in-app purchases</td>
+<td>The child taps a "Buy" or "Unlock" button</td>
+<td>The Google Play payment screen is covered; nothing can be
+bought</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4--capability-2-the-time-light-and-a-kind-ending-the-core-bet">4
+· Capability 2: the time light and a kind ending (the core bet)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T-01</td>
+<td>A 20-minute session starts (inside the window, if set)</td>
+<td>The child watches</td>
+<td>A soft line of light (the time light) starts at the top-left corner
+and grows clockwise along the screen edge. The child sees no numbers.
+The light never covers the app's content</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-01b</td>
+<td>A 20-minute session</td>
+<td>10 minutes pass, then 20</td>
+<td>At 10 min the light has covered half the edge (to the bottom-right
+corner) and its head is Violet; at 20 min it is back at the top-left
+corner and Electric</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-02</td>
+<td>Time light visible</td>
+<td>The child taps, swipes or scrolls anywhere, including on the
+light</td>
+<td>Every touch goes to the app below; the light can't be moved, closed
+or tapped</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-03</td>
+<td>2 minutes left</td>
+<td>The timer reaches 2:00</td>
+<td>A chime and a short Bangla voice line play once</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-04</td>
+<td>Phone on silent or vibrate</td>
+<td>2 minutes left</td>
+<td>The light pulses slowly; no sound overrides silent mode
+(proposed)</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-05</td>
+<td>The timer reaches 0</td>
+<td>Time's up</td>
+<td>The light closes the loop and glows along the whole edge for 1
+second; then a full-screen "Well done! দারুণ! আজকের সময় শেষ" with the Tin
+Shotti mark, 3 seconds of confetti and the voice covers everything;
+video audio stops</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-05b</td>
+<td>Android "Remove animations" is on</td>
+<td>Time's up</td>
+<td>The end screen shows the confetti still, not falling; nothing
+flashes</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-06</td>
+<td>Time's up screen</td>
+<td>The child taps anything except the <strong>+5 min</strong> button
+and the PIN boxes</td>
+<td>Nothing changes; no way back into apps</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-07</td>
+<td>Time's up screen</td>
+<td>The parent enters the correct PIN and taps
+<strong>Done</strong></td>
+<td>The session ends as "on time"; the phone returns to normal with
+every app usable</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-08</td>
+<td>Time's up screen, +5 not used today</td>
+<td>The child taps <strong>+5 min</strong> (no PIN)</td>
+<td>5 more minutes start; the time light runs a new short loop; the
+voice says this is today's one +5. If the session then ends on time, it
+counts as <code>plus5_child</code></td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-08b</td>
+<td>The child's +5 is already used today (this session or an earlier
+one)</td>
+<td>Time's up again</td>
+<td>No +5 button. Parent PIN, then <strong>+2 min</strong> (once) or
+<strong>Done</strong>. +2 starts 2 minutes and counts as
+<code>plus2_parent</code></td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-08c</td>
+<td>+5 and +2 both used today</td>
+<td>Time's up</td>
+<td>Only the PIN boxes and <strong>Done</strong>, with "আজ আর সময় নেই ·
+No more time today". Nothing on this screen can add time, even with the
+correct PIN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-08d</td>
+<td>Any time, the parent opens settings with the PIN</td>
+<td><strong>Add time today</strong> → 10 min</td>
+<td>Today's daily time grows by 10 min only; the next
+<code>session_started</code> has <code>added_time = true</code>; the end
+screen still shows no extra button</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-09</td>
+<td>Time's up screen</td>
+<td>A wrong PIN is entered 5 times</td>
+<td>A 30-second wait before the next try (proposed); the child can't
+brute-force it quickly</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-10</td>
+<td>Parent forgot the PIN</td>
+<td>They tap "Forgot PIN?"</td>
+<td>They confirm with the phone's own screen lock (PIN, pattern or
+fingerprint), then set a new PIN. A child who doesn't know the phone's
+lock can't reset it</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-10b</td>
+<td>The phone has no screen lock set</td>
+<td>The parent taps "Forgot PIN?"</td>
+<td>The app explains that a phone screen lock is needed to reset the
+PIN, and setup asks for one up front (developer to confirm
+behaviour)</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-10c</td>
+<td>The child knows the phone's pattern</td>
+<td>During a session the child taps "Forgot PIN?", draws the pattern and
+sets a new PIN</td>
+<td>The reset works (it is the phone's own lock), but the next Hand over
+screen shows "পিন বদলানো হয়েছে · The PIN was reset at 8:14 pm, during a
+session"</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-10d</td>
+<td>A phone with a fingerprint sensor</td>
+<td>The parent uses a fingerprint on the PIN screen</td>
+<td>Accepted. The phone's own screen-lock PIN or pattern is not accepted
+on this screen</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>T-11</td>
+<td>A session is running with 12 min left</td>
+<td>The screen is turned off for 10 min, then on</td>
+<td>The timer <strong>paused</strong>: still 12 min left. Off-screen
+time never counts</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-12</td>
+<td>A session is running</td>
+<td>The phone restarts</td>
+<td>Depends on S-07. Proposed: if the guard returns, the session resumes
+with the remaining time; if not, the parent sees "the last session ended
+early: the phone restarted" at the next handover</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-13</td>
+<td>Session ended</td>
+<td>The parent looks at the Time's up / summary screen</td>
+<td>"Today: 20 min, 1 app blocked. Saved on this phone only."</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-13b</td>
+<td>Three evenings in a row ended without the child's +5</td>
+<td>The parent opens the summary</td>
+<td>"৩ সন্ধ্যা +৫ ছাড়া · 3 evenings in a row without +5". No minutes are
+given as a reward; on the next +5 the count starts again</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>T-14</td>
+<td>A session is running</td>
+<td>The parent pulls down the notification shade</td>
+<td>"তিন সত্যি চালু আছে · Tin Shotti is on" shows the minutes left, a
+progress bar, Pause and Stop. Both ask for the PIN before they act; a
+child who taps them sees only the PIN screen</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>T-15</td>
+<td>A session is running with 12 min left</td>
+<td>The parent taps Pause and enters the PIN</td>
+<td>Time stops; a calm break screen covers all apps; the light stops and
+dims; only the PIN resumes; after 10 min paused, 12 min are still left
+and the daily time is unchanged</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-16</td>
+<td>A session is running</td>
+<td>The session notification is swiped away (Android 14+ allows it), or
+the child taps the Tin Shotti icon</td>
+<td>The notification comes back (developer to confirm what Android
+allows); the icon always opens the parent's PIN screen</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-17</td>
+<td>3 children aged 3–8, closed test, parent present</td>
+<td>Near the end of a session, ask: "How much time is left?"</td>
+<td>Each child points to the gap in the light or says "almost done".
+Note any child the ending surprises (PRD A-09)</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>T-18</td>
+<td>A session in YouTube Kids on a mostly white screen, then a dark
+full-screen video</td>
+<td>Look at the light at 10%, 50% and 90%</td>
+<td>Each colour (Lilac, Violet, Electric) is easy to see on both. If
+not, add the thin Ink line (PRD TMR-02d) and test again</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4b--daily-time-and-the-active-window">4b · Daily time and the
+active window</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W-01</td>
+<td>Daily time 45 min, no window</td>
+<td>Two handovers of 15 and 20 min on the same day</td>
+<td>The Hand over screen then shows 10 min left; minute choices above 10
+are not offered</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>W-02</td>
+<td>Window 6–10 pm</td>
+<td>The parent opens the app at 4 pm</td>
+<td><strong>Give to child</strong> is off, with "Opens at 6 pm"</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>W-03</td>
+<td>Window 6–10 pm, a session started at 9:50 pm with 20 min chosen</td>
+<td>The clock reaches 10 pm</td>
+<td>The session ends with the kind ending ("Well done", PIN to clear);
+counted as <code>window_closed</code>; neither +5 nor +2 is offered
+after the window closes (proposed)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>W-04</td>
+<td>Window 6–10 pm, 25 min unused at 10 pm</td>
+<td>The next day starts</td>
+<td>Unused minutes are gone; the new day starts from the full daily
+time</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>W-05</td>
+<td>No window set</td>
+<td>Midnight passes during a session</td>
+<td>Proposed: the session continues to its end, and the new day's time
+starts afterwards. Test the chosen rule</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>W-06</td>
+<td>A session is running</td>
+<td>The screen is off for most of the window</td>
+<td>Off-screen time is not counted (T-11), but unused minutes still end
+with the window</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>W-07</td>
+<td>A session is running</td>
+<td>Someone changes the phone's clock or time zone (Settings is blocked,
+so test from the parent's side)</td>
+<td>Time left is not reset or extended by a clock change; note what
+happens</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>W-08</td>
+<td>Daily time 45 min, all 45 used, inside the window</td>
+<td>Time's up; the child taps <strong>+5 min</strong>, then at the next
+time's up the parent gives <strong>+2 min</strong></td>
+<td>Both work past the daily cap (PRD WIN-08). Today shows 52 min used
+and 0 min left, never a negative number</td>
+<td>P0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4c--calls-and-emergency">4c · Calls and emergency</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E-01</td>
+<td>A session is running</td>
+<td>A phone call comes in</td>
+<td>It rings and can be answered; after the call the child returns to
+the allowed app and the guard is still active (see S-10)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>E-02</td>
+<td>A session is running, or the Time's up screen is showing</td>
+<td>Someone uses Android's own emergency call (lock screen or power
+menu) and dials 999</td>
+<td>The emergency dialer is never covered and the call connects</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>E-03</td>
+<td>A session is running</td>
+<td>The child opens the Phone app to call someone</td>
+<td>Proposed for the MVP: the Phone app is a grown-up app (covered);
+only incoming calls and emergency calls work. Calls to family contacts
+are a v2 all-day-mode feature</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>E-04</td>
+<td>A session is running</td>
+<td>The child opens any grown-up app, then tries to add it to the
+allowed list</td>
+<td>Impossible: the allowed list is only reachable behind the parent's
+PIN, and grown-up apps can't be ticked there (G-03)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>E-05</td>
+<td>A session is running</td>
+<td>A WhatsApp or IMO call comes in</td>
+<td>The call screen is covered (with Do not disturb it may also be
+silent). The parent can stop the session with the PIN while it still
+rings (target: under 10 seconds). Answering app calls inside a session
+is v2 (V-09)</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5--when-the-guard-fails-and-how-we-recover">5 · When the guard
+fails, and how we recover</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F-01</td>
+<td>A session is running</td>
+<td>The OS kills the guard (simulate: force-stop from adb, or battery
+saver)</td>
+<td>Recorded on the phone; at the next handover the parent sees
+"Protection stopped during the last session" plus the fix</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>F-02</td>
+<td>Between sessions</td>
+<td>The parent switches off a needed permission</td>
+<td>The next <strong>Give to child</strong> tap fails the test (H-03)
+and shows which permission to turn back on</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>F-03</td>
+<td>App updated from Play during a session</td>
+<td>The update installs</td>
+<td>No crash; the guard returns, or F-01 applies</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>F-04</td>
+<td>Battery at 5% during a session</td>
+<td>The phone enters extreme battery saving</td>
+<td>F-01 applies; no false "protected" status anywhere</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>F-05</td>
+<td>No internet</td>
+<td>Setup, handover and a full session</td>
+<td>Everything works offline; analytics events queue and send later</td>
+<td>P0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6--privacy-and-trust-the-promise-in-the-pdf">6 · Privacy and
+trust (the promise in the PDF)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P-01</td>
+<td>Firebase DebugView or a network proxy</td>
+<td>A full setup and 3 sessions are run</td>
+<td>The <strong>only</strong> events sent are
+<code>setup_finished</code>, <code>session_started</code> and
+<code>session_ended</code> (with <code>reason</code> = on_time /
+plus5_child / plus2_parent / early / window_closed;
+<code>session_started</code> carries only <code>added_time</code>), plus
+a random install ID. <strong>No</strong> app names, video titles, screen
+content, child age, or advertising ID</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>P-02</td>
+<td>Analytics SDK configured</td>
+<td>Check the build config</td>
+<td>Advertising ID collection is off</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>P-03</td>
+<td>Any screen</td>
+<td>Look through the whole app</td>
+<td>No field asks for the child's name, photo, school or birthday</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>P-04</td>
+<td>Several sessions done</td>
+<td>Check app storage</td>
+<td>Session history (apps opened, blocked counts) exists only on the
+phone, and only the event list in P-01 leaves it</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>P-05</td>
+<td>The app is uninstalled</td>
+<td>Check the phone</td>
+<td>All local data is gone</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>P-06</td>
+<td>Play Console</td>
+<td>Fill in the Data safety form</td>
+<td>It matches P-01 exactly</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>P-07</td>
+<td>A session is running</td>
+<td>The child looks at the screen</td>
+<td>The time light is always visible to the child (no secret monitoring
+mode exists)</td>
+<td>P0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7--language-children-who-cant-read-accessibility">7 · Language,
+children who can't read, accessibility</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L-01</td>
+<td>All 4 phones</td>
+<td>Open every Bangla screen</td>
+<td>Bangla renders correctly (no broken conjuncts or vowel signs) with
+the app's bundled font</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>L-02</td>
+<td>A 4-year-old who can't read</td>
+<td>They hit the grown-up cover and the Time's up screen</td>
+<td>They understand from the icon, voice and button alone (watch 3
+children in the closed test; note confusion)</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>L-03</td>
+<td>Child screens</td>
+<td>Measure buttons</td>
+<td>Touch targets at least 48 dp (Android's guideline)</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>L-04</td>
+<td>English selected</td>
+<td>Walk through every screen</td>
+<td>No Bangla left untranslated, and the reverse</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>L-05</td>
+<td>A 4-year-old who can't read, closed test</td>
+<td>Time's up with +5 not used</td>
+<td>They understand the <strong>+5 min</strong> button from its look and
+the voice line ("আরও ৫ মিনিট, আজ একবার") and know it works once. Note
+any child who expects a second +5</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8--metric-plumbing-so-the-two-week-decision-can-be-made">8 ·
+Metric plumbing (so the two-week decision can be made)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Given</th>
+<th>When</th>
+<th>Then</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-01</td>
+<td>A test install</td>
+<td>Setup finished, then 3 sessions on 3 different days</td>
+<td>The dashboard can compute "families who finished setup in week 1 and
+started 3+ sessions in week 2" from the events alone</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>M-02</td>
+<td>Same</td>
+<td>Sessions end on time, with the child's +5, with the parent's +2,
+stopped early, and when the window closed; one session uses Add time
+today</td>
+<td>Each <code>session_ended.reason</code> and <code>added_time</code>
+is counted correctly, so the guard ("days with +2 or Add time today")
+can be computed</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>M-03</td>
+<td>Reinstall</td>
+<td>The parent uninstalls and reinstalls</td>
+<td>Counted as a new install (a known limit of anonymous IDs; note it in
+the analysis)</td>
+<td>P2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9--v2-ideas-tests-to-write-later-not-part-of-the-mvp">9 · v2
+ideas: tests to write later (not part of the MVP)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Idea</th>
+<th>First test to write</th>
+<th>Pri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V-01</td>
+<td>All-day mode: apps by time of day</td>
+<td>Given a school-hours schedule, when the child opens a game at 10 am,
+then it is covered; at 5 pm it opens</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-02</td>
+<td>All-day mode: daily total across schedules</td>
+<td>Given a 2-hour daily total, all allowed use across the day adds up
+and stops at 2 hours</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-03</td>
+<td>All-day mode: calls to family</td>
+<td>Only the parent-approved contacts and 999 can be called; incoming
+calls from others follow the parent's setting</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-04</td>
+<td>All-day mode: device owner</td>
+<td>On a factory-fresh phone, provisioning sets Tin Shotti as device
+owner; lock-task mode then keeps the child in allowed apps across
+restarts</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-05</td>
+<td>Safe browser: allowed sites only</td>
+<td>A site not on the list is blocked with the grown-up cover; emergency
+pages always open</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-06</td>
+<td>Safe browser: logging the child can see</td>
+<td>Every visit is logged for the parent, and the browser always shows
+the child that it is logged</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-07</td>
+<td>Safe browser: AI summary</td>
+<td>No browsing data leaves the phone until the parent gives explicit
+consent on a dedicated screen; turning consent off stops it</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-08</td>
+<td>Profiles for siblings</td>
+<td>Given two children with their own daily time, when one child's time
+runs out, the other child's time is unchanged (needs a way to tell them
+apart without names or photos)</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-09</td>
+<td>App calls during a session</td>
+<td>Given a WhatsApp or IMO call during a session, the child sees "Give
+the phone to a grown-up" instead of the grown-up cover (needs a reliable
+call signal, not only the app name)</td>
+<td>v2</td>
+</tr>
+<tr>
+<td>V-10</td>
+<td>A reward for evenings without +5 (e.g. +20 min after 3)</td>
+<td>Only after parents ask for it in research: given 3 evenings without
++5, the parent is offered (never auto-given) a one-time +20. Risk to
+test first: it teaches that screen time is the prize (PRD section
+6.2)</td>
+<td>v2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bug-report-template">Bug report template</h2>
+<pre><code>Title: [ID] short description (e.g. S-03 WhatsApp opens from notification on Redmi)
+Phone / Android / battery saver: Redmi ___ / Android 13 / on
+Guard route: Usage access + overlay | Accessibility service
+Steps: 1. … 2. … 3. …
+Expected (from the test case): …
+Actual: …
+Video: link
+How often: x of y tries</code></pre>
+<h2 id="launch-checklist-definition-of-done">Launch checklist
+(definition of done)</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />All <strong>P0</strong> cases pass
+on all 4 test phones (or the failure is accepted in writing with a
+reason)</label></li>
+<li><label><input type="checkbox" />Spike results (S-12) and Play
+answers (S-13 to S-17) written up before the end of week 2</label></li>
+<li><label><input type="checkbox" />P1 cases pass, or are listed as
+known issues for the closed test</label></li>
+<li><label><input type="checkbox" />Data safety form matches
+P-01</label></li>
+<li><label><input type="checkbox" />Closed-test notes from G-12, L-02
+and W-03 written up, plus two questions for parents: does your child
+know the phone's pattern (T-10c), and do two children share this phone
+in the evening (PRD section 16)?</label></li>
+</ul>
+<p><em>Sources: the numbered list in the assessment PDF. I talked
+informally with a few parents I know; that is not research. Every
+"target" and "proposed" item is a guess to be confirmed.</em></p>
+<h2 id="change-log">Change log</h2>
+<p><strong>v3.4 (4 Nov):</strong> a third age band, 9–14: the same
+handover, and the parent can allow up to two more apps (G-02, PRD
+SET-04a). The time light follows Nagorik's palette: Lilac → Violet →
+Electric (T-01b, T-18). PRD 1.4.</p>
+<p><strong>v3.3 (3 Nov, extra time):</strong> the child gets one
+<strong>+5 min</strong> a day without the PIN; after that the parent has
+one <strong>+2 min</strong> with the PIN; then the end screen offers no
+more time. Real exceptions go through <strong>Add time today</strong> in
+settings (PIN). Days without +5 are shown to the parent in the summary,
+never paid out in minutes. New: T-08b, T-08c, T-08d, T-13b, L-05, V-10.
+Changed: T-06, T-08, W-03, W-08, P-01, M-02. PRD 1.3.</p>
+<p><strong>v3.2 (3 Nov, edge-case review):</strong> the time light must
+stay visible on curved edges, under a thick case and next to the system
+bars, and the parent gets a light check in setup that moves it in. Other
+apps' notifications are silenced with Do not disturb during a session.
+Cloned apps, the uninstall menu, chat heads and in-app payments are
+covered. "+5 min" now works after the daily time runs out. A PIN reset
+during a session is shown to the parent. App calls (WhatsApp, IMO,
+Messenger) are a stated MVP limit. New: S-20 to S-24, G-15 to G-17,
+H-10, T-10c, T-10d, T-18, W-08, E-05, V-08, V-09. Changed: test setup,
+S-19 (now P0), G-03.</p>
+<p><strong>v3.1 (3 Nov):</strong> the floating timer bubble is gone. The
+child sees a time light along the screen edge (no numbers); the parent
+sees the minutes, Pause and Stop in a session notification; the end
+screen has confetti. New or changed: S-18, S-19, T-01, T-01b, T-02,
+T-04, T-05, T-05b, T-14 to T-17, H-09, P-07.</p>
+<p><strong>v3 decisions:</strong> the timer pauses when the screen is
+off; an optional active window (e.g. 6–10 pm) where unused minutes are
+lost; grown-up apps can never be allowed; incoming calls and 999 always
+work; a forgotten PIN is reset with the phone's own screen lock. All-day
+mode and a safe browser are v2 ideas (section 9 above), not MVP.</p>
+  </article>
+  <p style="margin-top:48px"><a href="../">← back to the submission</a></p>
+</main>
+</body>
+</html>

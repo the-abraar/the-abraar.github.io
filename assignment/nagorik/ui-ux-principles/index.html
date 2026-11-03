@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Tin Shotti: UI/UX principles (v3, 4 Nov 2026)</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="icon" type="image/png" href="../../../assets/logo.png">
+  <style>
+    main { padding: 40px 0 80px; max-width: 960px; }
+    .crumbs a { color: var(--accent-blue); }
+    .doc { margin-top: 24px; }
+    .doc h1 { font-size: clamp(1.3rem, 4vw, 1.9rem); margin: 0 0 20px; }
+    .doc h2 { color: var(--accent-green); font-size: 1.2rem; margin: 40px 0 12px; }
+    .doc h3, .doc h4 { color: var(--text-primary); font-size: 1rem; margin: 28px 0 10px; }
+    .doc p, .doc li { color: var(--text-secondary); margin-bottom: 12px; }
+    .doc ul, .doc ol { padding-left: 1.4em; margin-bottom: 12px; }
+    .doc a { color: var(--accent-blue); }
+    .doc strong { color: var(--text-primary); }
+    .doc code { background: var(--bg-panel); padding: 1px 5px; color: var(--accent-purple); }
+    .doc pre { background: var(--bg-panel); padding: 12px; overflow-x: auto; margin-bottom: 16px; }
+    .doc pre code { padding: 0; }
+    .doc blockquote { border-left: 3px solid var(--accent-green); padding-left: 14px; margin: 0 0 16px; }
+    .doc hr { border: 0; border-top: 1px solid #333; margin: 32px 0; }
+    /* block + overflow so wide tables scroll on phones instead of widening the page */
+    .doc table { display: block; overflow-x: auto; border-collapse: collapse; font-size: .85rem; margin-bottom: 20px; }
+    .doc th, .doc td { border: 1px solid #333; padding: 6px 10px; text-align: left; vertical-align: top; color: var(--text-secondary); }
+    .doc th { background: var(--bg-panel); color: var(--text-primary); }
+  </style>
+</head>
+<body>
+<main class="container">
+  <p class="crumbs"><span class="logo-prompt">abraar@root:</span><span class="logo-dir">~/assignments/nagorik</span>$ <a href="../">cd ..</a> · <a href="../docs/ui-ux-principles.md">raw markdown</a></p>
+  <article class="doc">
+<h1 id="tin-shotti-uiux-principles-v3-4-nov-2026">Tin Shotti: UI/UX
+principles (v3, 4 Nov 2026)</h1>
+<p>Eight principles for every screen of the MVP. They come from the
+product decisions in the assessment and the PRD
+(<code>../prd/tin-shotti-prd.md</code>); IDs in brackets point to PRD
+requirements and test cases (<code>../notion/test-cases.md</code>).
+Colours and type are in <code>brand-guidelines.md</code>;
+<code>ui-samples.png</code> shows five screens built on these rules.</p>
+<p>Two people use one phone, at different moments:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Parent</th>
+<th>Child (3–8)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>When</td>
+<td>Setup once (~3 min), then a few seconds each evening</td>
+<td>10–45 min, every evening</td>
+</tr>
+<tr>
+<td>Reads</td>
+<td>Bangla; some don't read English [ASSUMPTION]</td>
+<td>Often not at all, at 3–5 [ASSUMPTION]</td>
+</tr>
+<tr>
+<td>Wants</td>
+<td>A calm handover and a fair, automatic end</td>
+<td>More time, and to know what happens next</td>
+</tr>
+<tr>
+<td>Screens</td>
+<td>Cream with Lavender cards, text-led, compact</td>
+<td>Cream, Lavender or Ink; picture-led, big, spoken</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-honest-status-always">1. Honest status, always</h2>
+<p><strong>Never show "protected" when it isn't.</strong></p>
+<ul>
+<li>The app tests the guard before every handover. If the test fails,
+<strong>Give to child</strong> stays disabled and the screen shows the
+one fix for that phone brand [HND, GRD, H-03, G-11].</li>
+<li>Every status says <em>when</em> it was true: "সুরক্ষিত · টেস্ট পাস
+৭:০২" (Protected · test passed 7:02).</li>
+<li>If protection stopped during a session, say so plainly at the next
+handover, with the fix [F-01].</li>
+<li>Status = colour + icon + words: ✓ Protected (green chip), ✕ Not
+protected yet (red chip).</li>
+</ul>
+<h2 id="2-open-rules-not-secret-watching">2. Open rules, not secret
+watching</h2>
+<p>The child can always see the rules that apply to them.</p>
+<ul>
+<li>The time light runs along the screen edge for the whole session, so
+the child always knows a session is on and roughly how much is left
+[T-01, P-07]. It is never hidden, and it never gets in the way
+(principle 8).</li>
+<li>No hidden mode, no screenshots, no record of what was watched. The
+app knows only which app is in front [PRV].</li>
+<li>Privacy is shown, not claimed: "শুধু এই ফোনেই সেভ থাকে" (Saved on this
+phone only) sits under the main button [T-13].</li>
+<li>No child name, photo, school or birthday is asked for, anywhere
+[P-03].</li>
+<li>The parent's privacy counts too: during a session, Do not disturb
+keeps their WhatsApp messages and bKash codes off the screen, without
+the app reading any notification [HND-20, PRV-09, S-20].</li>
+</ul>
+<h2 id="3-one-decision-per-screen-bangla-first">3. One decision per
+screen, Bangla first</h2>
+<p>Setup target: 3 minutes, with no help [R-03, G-12].</p>
+<ul>
+<li>Each setup screen asks for one thing: language and age, then apps
+and PIN, then permissions. Progress is always visible.</li>
+<li>Bangla is the default; a বাংলা / English switch is on the first
+screen [G-01]. Every string exists in both [LNG-04].</li>
+<li>Smart defaults do most of the work: YouTube Kids pre-ticked, daily
+time suggested by age, grown-up apps pre-blocked [G-02, G-03].</li>
+<li>Permission steps show real pictures for the parent's phone brand
+[G-07, G-08]. A row flips to ON as soon as the parent returns
+[G-09].</li>
+<li>Leaving halfway loses nothing [G-13].</li>
+</ul>
+<h2 id="4-the-evening-handover-is-two-taps">4. The evening handover is
+two taps</h2>
+<p>Open the app, pick the minutes, tap <strong>শিশুকে দিন / Give to
+child</strong> [H-02].</p>
+<ul>
+<li>The big number is what matters: minutes left today, in Hind Siliguri
+display size.</li>
+<li>Minute choices never exceed what's left [W-01]. Outside the window,
+the button is off with the reason: "Opens at 6 pm" [W-02].</li>
+<li>One primary button per screen, Violet, full width, at thumb
+height.</li>
+<li>What stays on (YouTube Kids, calls, 999) is shown in a Lavender
+card, so the parent sees the rules before handing over.</li>
+</ul>
+<h2 id="5-the-child-never-has-to-read">5. The child never has to
+read</h2>
+<p>Every child screen works through <strong>picture + voice + one big
+button</strong> [LNG-02, L-02].</p>
+<ul>
+<li>Child touch targets are <strong>64 dp or larger</strong> (PRD
+minimum: 48 dp [LNG-03]).</li>
+<li>At most 3 words, spoken by the Bangla voice line.</li>
+<li>The grown-up cover is Lavender, with a simple adult silhouette
+holding a phone, "এটা বড়দের অ্যাপ" spoken once, and one button:
+<strong>ভিডিওতে ফিরে যাই / Back to my videos</strong> [H-05, H-06].</li>
+<li>Taps only. No swipes, long-presses or hidden gestures for the
+child.</li>
+</ul>
+<h2 id="6-a-kind-ending-the-same-every-time">6. A kind ending, the same
+every time</h2>
+<p>The phone ends the session, so the parent doesn't have to be the bad
+guy. This is the core bet [R-02].</p>
+<ul>
+<li><strong>2 minutes left:</strong> the light, now Electric and nearly
+back at the start, pulses slowly; one soft chime and a voice line play
+once. Silent mode stays silent; only the pulse shows [T-03, T-04].</li>
+<li><strong>Time's up:</strong> the light closes its loop and glows
+around the whole screen for a second, like a finished drawing. Then the
+Ink end screen: the mark (a parent and a child making a heart),
+<strong>3 seconds of confetti</strong> in the brand colours, "দারুণ!
+আজকের সময় শেষ", and "ফোনটা আব্বু-আম্মুকে দাও". The same screen, sound and
+voice every time. The ending should feel like a small celebration, not a
+door closing [T-05].</li>
+<li>With "Remove animations" on, the confetti is shown still and nothing
+flashes [T-05b].</li>
+<li><strong>The child's own +5, once a day.</strong> A big Violet
+<strong>+৫ মিনিট · আজ একবার / +5 min, once today</strong> button the
+child can tap without the PIN. A little say in the ending, without the
+parent giving in [TMR-10, T-08].</li>
+<li><strong>Then the parent, then no more.</strong> After the child's
++5, only the parent's PIN works: <strong>শেষ / Done</strong> (primary)
+or <strong>+২ মিনিট / +2 min</strong> (outlined, smaller, once a day).
+After +2 the screen says <strong>আজ আর সময় নেই / No more time
+today</strong>, so the parent can point to the phone: the rule, not the
+parent, says no [TMR-10b, TMR-10c, T-08b, T-08c].</li>
+<li><strong>Real exceptions live in settings,</strong> behind the PIN
+(<strong>Add time today</strong>), never on the end screen, so the
+evening rule looks the same every time [TMR-10d].</li>
+<li><strong>No minutes as a reward.</strong> Evenings without +5 are
+shown to the parent in the summary; the parent decides how to celebrate.
+Bonus minutes would make screen time the prize [TMR-15a, PRD 6.2].</li>
+<li>The confetti celebrates <em>finishing</em>, never <em>using
+more</em>. No streaks, points, badges or "come back tomorrow". We want
+less screen time, not more engagement.</li>
+<li>Never punish: no red screens, no alarms, no "you used too
+much".</li>
+</ul>
+<h2 id="7-safety-first-even-over-our-own-rules">7. Safety first, even
+over our own rules</h2>
+<ul>
+<li><strong>Incoming calls and 999 always work</strong>, during a
+session and on the end screen; the end screen says so [E-01, E-02].</li>
+<li><strong>Grown-up apps can never be allowed</strong>, so a tired
+parent can't unlock bKash or WhatsApp by mistake [G-03, E-04].</li>
+<li>A forgotten PIN is reset with the phone's own screen lock: no
+account, no email [T-10].</li>
+<li>Everything works offline [F-05].</li>
+</ul>
+<h2 id="8-time-is-a-light-for-the-child-a-number-for-the-parent">8. Time
+is a light for the child, a number for the parent</h2>
+<p>A floating timer sits on top of what the child is doing: it covers
+buttons, it can be fiddled with, and a number counting down feels like a
+threat. A child who resents the app fights the handover, and the
+argument comes back.</p>
+<ul>
+<li><strong>For the child: the time light.</strong> A soft line of light
+grows clockwise around the screen edge from the top-left corner. Its
+colour deepens from Lilac through Violet to Electric as time runs out.
+When it meets its start again, time is up. The gap that's left
+<em>is</em> the time left; no numbers, no reading [TMR-01, TMR-02a,
+T-01, T-01b].</li>
+<li><strong>It never gets in the way.</strong> Every touch goes through
+it; it can't be tapped, moved or closed; it stays at the very edge,
+follows round corners and the camera cutout, and turns with full-screen
+video [TMR-02, TMR-02b, T-02, S-18, S-19].</li>
+<li><strong>It is never half-hidden.</strong> Curved glass, a thick case
+or the system bars can hide part of the edge, and on a tall phone the
+light spends most of a session on the long sides. So setup ends with a
+light check: the light runs round once and the parent answers "Can you
+see all of the light?" "Part is hidden" moves it in and runs it again.
+The same check is behind the PIN for later [TMR-02b, SET-25 to SET-27,
+G-15, G-16].</li>
+<li><strong>For the parent: the session notification.</strong> Pull down
+the shade to see "তিন সত্যি চালু আছে · Tin Shotti is on", the minutes
+left, a progress bar, and <strong>Pause</strong> and
+<strong>Stop</strong>. Both ask for the PIN first, so a curious child
+gets only the PIN screen [TMR-16, T-14].</li>
+<li><strong>Pause is a calm break,</strong> not a punishment: a quiet
+break screen, the light stops and dims, and the paused minutes aren't
+taken from today's time [TMR-17, T-15].</li>
+<li><strong>A way back, always.</strong> If the notification is swiped
+away, it comes back; the Tin Shotti icon always opens the parent's PIN
+screen [TMR-18, T-16].</li>
+</ul>
+<hr />
+<h2 id="interaction-details">Interaction details</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motion</td>
+<td>Calm: 200–300 ms, ease-out. The time light grows smoothly but almost
+imperceptibly; it only draws attention in the last 2 minutes. Confetti
+falls for 3 seconds, slowly, with no flashing. With "Remove animations"
+on, the light moves in small steps and the confetti is still.</td>
+</tr>
+<tr>
+<td>Feedback</td>
+<td>Every tap responds within 100 ms. The guard test shows words while
+it runs: "পরীক্ষা চলছে… / Testing…".</td>
+</tr>
+<tr>
+<td>Errors</td>
+<td>What happened, then the one thing to do. No error codes.</td>
+</tr>
+<tr>
+<td>Empty states</td>
+<td>Teach the next step: "No learning apps yet. YouTube Kids is enough
+to start."</td>
+</tr>
+<tr>
+<td>PIN</td>
+<td>4 digits, large keypad. After 5 wrong tries, a 30-second wait with a
+visible countdown [T-09].</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>TalkBack labels in the selected language for every control and
+ON/OFF state [LNG-05, G-14]. Text scales to 130% without clipping.
+Contrast meets AA (checked in the build).</td>
+</tr>
+<tr>
+<td>Layout</td>
+<td>Designed first for 720 × 1600 at 6.5" [ASSUMPTION: common low-cost
+size]. Single column, 20 dp margins.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="screen-map">Screen map</h2>
+<table>
+<thead>
+<tr>
+<th>Screen (PRD §9)</th>
+<th>Who</th>
+<th>Background</th>
+<th>Principles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Welcome</td>
+<td>Parent</td>
+<td>Cream</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2. Allowed apps + PIN</td>
+<td>Parent</td>
+<td>Cream, Lavender cards</td>
+<td>3, 7</td>
+</tr>
+<tr>
+<td>3. Switch on protection</td>
+<td>Parent</td>
+<td>Cream</td>
+<td>1, 3</td>
+</tr>
+<tr>
+<td>4. Hand over</td>
+<td>Parent</td>
+<td>Cream</td>
+<td>1, 4</td>
+</tr>
+<tr>
+<td>5. Session + grown-up cover</td>
+<td>Child</td>
+<td>Cream / Lavender</td>
+<td>2, 5, 8</td>
+</tr>
+<tr>
+<td>Session notification and break screen</td>
+<td>Parent</td>
+<td>Cream card / Lavender</td>
+<td>1, 8</td>
+</tr>
+<tr>
+<td>6. Time's up</td>
+<td>Child, then parent</td>
+<td>Ink</td>
+<td>6, 7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-well-know-the-principles-work">How we'll know the principles
+work</h2>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Signal</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3. One decision per screen</td>
+<td>Median setup ≤ 3 min, unaided</td>
+<td>G-12</td>
+</tr>
+<tr>
+<td>5. Never has to read</td>
+<td>3 of 3 young children return from the cover without help</td>
+<td>L-02</td>
+</tr>
+<tr>
+<td>6. A kind ending</td>
+<td>Few evenings need the parent's +2 or Add time today; the child's +5
+is expected</td>
+<td>M-02</td>
+</tr>
+<tr>
+<td>1. Honest status</td>
+<td>Zero false "protected" states on all test phones</td>
+<td>H-03, F-04</td>
+</tr>
+<tr>
+<td>8. Time as a light</td>
+<td>Children point to the gap when asked "how much is left?"; no child
+says the light gets in the way</td>
+<td>T-17, S-18</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <p style="margin-top:48px"><a href="../">← back to the submission</a></p>
+</main>
+</body>
+</html>
