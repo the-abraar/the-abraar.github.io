@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Tin Shotti · Nagorik Junior PM Assessment</title>
+  <meta name="description" content="Abraar Masud Nafiz's submission for the Junior Product Manager assessment at Nagorik Technologies.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/png" href="../../assets/logo.png">
+  <style>
+    main { padding: 48px 0 80px; }
+    h1 { font-size: clamp(1.4rem, 4vw, 2rem); margin: 8px 0 12px; }
+    h2 { color: var(--accent-green); font-size: 1.1rem; margin: 48px 0 16px; }
+    p, li { color: var(--text-secondary); }
+    a { color: var(--accent-blue); }
+    .lead { max-width: 70ch; }
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+    .btns a { border: 1px solid var(--accent-green); color: var(--accent-green); padding: 8px 14px; text-decoration: none; }
+    .btns a:hover, .btns a:focus-visible { background: var(--accent-green); color: var(--bg-color); }
+    .pdf { width: 100%; height: 85vh; border: 1px solid #333; background: #fff; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    figure { background: var(--bg-panel); border: 1px solid #262626; padding: 10px; margin: 0; }
+    figure img { width: 100%; height: auto; display: block; background: #fff; }
+    figcaption { font-size: .85rem; color: var(--text-secondary); margin-top: 8px; }
+    figcaption b { color: var(--text-primary); }
+    ul.docs { list-style: none; padding: 0; }
+    ul.docs li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+<main class="container">
+  <p><span class="logo-prompt">abraar@root:</span><span class="logo-dir">~/assignments/nagorik</span>$ cat README</p>
+  <h1>Tin Shotti (তিন সত্যি): a child mode for the parent's phone</h1>
+  <p class="lead">My submission for the <b>Junior Product Manager</b> assessment at <a href="https://www.nagorik.tech">Nagorik Technologies Ltd.</a> (November 2026). The brief: a child digital-safety MVP for families in Bangladesh with children aged 3–14, one developer with an AI coding platform, six weeks. The two-page PDF is the answer; everything below is optional background on how I got there.</p>
+  <div class="btns">
+    <a href="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf">Open the PDF</a>
+    <a href="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf" download>Download PDF</a>
+    <a href="docs/tin-shotti-prd.md">PRD</a>
+  </div>
+
+  <h2>## the answer (PDF, 2 pages)</h2>
+  <object class="pdf" data="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf" type="application/pdf" aria-label="Assessment PDF">
+    <p>Your browser can't show the PDF here. <a href="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf">Open it directly</a>.</p>
+  </object>
+
+  <h2>## working notes</h2>
+  <div class="grid">
+    <figure><a href="notion/01-problem-framing.png"><img src="notion/01-problem-framing.png" alt="Problem framing canvas" loading="lazy"></a><figcaption><b>Problem framing</b> (PDF §1). Four comments, one problem statement, and the assumption that could make it wrong.</figcaption></figure>
+    <figure><a href="notion/02-opportunity-tree.png"><img src="notion/02-opportunity-tree.png" alt="Opportunity solution tree" loading="lazy"></a><figcaption><b>Opportunity solution tree</b> (PDF §1). Outcome, parent problems, chosen and rejected options, deciding tests.</figcaption></figure>
+    <figure><a href="notion/03-journey-map.png"><img src="notion/03-journey-map.png" alt="Journey map of the evening handover" loading="lazy"></a><figcaption><b>Journey map: the evening handover</b> (PDF §3). Today versus with Tin Shotti.</figcaption></figure>
+    <figure><a href="notion/04-competitor-scan.png"><img src="notion/04-competitor-scan.png" alt="Competitor scan" loading="lazy"></a><figcaption><b>Competitor scan</b> (PDF §4). Free options on a shared phone, from their official pages.</figcaption></figure>
+    <figure><a href="notion/05-positioning-map.png"><img src="notion/05-positioning-map.png" alt="Positioning map" loading="lazy"></a><figcaption><b>Positioning map</b> (PDF §4). Scope against phone coverage.</figcaption></figure>
+    <figure><a href="notion/06-mvp-scope.png"><img src="notion/06-mvp-scope.png" alt="MVP scope" loading="lazy"></a><figcaption><b>MVP scope</b> (PDF §2). In, out, later, and the riskiest technical assumption.</figcaption></figure>
+    <figure><a href="notion/07-plan-and-gates.png"><img src="notion/07-plan-and-gates.png" alt="Six-week plan and decision gates" loading="lazy"></a><figcaption><b>Six-week plan and decision gates</b> (PDF §2, §4, §5).</figcaption></figure>
+    <figure><a href="notion/08-screen-flow.png"><img src="notion/08-screen-flow.png" alt="Screen flow" loading="lazy"></a><figcaption><b>Screen flow</b> (PDF §3). Steps 1–6 from setup to "Time's up".</figcaption></figure>
+    <figure><a href="notion/09-product-modes.png"><img src="notion/09-product-modes.png" alt="Product modes" loading="lazy"></a><figcaption><b>Where Tin Shotti could go</b> (PDF §2). Handover mode (MVP), all-day mode and the safe browser.</figcaption></figure>
+  </div>
+
+  <h2>## app design</h2>
+  <div class="grid">
+    <figure><a href="design/2-foundations.png"><img src="design/2-foundations.png" alt="Foundations and components" loading="lazy"></a><figcaption><b>Foundations and components</b></figcaption></figure>
+    <figure><a href="design/3-flows.png"><img src="design/3-flows.png" alt="User flows" loading="lazy"></a><figcaption><b>Flows</b>: setup, handover, the child's session, things that go wrong.</figcaption></figure>
+    <figure><a href="design/4-screens.png"><img src="design/4-screens.png" alt="26 app screens" loading="lazy"></a><figcaption><b>Screens</b>: 26 screens, each with its test-case IDs.</figcaption></figure>
+    <figure><a href="design/5-do-dont.png"><img src="design/5-do-dont.png" alt="Do and don't design decisions" loading="lazy"></a><figcaption><b>Do / Don't</b>: six design decisions next to the tempting wrong answer.</figcaption></figure>
+    <figure><a href="design/6-corner-cases.png"><img src="design/6-corner-cases.png" alt="Corner cases" loading="lazy"></a><figcaption><b>Corner cases</b>: 34 cases with triggers, handling and priority.</figcaption></figure>
+  </div>
+
+  <h2>## brand</h2>
+  <div class="grid">
+    <figure><a href="brand/brand-sheet.png"><img src="brand/brand-sheet.png" alt="Brand sheet" loading="lazy"></a><figcaption><b>Brand sheet</b></figcaption></figure>
+    <figure><a href="brand/ui-samples.png"><img src="brand/ui-samples.png" alt="UI samples" loading="lazy"></a><figcaption><b>UI samples</b></figcaption></figure>
+    <figure><a href="brand/concepts.png"><img src="brand/concepts.png" alt="Logo concepts" loading="lazy"></a><figcaption><b>Logo concepts</b></figcaption></figure>
+    <figure><a href="brand/tin-shotti-logo-horizontal.png"><img src="brand/tin-shotti-logo-horizontal.png" alt="Tin Shotti logo" loading="lazy"></a><figcaption><b>Logo</b></figcaption></figure>
+  </div>
+
+  <h2>## documents</h2>
+  <ul class="docs">
+    <li>&gt; <a href="docs/my_product_building_approach.md">How I built the answer</a> (Markdown)</li>
+    <li>&gt; <a href="docs/tin-shotti-prd.md">Product requirements document, v1.4</a> (Markdown)</li>
+    <li>&gt; <a href="docs/test-cases.md">Acceptance test cases</a> (Markdown) · <a href="docs/test-cases.csv">CSV</a></li>
+    <li>&gt; <a href="docs/brand-guidelines.md">Brand guidelines</a> (Markdown)</li>
+    <li>&gt; <a href="docs/ui-ux-principles.md">UI/UX principles</a> (Markdown)</li>
+  </ul>
+
+  <p style="margin-top:48px">— Abraar Masud Nafiz · <a href="../../">portfolio</a></p>
+</main>
+</body>
+</html>
