@@ -1,6 +1,6 @@
 # Tin Shotti: UI/UX principles (v3, 4 Nov 2026)
 
-Eight principles for every screen of the MVP. They come from the product decisions in the assessment and the PRD (`../prd/tin-shotti-prd.md`); IDs in brackets point to PRD requirements and test cases (`../notion/test-cases.md`). Colours and type are in `brand-guidelines.md`; `ui-samples.png` shows five screens built on these rules.
+Eight principles for every screen of the MVP. They come from the product decisions in the assessment and the PRD (`../../prd/tin-shotti-prd.md`); IDs in brackets point to PRD requirements and test cases (`../../prd/test-cases.md`; the "Screens" tab of `../../prd/tin-shotti-product-map.xlsx` maps them per screen). Colours and type are in `../brand/brand-guidelines.md`; `ui-samples.png` shows five screens built on these rules.
 
 Two people use one phone, at different moments:
 

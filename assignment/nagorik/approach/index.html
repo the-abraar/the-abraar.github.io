@@ -37,8 +37,8 @@
 answer</h1>
 <p>This page sits alongside my Junior PM assessment PDF for Nagorik
 Technologies. The PDF is the two-page answer. This page shows how I got
-there: the working diagrams, the UI, the PRD and the test cases I'd hand
-a developer.</p>
+there: the working diagrams, the UI, and what I'd hand a developer: a
+product map workbook, the test cases and a PRD.</p>
 <p><strong>The brief, in one line:</strong> a child digital-safety MVP
 for Bangladeshi families with children aged 3–14, one developer with an
 AI coding platform, six weeks.</p>
@@ -46,10 +46,11 @@ AI coding platform, six weeks.</p>
 background for anyone who wants the detail.</p>
 <p><strong>What's here:</strong> the reasoning (sections 1–8), the
 developer hand-off (section 9), the UI and brand (subpage), and how I
-worked with AI (section 11).</p>
+worked with AI and how long it took (section 11).</p>
 <blockquote>
-<p>📎 <em>Attach: Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf; subpages:
-Tin Shotti: UI and brand, Tin Shotti: acceptance test cases</em></p>
+<p>📎 <em>Attach: Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf,
+tin-shotti-product-map.xlsx; subpages: Tin Shotti: UI and brand, Tin
+Shotti: acceptance test cases</em></p>
 </blockquote>
 <hr />
 <h2 id="1-start-from-the-constraints-not-the-features">1. Start from the
@@ -119,9 +120,18 @@ already does it, and one miss destroys trust) and a remote dashboard
 (accounts, backend, child data).</li>
 <li><strong>First:</strong> a 3-day developer spike in week 1 that tests
 the guard on four low-cost phones before anything else is built. If it
-fails, there's a named fallback: ship a guided setup of the free
-tools.</li>
+fails, there's a named fallback: ship a guided setup of the free tools.
+That fallback loses the "whole phone, any brand" reason to pay, so it
+launches free and pricing is re-tested before we charge anything.</li>
+<li><strong>One more bet I made explicit:</strong> YouTube Kids is the
+default because it filters for free, but a child used to YouTube has to
+accept it. If children refuse it in the closed test, "what they watch
+next" needs its own fix; loosening the guard isn't one.</li>
 </ul>
+<p>Three assumptions decide go, change or stop, and the PDF tags them
+<strong>BET 1–3</strong>: the visible ending calms the evening
+(product), a normal Play Store app can hold the guard (technical), and
+parents pay without a card (business).</p>
 <blockquote>
 <p>📎 <em>Image: 06-mvp-scope.png</em></p>
 </blockquote>
@@ -137,10 +147,15 @@ more of visitors paying is a pass; under 0.5% means reconsider.</li>
 (families who start 3+ sessions in week 2). 40% or more: continue.
 20–40%: change. Under 20%: stop.</li>
 <li><strong>Paying is the second big risk:</strong> subscriptions must
-use Google Play billing, and Google's payment-methods page confirms only
-cards for Bangladesh. Week 1 tests bKash and operator billing on a
-Bangladeshi account; if neither works, the fallback is a telco or MFS
-bundle, which Nagorik already builds.</li>
+use Google Play billing, and Google's payment-methods page doesn't list
+Bangladesh, which means cards only (I rechecked it on 4 Nov; some
+third-party guides say bKash works). Week 1 tests bKash and carrier
+billing on a Bangladeshi account; if neither works, the fallback is a
+telco or MFS bundle, which Nagorik already builds.</li>
+<li><strong>Honest about sample size:</strong> 500 landing-page visitors
+and about 100 launch families only separate a clear yes from a clear no
+(about ±10 points on the return rate), so the bands are wide on
+purpose.</li>
 <li><strong>A guard on the core bet:</strong> if on most evenings the
 parent gives "+2 min" or adds time in settings, the timer isn't ending
 the argument, whatever the return rate says. The child's own "+5" is
@@ -226,20 +241,38 @@ first.</li>
 </blockquote>
 <h2 id="9-hand-the-developer-something-they-can-run">9. Hand the
 developer something they can run</h2>
-<p>I wrote <strong>112 acceptance test cases for the MVP, plus 10 for
-v2</strong> (Given / When / Then, prioritised P0–P2), starting with the
-week-1 spike: escape routes a 7-year-old might find, battery-saver
-survival, calls and 999 during a session, privacy checks on what leaves
-the phone, and the time light and window rules. They're on the
-<strong>Tin Shotti: acceptance test cases</strong> subpage, with a CSV
-that imports into Notion as a pass/fail tracker.</p>
-<p>Behind them is a full PRD (functional and privacy requirements, user
-flow, payment test, metric, schedule and risks), written in ASD-STE100
-Simplified Technical English so it reads clearly for developers whose
-first language isn't English. Every requirement links to the test cases
-that prove it.</p>
+<p>People don't read long PRDs any more, and they shouldn't have to. So
+the hand-off comes in two forms, with the same content:</p>
+<ul>
+<li><strong>For people: the product map workbook</strong>
+(<code>tin-shotti-product-map.xlsx</code>). It works breadth-first. The
+first tabs show the whole product on one screen (problem, bets, plan,
+decisions), then the three capabilities, then the UI hierarchy (26
+screens in 6 flows, what each shows top to bottom), then the design
+system, the 123 requirements, the 123 test cases (113 MVP + 10 v2, with
+a Status drop-down for QA), the edge cases and the assumptions. Every
+row links across levels: a screen lists its requirements and tests, and
+a test lists its requirements and screens. You see the shape first and
+go deep only where you need to, the way developers and system engineers
+already think about a build.</li>
+<li><strong>For AI coding agents: the PRD</strong>
+(<code>tin-shotti-prd.md</code>). One file where every rule has an ID, a
+priority and the test that proves it, so an agent can build and check
+one requirement at a time. It's deliberately dense, and I cut it from
+765 lines to about 380 for v7. A person reading it top to bottom has to
+jump between sections and IDs, which is why the workbook exists.</li>
+</ul>
+<p>The test cases (Given / When / Then, P0–P2) start with the week-1
+spike: escape routes a 7-year-old might find, battery-saver survival,
+calls and 999 during a session, privacy checks on what leaves the phone,
+and the time light and window rules. They're also on the <strong>Tin
+Shotti: acceptance test cases</strong> subpage, with a CSV that imports
+into Notion as a pass/fail tracker. The workbook is generated from the
+PRD, the test cases and the screen definitions, so the three can't drift
+apart.</p>
 <blockquote>
-<p>📎 <em>Attach: tin-shotti-prd.md</em></p>
+<p>📎 <em>Attach: tin-shotti-product-map.xlsx, tin-shotti-prd.md,
+test-cases.csv</em></p>
 </blockquote>
 <h2 id="10-iterate-in-the-open">10. Iterate in the open</h2>
 <ul>
@@ -265,6 +298,11 @@ written-down decisions.</li>
 <li><strong>v5:</strong> extra time got a fixed shape (the child's +5,
 the parent's +2, then no more), and the mark "Together": a parent and a
 child whose bodies make a heart.</li>
+<li><strong>v7:</strong> about 25% fewer words in the PDF with larger
+type; the three deciding assumptions tagged BET 1–3; YouTube Kids
+acceptance marked as an assumption (and test H-11); the free plan B if
+the guard fails; a sample-size caveat; the product map workbook as the
+human view of the PRD, and the PRD cut in half for AI agents.</li>
 <li><strong>v6:</strong> one visual language everywhere (Nagorik's), a
 line for 9–14-year-olds, the brand kid modes and Android 16's Parental
 controls in the competitor scan, payment named as the second big risk,
@@ -278,6 +316,17 @@ found no app, company or slang clash and both domains free (trademarks
 not yet checked).</li>
 </ul>
 <h2 id="11-how-i-worked-with-ai">11. How I worked with AI</h2>
+<p><strong>My time: about 80 minutes in front of the screen, in
+total.</strong> That covers reading the brief, thinking about the
+problem, reviewing what the agents produced, and making the decisions,
+spread over two days and tracked with a Pomodoro timer, as I track all
+my projects. I work in parallel: when the brief arrived I spent about 2
+minutes handing it to a review agent and went back to other work. When I
+came back, I read its review, wrote the next prompt and left again. Most
+of the drafting happened while I was doing something else. AI can do
+most of the production; my job is the judgment, the nudges, the right
+prompt, and giving the agents the right tools and skills. So the brief's
+"about 60 minutes" was my thinking time, not typing time.</p>
 <p>AI was the team I didn't have. I set the direction and made the
 decisions; AI agents did the research legwork, the drafting and the
 production, and I reviewed everything they produced.</p>
@@ -298,7 +347,8 @@ by hand first. Then I had AI draft the problem framing canvas, the
 opportunity solution tree and the PRD. The PRD is in ASD-STE100
 Simplified Technical English, the controlled language aerospace manuals
 use, so a developer reads one meaning per sentence. I updated it
-incrementally (1.0 to 1.4) as decisions changed.</p>
+incrementally (1.0 to 1.4) as decisions changed, then cut it to a short
+AI-facing version (2.0) with the workbook as the human view.</p>
 <p><strong>4. The PDF with Claude.</strong> I built the two-page PDF
 with Claude in Claude Code: LaTeX for the layout, TikZ for the six phone
 sketches, and every source as a live link.</p>
@@ -351,6 +401,7 @@ in every night?</li>
 parent's phone, their own tablet, or the TV?</li>
 <li>Will parents pay BDT 99 a month when free tools exist, and can they
 pay through Google Play without a card?</li>
+<li>Do children used to YouTube accept YouTube Kids in its place?</li>
 </ol>
   </article>
   <p style="margin-top:48px"><a href="../">← back to the submission</a></p>

@@ -8,7 +8,7 @@ Three promises, kept openly:
 2. The time light is always on the screen.
 3. Every session ends the same kind way.
 
-Earlier versions: v1 (three dots) and v2 (the "Held" arcs, shown in `concepts.png`).
+Earlier versions: v1 (three dots) and v2 (the "Held" arcs); both, and the concept sheet, are kept in my working archive, not in this hand-off.
 
 > Nothing here was tested with parents or children. The closed test in week 5 is the first check (see "To check").
 
@@ -29,7 +29,7 @@ Earlier versions: v1 (three dots) and v2 (the "Held" arcs, shown in `concepts.pn
 
 **The mark: "Together".** Two figures, a parent and a smaller child, side by side. The curves of their bodies meet and make a heart in the space between them. Tin Shotti is something a parent and a child do together each evening, not something done to the child. Cream parent and Lilac child, on a Violet tile or on Ink.
 
-The shape comes from the icon the owner chose on 3 Nov 2026 (an image exploration; the others are in `logo/other_ideas/`). `source/build.py` redraws it as clean vectors in the brand colours.
+The shape comes from the icon the owner chose on 3 Nov 2026 (an image exploration; the others are kept in my working archive). `../source/build.py` redraws it as clean vectors in the brand colours.
 
 | File (`logo/`) | Use it for |
 |---|---|
@@ -42,9 +42,9 @@ The shape comes from the icon the owner chose on 3 Nov 2026 (an image exploratio
 
 Each comes as SVG and PNG. **All text is already converted to outlines**, so the files look the same everywhere. Rebuild them with `source/build.sh`.
 
-`concepts.png` records the directions explored for v2 and v3 and which one won.
+The concept sheet that records the directions explored for v2 and v3 is kept in my working archive.
 
-**The app design file** is in `figma/`: six Figma-ready pages (foundations and components, flows, 26 screens, do/don't, corner cases). See `figma/README.md`.
+**The app design file** is in `../ui/figma/`: six Figma-ready pages (foundations and components, flows, 26 screens, do/don't, corner cases). See `../ui/figma/README.md`.
 
 **Rules**
 - Pair the name with a descriptor until people know it: **"Tin Shotti: child mode for your phone"** / **"তিন সত্যি: ফোনের শিশু মোড"**.
@@ -110,7 +110,7 @@ Both families are free under the SIL Open Font License (Google Fonts) and can sh
 
 ### The time light
 
-The child's timer is a line of light around the screen edge, not a number (see `ui-ux-principles.md`, principle 8).
+The child's timer is a line of light around the screen edge, not a number (see `../ui/ui-ux-principles.md`, principle 8).
 
 - **Path:** starts at the top-left corner, grows clockwise, and closes the loop at 0 minutes. The child's "+5 min" starts a new short loop.
 - **Colour along the line:** Lilac `#D4CCFF` for the first 30%, Violet `#5533FF` around the middle (always Violet at half time), Electric `#2B00FF` for the last quarter, with short blends between them. The line deepens as time runs out; the head of the line shows how far the session has gone.
@@ -124,7 +124,7 @@ The child's timer is a line of light around the screen edge, not a number (see `
 - Brand colours only: Violet, Electric, Lilac, Cream and Lavender, on Ink. Rounded dots and short curved strokes that echo the curves of the mark; no glitter, stars or flashing.
 - Falls slowly for 3 seconds around the mark on the end screen, then settles. Shown still when "Remove animations" is on.
 
-See `ui-samples.png` for five screens in this style.
+See `../ui/ui-samples.png` for five screens in this style.
 
 ---
 

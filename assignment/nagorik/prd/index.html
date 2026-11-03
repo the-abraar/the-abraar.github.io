@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Tin Shotti: Product Requirements Document</title>
+  <title>Tin Shotti: product requirements (MVP)</title>
   <link rel="stylesheet" href="../../../styles.css">
   <link rel="icon" type="image/png" href="../../../assets/logo.png">
   <style>
@@ -33,851 +33,224 @@
 <main class="container">
   <p class="crumbs"><span class="logo-prompt">abraar@root:</span><span class="logo-dir">~/assignments/nagorik</span>$ <a href="../">cd ..</a> · <a href="../docs/tin-shotti-prd.md">raw markdown</a></p>
   <article class="doc">
-<h1 id="tin-shotti-product-requirements-document">Tin Shotti: Product
-Requirements Document</h1>
+<h1 id="tin-shotti-product-requirements-mvp">Tin Shotti: product
+requirements (MVP)</h1>
+<blockquote>
+<p><strong>Who this is for.</strong> This PRD is written for AI coding
+agents and for lookups: every rule has an ID, a priority and a test, so
+an agent can build and check one requirement at a time. <strong>People
+should start with the workbook,
+<code>tin-shotti-product-map.xlsx</code></strong> (same folder). It
+shows the product breadth-first: one tab per level (capabilities, then
+screens, then requirements, then test cases), so you see the whole
+product at a glance and go deeper only where you need to. Reading this
+file top to bottom means jumping between sections and IDs.</p>
+</blockquote>
 <table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Value</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td>Name</td>
-<td>Tin Shotti (তিন সত্যি). The previous name was "Shishu Mode".</td>
-</tr>
-<tr>
-<td>Document</td>
-<td>Product requirements document (PRD) for the minimum viable product
-(MVP)</td>
-</tr>
-<tr>
-<td>Document version</td>
-<td>1.4, draft</td>
-</tr>
-<tr>
-<td>Date</td>
-<td>4 November 2026</td>
+<td>Version</td>
+<td>2.0, 4 November 2026 (v1.4, the full 765-line version in Simplified
+Technical English, is available on request)</td>
 </tr>
 <tr>
 <td>Author</td>
 <td>Abraar Masud Nafiz</td>
 </tr>
 <tr>
-<td>Readers</td>
-<td>The developer, the product manager, and the review team at Nagorik
-Technologies</td>
+<td>Built from</td>
+<td>The assessment PDF (v7) and the decisions in it</td>
 </tr>
 <tr>
-<td>Standard</td>
-<td>ASD-STE100 Simplified Technical English, Issue 9</td>
+<td>Test cases</td>
+<td><code>test-cases.md</code> / <code>test-cases.csv</code> in this
+folder (113 MVP + 10 v2); also the "Test cases" tab of the workbook</td>
 </tr>
 <tr>
-<td>Related documents</td>
-<td>Assessment PDF, version 6:
-<code>Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf</code>. Test cases: the
-Notion page "Tin Shotti: acceptance test cases"
-(<code>test-cases.md</code>, <code>test-cases.csv</code>).</td>
+<td>Labels</td>
+<td><code>[V1]</code>–<code>[V17]</code>: checked against the source in
+section 11. <code>[ASSUMPTION]</code>: not verified. Talks with a few
+parents were informal, so every claim about parents is an
+assumption.</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>P0: blocks the Play Store launch. P1: done before the closed test
+(week 5). P2: if time allows.</td>
 </tr>
 </tbody>
 </table>
-<p>Versions of the related documents before 3 November 2026 use the name
-"Shishu Mode". "Shishu Mode" and "Tin Shotti" are two names for the same
-app.</p>
+<h2 id="agent-rules">Agent rules</h2>
+<ol type="1">
+<li>Build only what has an ID here. If something is missing or two rules
+conflict, stop and ask; don't invent behaviour.</li>
+<li>A requirement is done when its tests in <code>test-cases.md</code>
+pass on all 4 test phones.</li>
+<li>Never break the three promises (section 7) or the 999 rule
+(HND-16).</li>
+<li>Never send data that PRV-01 to PRV-03 don't list.</li>
+</ol>
 <hr />
-<h2 id="1-about-this-document">1 About this document</h2>
-<h3 id="11-function-of-this-document">1.1 Function of this document</h3>
-<p>This document gives the requirements for the MVP of Tin Shotti. Tin
-Shotti is an app that gives a child mode to the Android phone of a
-parent. One developer with an AI coding platform will build the MVP in
-six weeks.</p>
-<p>These persons use this document:</p>
+<h2 id="1-product-in-one-paragraph">1 Product in one paragraph</h2>
+<p>When a parent hands their Android phone to a child of 3 to 8 years,
+Tin Shotti lets only the apps the parent picked open (YouTube Kids by
+default), shows the time left as a light round the screen edge (no
+numbers), and ends every session with the same kind end screen. Incoming
+calls and 999 always work. Setup takes about 3 minutes, in Bangla. One
+Android developer with an AI coding platform builds the MVP in six
+weeks.</p>
+<h2 id="2-problem-and-users">2 Problem and users</h2>
 <ul>
-<li>The developer, who builds the app and does the tests</li>
-<li>The product manager, who makes the decisions about Tin Shotti</li>
-<li>The review team at Nagorik Technologies.</li>
+<li><strong>Moment:</strong> the evening handover of the parent's own
+phone. It holds three of the four parent comments in the brief: what the
+child watches next (F1), the evening argument (F2), and setup that was
+too hard (F3). The fourth, "why pay?", is section 9.</li>
+<li><strong>Parent:</strong> owns an Android phone (Xiaomi, Realme,
+Tecno or Samsung) [ASSUMPTION]; reads Bangla, maybe not English
+[ASSUMPTION]; sets up once, then only hands over.</li>
+<li><strong>Child:</strong> 3 to 8 years; many 3 to 5-year-olds can't
+read [ASSUMPTION], so child screens use pictures, sound and a Bangla
+voice. 9 to 14-year-olds on a shared phone get the same app plus up to
+two more allowed apps (SET-04a).</li>
+<li><strong>Not in the MVP:</strong> a phone the child owns (v2), iPhone
+and iPad, Android below 10.</li>
+<li><strong>Could make the choice wrong:</strong> A-01, the child mostly
+watches on a tablet or the TV (section 10).</li>
 </ul>
-<h3 id="12-rules-for-the-text">1.2 Rules for the text</h3>
-<p>We wrote this document in ASD-STE100 Simplified Technical English,
-Issue 9. Section 2 gives the technical nouns and the technical verbs
-that are not in the STE dictionary.</p>
-<p>Text in quotation marks is text that the app shows on the screen, or
-text from a different document. Each requirement is a descriptive
-sentence with "must". The procedures in section 9 use the imperative
-form.</p>
-<h3 id="13-labels-for-statements">1.3 Labels for statements</h3>
-<p>Each statement about a fact or about a person has one of these
-labels:</p>
-<ul>
-<li>[V1] to [V17]: We examined the statement against the source with
-that number in section 18.</li>
-<li>[ASSUMPTION]: We did not make sure that the statement is
-correct.</li>
-</ul>
-<p>The author spoke informally with some parents that he knows. This is
-not research. The four parent comments in the assessment brief are only
-examples. Thus, each statement about parents is an assumption.</p>
-<h3 id="14-priority">1.4 Priority</h3>
-<ul>
-<li>P0: The MVP cannot go to the Play Store if this requirement is not
-satisfactory.</li>
-<li>P1: Complete this requirement before the closed test in week 5.</li>
-<li>P2: Complete this requirement if time is available.</li>
-</ul>
-<p>In each requirement table, the "Tests" column gives the IDs of the
-test cases in <code>test-cases.md</code>.</p>
-<hr />
-<h2 id="2-technical-nouns-and-technical-verbs">2 Technical nouns and
-technical verbs</h2>
-<p>These words are not in the STE dictionary. This document uses them as
-technical nouns (Rule 1.5) or as technical verbs (Rule 1.12). The
-category numbers come from these two rules.</p>
-<h3 id="21-technical-nouns-for-tin-shotti">2.1 Technical nouns for Tin
-Shotti</h3>
+<h2 id="3-scope">3 Scope</h2>
+<h3 id="31-in-the-mvp">3.1 In the MVP</h3>
 <table>
 <thead>
 <tr>
-<th>Technical noun</th>
-<th>Category</th>
-<th>Meaning in this document</th>
+<th>ID</th>
+<th>Capability</th>
+<th>What it does</th>
+<th>Requirement groups</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Tin Shotti</td>
-<td>Proper noun</td>
-<td>The name of the app. The previous name was "Shishu Mode".</td>
+<td>F1</td>
+<td>Handover with allowed apps</td>
+<td>"Give to child" starts a session. Only allowed apps open; any other
+app gets the grown-up cover. Calls and 999 always work; other apps'
+notifications are silenced.</td>
+<td>HND</td>
 </tr>
 <tr>
-<td>app</td>
-<td>19</td>
-<td>A software application on a phone. "The app" is the Tin Shotti
-app.</td>
+<td>F2</td>
+<td>Time the child can see, and a kind ending</td>
+<td>Daily time and an optional window. The time light runs round the
+edge. At 0 the end screen shows; the child's own +5 once a day, then the
+parent's +2 once (PIN), then no more.</td>
+<td>TMR, WIN</td>
 </tr>
 <tr>
-<td>Android</td>
-<td>19</td>
-<td>The operating system on the phone</td>
+<td>F3</td>
+<td>Guided setup in Bangla</td>
+<td>Brand-specific pictures, "Test it now", a light check. A forgotten
+PIN is reset with the phone's screen lock.</td>
+<td>SET</td>
 </tr>
 <tr>
-<td>phone</td>
-<td>19</td>
-<td>A smartphone with Android</td>
-</tr>
-<tr>
-<td>shared phone</td>
-<td>19</td>
-<td>A phone that the parent and the child use</td>
-</tr>
-<tr>
-<td>test phone</td>
-<td>19</td>
-<td>One of 4 Android phones with a low price, from Xiaomi, Samsung,
-Realme, and Tecno</td>
-</tr>
-<tr>
-<td>parent</td>
-<td>11</td>
-<td>The person who has the phone, does the setup, and makes the
-payment</td>
-</tr>
-<tr>
-<td>child, children</td>
-<td>11</td>
-<td>A person of 3 to 8 years who uses the phone during a session</td>
-</tr>
-<tr>
-<td>family, families</td>
-<td>11</td>
-<td>A parent and a child who use one phone</td>
-</tr>
-<tr>
-<td>developer</td>
-<td>11</td>
-<td>The one software engineer who builds the MVP</td>
-</tr>
-<tr>
-<td>product manager</td>
-<td>11</td>
-<td>The person who makes the decisions about Tin Shotti</td>
-</tr>
-<tr>
-<td>handover</td>
-<td>6</td>
-<td>The step where the parent gives the phone to the child</td>
-</tr>
-<tr>
-<td>session</td>
-<td>19</td>
-<td>The period from the tap on "Give to child" to the end of the end
-screen</td>
-</tr>
-<tr>
-<td>permitted app</td>
-<td>19</td>
-<td>An app that the child can open during a session. The "Allowed apps"
-screen shows these apps.</td>
-</tr>
-<tr>
-<td>grown-up app</td>
-<td>19</td>
-<td>An app that the child cannot open during a session</td>
-</tr>
-<tr>
-<td>learning app</td>
-<td>19</td>
-<td>An app for children, for example an app for Bangla or for
-mathematics</td>
-</tr>
-<tr>
-<td>guard</td>
-<td>6</td>
-<td>The part of the app that finds the foreground app. It shows the
-cover screen on top of grown-up apps.</td>
-</tr>
-<tr>
-<td>guard method</td>
-<td>6</td>
-<td>One of the two methods for the guard: "Usage access" with an
-overlay, or an Accessibility service</td>
-</tr>
-<tr>
-<td>guard test</td>
-<td>19</td>
-<td>An automatic test. The app opens a grown-up app and makes sure that
-the cover screen shows.</td>
-</tr>
-<tr>
-<td>cover screen</td>
-<td>19</td>
-<td>The full screen that the guard shows on top of a grown-up app</td>
-</tr>
-<tr>
-<td>timer</td>
-<td>19</td>
-<td>The function that counts the minutes available in a session. The
-child sees the timer as the time light. The parent sees the minutes in
-the session notification.</td>
-</tr>
-<tr>
-<td>time light</td>
-<td>19</td>
-<td>A line of light along the edge of the screen. It starts at the
-top-left corner and moves clockwise. At 0 minutes, it is back at the
-top-left corner. Its color changes from Lilac (light violet) to Violet
-to Electric (dark blue). It does not show numbers.</td>
-</tr>
-<tr>
-<td>light check</td>
-<td>19</td>
-<td>A step in the setup. The time light goes around the edge of the
-screen one time. The parent tells the app if all of the light is
-visible.</td>
-</tr>
-<tr>
-<td>curved edge</td>
-<td>19</td>
-<td>A part of the screen that bends to the side of the phone. Android
-calls a screen with curved edges a "waterfall display" [V15].</td>
-</tr>
-<tr>
-<td>cloned app</td>
-<td>19</td>
-<td>A second copy of an app on the same phone, for example a second
-WhatsApp for a second SIM. Phone brands call this function "Dual apps",
-"App clone", or "App twin".</td>
-</tr>
-<tr>
-<td>app call</td>
-<td>19</td>
-<td>A call through an app, for example WhatsApp, IMO, or Messenger. An
-app call is not a phone call.</td>
-</tr>
-<tr>
-<td>floating chat</td>
-<td>19</td>
-<td>A small window of a chat app on top of other apps, for example a
-Messenger chat head or an Android chat bubble</td>
-</tr>
-<tr>
-<td>session notification</td>
-<td>19</td>
-<td>The Android notification that shows during a session. It shows the
-minutes available and the "Pause" and "Stop" buttons.</td>
-</tr>
-<tr>
-<td>break screen</td>
-<td>19</td>
-<td>The full screen that shows when the parent pauses a session</td>
-</tr>
-<tr>
-<td>end screen</td>
-<td>19</td>
-<td>The full screen that shows when the timer is at 0 minutes</td>
-</tr>
-<tr>
-<td>extra time</td>
-<td>9</td>
-<td>Minutes after the timer is at 0 minutes: the "+5 min" of the child,
-the "+2 min" of the parent, or "Add time today" in the settings</td>
-</tr>
-<tr>
-<td>daily time</td>
-<td>9</td>
-<td>The maximum number of minutes for all sessions in one day</td>
-</tr>
-<tr>
-<td>time window</td>
-<td>9</td>
-<td>An optional period of the day. Sessions can operate only in this
-period.</td>
-</tr>
-<tr>
-<td>age group</td>
-<td>9</td>
-<td>One of three groups of children: 3 to 5 years, 6 to 8 years, or 9 to
-14 years</td>
-</tr>
-<tr>
-<td>PIN</td>
-<td>19</td>
-<td>The 4-digit number of the parent</td>
-</tr>
-<tr>
-<td>screen lock</td>
-<td>19</td>
-<td>The PIN, pattern, or fingerprint that locks the phone</td>
-</tr>
-<tr>
-<td>setup, guided setup</td>
-<td>19</td>
-<td>The first procedure in the app (steps 1 to 3 in section 9). The app
-shows each step with pictures.</td>
-</tr>
-<tr>
-<td>permission</td>
-<td>19</td>
-<td>An Android setting that lets an app do a specified function</td>
-</tr>
-<tr>
-<td>"Usage access", "Display over other apps", "Autostart", "Extreme
-battery saver", "Do not disturb", "Airplane mode", "Wi-Fi", "App info",
-"Pause app", "Dual apps", "App clone", "App twin"</td>
-<td>10</td>
-<td>Names of Android settings and phone functions</td>
-</tr>
-<tr>
-<td>Accessibility service</td>
-<td>19</td>
-<td>An Android service that can read and control the screen. Play has
-special conditions for this service [V12].</td>
-</tr>
-<tr>
-<td>overlay</td>
-<td>19</td>
-<td>A window that an app shows on top of other apps</td>
-</tr>
-<tr>
-<td>foreground app</td>
-<td>19</td>
-<td>The app that is on the screen at this time</td>
-</tr>
-<tr>
-<td>battery saver</td>
-<td>19</td>
-<td>A phone function that stops background apps to decrease the use of
-the battery</td>
-</tr>
-<tr>
-<td>device owner</td>
-<td>19</td>
-<td>An app with full control of the phone. Usually, you set it on a new
-phone.</td>
-</tr>
-<tr>
-<td>device owner rights</td>
-<td>19</td>
-<td>The control that a device owner has</td>
-</tr>
-<tr>
-<td>lock task mode</td>
-<td>19</td>
-<td>An Android mode that keeps the phone in a set of apps. Only a device
-owner can use it [V4].</td>
-</tr>
-<tr>
-<td>app pinning</td>
-<td>19</td>
-<td>An Android function that keeps one app on the screen. The person who
-uses the phone can stop it [V4].</td>
-</tr>
-<tr>
-<td>incoming call</td>
-<td>19</td>
-<td>A phone call that the phone receives</td>
-</tr>
-<tr>
-<td>emergency dialer</td>
-<td>19</td>
-<td>The Android screen for emergency calls</td>
-</tr>
-<tr>
-<td>999</td>
-<td>9</td>
-<td>The emergency number in Bangladesh [V13]</td>
-</tr>
-<tr>
-<td>event</td>
-<td>19</td>
-<td>A data item that the app sends to Firebase Analytics</td>
-</tr>
-<tr>
-<td>install ID</td>
-<td>19</td>
-<td>A random number for one installation of the app. It does not
-identify a person.</td>
-</tr>
-<tr>
-<td>advertising ID</td>
-<td>19</td>
-<td>The Android number that identifies a phone to advertisers</td>
-</tr>
-<tr>
-<td>landing page</td>
-<td>19</td>
-<td>A web page for the payment test</td>
-</tr>
-<tr>
-<td>spike</td>
-<td>19</td>
-<td>A short test of the guard before the build</td>
-</tr>
-<tr>
-<td>closed test</td>
-<td>19</td>
-<td>A Google Play test track for a small group of testers</td>
-</tr>
-<tr>
-<td>launch</td>
-<td>19</td>
-<td>The day when the app becomes available on the Play Store</td>
-</tr>
-<tr>
-<td>gate</td>
-<td>15</td>
-<td>A specified time in the schedule where we make a decision. We set
-the conditions before the test.</td>
-</tr>
-<tr>
-<td>free tool</td>
-<td>Rule 1.8</td>
-<td>A tool from Google or Samsung that the parent can use without a
-payment</td>
-</tr>
-<tr>
-<td>week-2 return rate</td>
-<td>7</td>
-<td>The metric in section 13.1</td>
+<td>—</td>
+<td>Failure handling, privacy, language, performance, platform</td>
+<td>Applies across F1 to F3</td>
+<td>GRD, PRV, LNG, PRF, PLT</td>
 </tr>
 </tbody>
 </table>
-<h3 id="22-other-technical-nouns">2.2 Other technical nouns</h3>
-<ul>
-<li>Documents (category 15): document, section, table, column, list,
-page, label, statement, comment, brief, assessment, issue, draft,
-dictionary, rule, guide, report.</li>
-<li>More documents (category 15): ID, Data safety form, news article,
-community site.</li>
-<li>Specifications (category 15): requirement, functional requirement,
-non-functional requirement, priority, assumption, test case, acceptance,
-product requirements document, PRD, minimum viable product, MVP.</li>
-<li>STE terms (category 15): technical noun, technical verb, quotation
-marks, descriptive sentence, imperative form.</li>
-<li>Persons and groups (category 11): author, reader, review team,
-tester, advertiser, software engineer, trademark agent, school, country,
-countries, Bangladesh Police.</li>
-<li>Time (category 9): year, day, week, month, minute, second, evening,
-night, midnight, pm, November, today, birth date, clock, time zone.</li>
-<li>Numbers and units (category 9): first (the number), BDT (the
-Bangladeshi taka), %, dp, 4-digit, 40-second.</li>
-<li>Colors (category 17): red, white, black, Ink, Lilac, Violet,
-Electric.</li>
-<li>Medical terms (category 14): injury, death.</li>
-<li>Failure terms (category 18): failure.</li>
-<li>Safety words (Rule 7.1): WARNING.</li>
-<li>Screen items (category 19): screen, home screen, split screen,
-floating window, notification shade, recent apps, quick settings, quick
-settings tile, notification action, status bar, navigation bar,
-navigation button, gesture navigation, lock screen, uninstall dialog,
-chat head, chat bubble, pop-up, button, field, switch, link, check mark,
-touch target, keyboard, star.</li>
-<li>Media (category 19): video, embedded video, player, video player,
-approved-content mode, chime, picture, icon, text, font, language, web
-page, website, photo, title, content, screen content.</li>
-<li>Phone and system terms (category 19): operating system, Android
-setting, setting, default, crash, update, internet, battery, background
-app, foreground, foreground service, silent mode, installation, tablet,
-TV, brand, phone model, SIM, phone case, fingerprint, fingerprint
-sensor, opacity, rule.</li>
-<li>Calls (category 19): call, phone call.</li>
-<li>Software terms (category 19): software application, build, code,
-backend, dashboard, browser, safe browser, content filter, service,
-emergency service, accessibility.</li>
-<li>Accounts and releases (category 19): account, developer account,
-organization account, personal account, SDK, API, prototype, version,
-search, track, production.</li>
-<li>More software terms (category 19): registry, domain, session
-history, AI coding platform, AI summary, all-day mode.</li>
-<li>Law (category 21): trademark, trademark search, class, consent,
-disclosure, in-app disclosure, declaration, policy, policies, privacy,
-privacy statement.</li>
-<li>Payments and marketing (Rule 1.8): price, price tier, payment,
-in-app purchase, subscription, free trial, refund, fee, revenue, revenue
-model, budget, ad, click, visitor, paywall, reservation list, card,
-telco, bundle.</li>
-<li>Research (category 7): research, metric, return rate, median,
-mathematics.</li>
-<li>Body (category 12): finger.</li>
-<li>Companies (category 11): Nagorik Technologies, Nagorik, Google,
-Samsung, Xiaomi, Realme, Tecno, Figma, bKash, Claude, Claude Code.</li>
-<li>Apps and services (category 11): YouTube, YouTube Kids, Facebook,
-Messenger, WhatsApp, IMO, Google Play, Play Store, Play Console, Google
-Play billing, Google Play payment screen, Play review.</li>
-<li>More apps and services (category 11): Firebase Analytics, Samsung
-Kids, Samsung Galaxy, Family Link, Digital Wellbeing, TalkBack, Google
-Account, Google Assistant, iPhone, iPad, Teen Patti.</li>
-<li>Places, languages, and persons (category 11): Bangladesh, Dhaka,
-Chattogram, Bangla, English, Abraar Masud Nafiz.</li>
-</ul>
-<h3 id="23-technical-verbs">2.3 Technical verbs</h3>
+<h3 id="32-not-in-the-mvp">3.2 Not in the MVP</h3>
 <table>
 <thead>
 <tr>
-<th>Technical verb</th>
-<th>Category</th>
-<th>Meaning in this document</th>
+<th>Left out</th>
+<th>Why</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>tap</td>
-<td>2a</td>
-<td>To touch a button on the screen one time</td>
+<td>Our own content filter</td>
+<td>YouTube Kids filters, free, in Bangladesh [V1]; one bad video would
+cost the parent's trust.</td>
 </tr>
 <tr>
-<td>enter</td>
-<td>2a</td>
-<td>To type a value into a field</td>
+<td>Remote parent dashboard</td>
+<td>Needs accounts, a backend and data about the child.</td>
 </tr>
 <tr>
-<td>type</td>
-<td>2a</td>
-<td>To put text into a field with the keyboard</td>
+<td>An "approved videos only" player (rejected alternative)</td>
+<td>YouTube API policies forbid a fee for embedded videos and require
+working player links [V6]; YouTube Kids has approved-only mode, free
+[V2].</td>
 </tr>
 <tr>
-<td>pulse</td>
-<td>2b</td>
-<td>To become bright and then dim again, slowly and more than one
-time</td>
+<td>iPhone and iPad</td>
+<td>One developer, six weeks; most families use Android
+[ASSUMPTION].</td>
 </tr>
 <tr>
-<td>pause</td>
-<td>2b</td>
-<td>To stop the timer for some time. The session continues after the
-PIN.</td>
+<td>Child profiles</td>
+<td>They need a way to tell children apart, and the app asks for no name
+or photo (SET-02). Asked in the closed test.</td>
 </tr>
 <tr>
-<td>open, close</td>
-<td>2b</td>
-<td>To start an app on the screen, or to stop it</td>
+<td>Minutes as a reward</td>
+<td>Teaches that screen time is the prize; "celebrate finishing, not
+using". The summary shows evenings without +5 and the parent decides
+(TMR-15a).</td>
 </tr>
 <tr>
-<td>install, uninstall</td>
-<td>2c</td>
-<td>To put an app on the phone, or to remove it</td>
-</tr>
-<tr>
-<td>restart</td>
-<td>2c</td>
-<td>To stop the phone and start it again</td>
-</tr>
-<tr>
-<td>build</td>
-<td>2c</td>
-<td>To make a software application from its code</td>
+<td>Answering app calls (WhatsApp, IMO) in a session</td>
+<td>The guard sees only the app name, so it can't tell a call from a
+chat [ASSUMPTION]. The parent stops the session with the PIN
+(HND-25).</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="3-problem">3 Problem</h2>
-<h3 id="31-the-problem-in-the-evening">3.1 The problem in the
-evening</h3>
-<p>In the evening, a child of 4 to 8 years wants the Android phone of a
-parent. The child wants to look at videos for children on YouTube. These
-three problems occur [ASSUMPTION]:</p>
-<ul>
-<li>YouTube automatically starts a new video. The parent does not know
-the next video.</li>
-<li>When the parent wants the phone back, the child does not want to
-give it. Then, the parent and the child have a problem.</li>
-<li>The same phone has the WhatsApp, Facebook, and bKash apps of the
-parent.</li>
-</ul>
-<h3 id="32-parent-comments-from-the-brief">3.2 Parent comments from the
-brief</h3>
-<table>
-<thead>
-<tr>
-<th>Comment from the brief</th>
-<th>Effect on the MVP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>"My child needs YouTube for learning, but I worry about what they
-watch next."</td>
-<td>Function F1. The child can open only permitted apps. YouTube Kids is
-the default permitted app.</td>
-</tr>
-<tr>
-<td>"We argue about screen time every evening."</td>
-<td>Function F2. The child can see the time light. Each session stops
-with the same end screen.</td>
-</tr>
-<tr>
-<td>"I tried a parental-control app, but setting it up was too
-difficult."</td>
-<td>Function F3. A guided setup in Bangla in approximately 3
-minutes.</td>
-</tr>
-<tr>
-<td>"Why should I pay when free parental controls already exist?"</td>
-<td>Section 12. The price and the payment test.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="33-causes-for-this-selection">3.3 Causes for this selection</h3>
-<p>We selected the handover first for these causes:</p>
-<ul>
-<li>Three of the four comments occur at the handover.</li>
-<li>The free tools do not operate correctly on a shared phone (refer to
-section 12.1).</li>
-<li>A child of 3 to 8 years cannot make a decision about limits with a
-parent. Thus, a limit that the phone applies each evening can help most
-[ASSUMPTION].</li>
-</ul>
-<h3 id="34-an-assumption-that-can-make-this-selection-incorrect">3.4 An
-assumption that can make this selection incorrect</h3>
-<p>A-01: Most children of 3 to 8 years use the shared phone of a parent.
-They do not use a tablet or a TV [ASSUMPTION].</p>
-<p>If A-01 is incorrect, the handover is not the primary problem. The
-payment test examines A-01 (section 12.4).</p>
-<h3 id="35-children-in-the-mvp">3.5 Children in the MVP</h3>
-<p>The brief includes children of 3 to 14 years. The MVP is primarily
-for children of 3 to 8 years. Cause: the handover is a problem of
-children who use the phone of a parent [ASSUMPTION].</p>
-<p>Many children of 9 to 14 years have a phone for their use only.
-Family Link is applicable to these phones [V3]. If a child of 9 to 14
-years uses the phone of a parent, the parent can use the same app. The
-parent can allow one or two more apps for this child, for example a
-school app or a reading app (SET-04a). Grown-up apps are always blocked.
-Version 2 can add more functions for children of 9 to 14 years (section
-6.3).</p>
-<hr />
-<h2 id="4-persons-who-use-the-app">4 Persons who use the app</h2>
-<h3 id="41-parent">4.1 Parent</h3>
-<p>The parent:</p>
-<ul>
-<li>Has an Android phone from Xiaomi, Realme, Tecno, or Samsung
-[ASSUMPTION]</li>
-<li>Reads Bangla. Some parents do not read English [ASSUMPTION].</li>
-<li>Does the setup one time. Then, each evening, does only the
-handover.</li>
-<li>Makes the payment.</li>
-</ul>
-<h3 id="42-child">4.2 Child</h3>
-<p>The child:</p>
-<ul>
-<li>Is a child of 3 to 8 years</li>
-<li>Frequently cannot read at 3 to 5 years [ASSUMPTION]. Thus, the child
-screens use pictures, sound, and a Bangla voice.</li>
-<li>Uses the phone for 10 to 45 minutes in the evening
-[ASSUMPTION].</li>
-</ul>
-<h3 id="43-persons-and-devices-that-are-not-in-the-mvp">4.3 Persons and
-devices that are not in the MVP</h3>
-<ul>
-<li>Children who have a phone for their use only (version 2, section
-6.3)</li>
-<li>iPhones and iPads</li>
-<li>Phones with an Android version less than 10.</li>
-</ul>
-<hr />
-<h2 id="5-results-that-we-want-from-the-mvp">5 Results that we want from
-the MVP</h2>
+<h3 id="33-version-2-ideas">3.3 Version 2 ideas</h3>
+<p>All-day mode for a phone the child owns (device owner and lock task
+mode [V4]); a safe browser (off by default, visible logging); an AI
+summary for parents (needs consent and a new privacy statement). Each
+roughly doubles the guard and privacy work, so the MVP proves the
+handover first.</p>
+<h2 id="4-results-we-want">4 Results we want</h2>
 <table>
 <thead>
 <tr>
 <th>ID</th>
 <th>Result</th>
-<th>How we measure the result</th>
+<th>Measured by</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>R-01</td>
-<td>During a session, the child can open only permitted apps.</td>
-<td>Tests S-01 to S-12 in the spike</td>
+<td>During a session the child can open only allowed apps.</td>
+<td>Spike tests S-01 to S-12</td>
 </tr>
 <tr>
 <td>R-02</td>
-<td>The session stops at the time that the parent set. The phone, not
-the parent, tells the child that the time is finished.</td>
-<td>The closed test, and the "+2 min" limit in section 13</td>
+<td>Sessions stop at the time the parent set; the phone, not the parent,
+says so.</td>
+<td>Closed test, and the +2 guard in section 9.3</td>
 </tr>
 <tr>
 <td>R-03</td>
-<td>A parent completes the setup in Bangla in 3 minutes or less.</td>
-<td>Test G-12</td>
+<td>A parent finishes setup in Bangla in 3 minutes or less.</td>
+<td>G-12</td>
 </tr>
 <tr>
 <td>R-04</td>
-<td>40% or more of the families start 3 or more sessions in week 2 after
-the launch.</td>
-<td>Section 13</td>
+<td>40% or more of families start 3+ sessions in week 2 after
+launch.</td>
+<td>Section 9.3</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="6-functions-in-the-mvp-and-functions-not-in-the-mvp">6 Functions
-in the MVP and functions not in the MVP</h2>
-<h3 id="61-functions-in-the-mvp">6.1 Functions in the MVP</h3>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Operation</th>
-<th>Effect for the family</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>F1. Handover with permitted apps</td>
-<td>The parent taps "Give to child". The child can open only permitted
-apps, and YouTube Kids is the default. Each grown-up app shows the cover
-screen. Incoming calls and 999 always operate. Notifications from other
-apps do not show during a session.</td>
-<td>The child stays in a safe app and cannot open WhatsApp or Facebook.
-YouTube Kids has a content filter and is available in Bangladesh [V1].
-We do not make a content filter.</td>
-</tr>
-<tr>
-<td>F2. Daily time with a timer and an end screen</td>
-<td>The parent sets the daily time and an optional time window. The time
-light moves along the edge of the screen and shows the time without
-numbers. The parent sees the minutes in the session notification. At 2
-minutes, a chime and a Bangla voice occur. At 0 minutes, the end screen
-shows "Well done" with confetti. One time each day, the child can tap
-"+5 min" without the PIN. After that, the parent can give "+2 min" one
-time with the PIN. Then the end screen gives no more time.</td>
-<td>Each session stops with the same end screen. Thus, the problem in
-comment 2 decreases [ASSUMPTION]. This is the primary assumption of the
-MVP.</td>
-</tr>
-<tr>
-<td>F3. A guided setup in Bangla in approximately 3 minutes</td>
-<td>The setup shows pictures for the phone brand. A "Test it now" button
-makes sure that the guard operates. If the parent does not know the PIN,
-the parent uses the screen lock to set a new PIN.</td>
-<td>This function gives a solution for comment 3: "setting it up was too
-difficult". The free tools do not give this function.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="62-functions-not-in-the-mvp">6.2 Functions not in the MVP</h3>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Cause</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A content filter from Tin Shotti</td>
-<td>YouTube Kids has a content filter and is available in Bangladesh
-[V1]. One incorrect video can cause a parent to stop the use of Tin
-Shotti.</td>
-</tr>
-<tr>
-<td>A dashboard for the parent on a different device (reports,
-location)</td>
-<td>This function must have accounts, a backend, and data about the
-child. Six weeks is not sufficient for this work.</td>
-</tr>
-<tr>
-<td>A video player that shows only approved YouTube videos (the rejected
-alternative)</td>
-<td>In the YouTube API policies, a fee for embedded videos is not
-permitted [V6]. In the same policies, the links in the player must
-operate [V6]. YouTube Kids has an approved-content mode without a
-payment [V2].</td>
-</tr>
-<tr>
-<td>An app for iPhones and iPads</td>
-<td>One developer has six weeks. Most phones of the families use Android
-[ASSUMPTION].</td>
-</tr>
-<tr>
-<td>A profile for each child</td>
-<td>The daily time is for the phone, not for each child. Thus, two
-children share one daily time. A profile must identify each child, but
-the app does not ask for a name or a photo (SET-02). We ask families
-with two children in the closed test (section 16).</td>
-</tr>
-<tr>
-<td>A reward of minutes, for example "+20 min" after 3 days without "+5
-min"</td>
-<td>Minutes as a reward teach the child that screen time is the prize.
-The design principle is "celebrate finishing, not using". Many children
-of 3 to 5 years cannot wait 3 days for a reward [ASSUMPTION]. The
-summary shows the days without "+5 min" to the parent, and the parent
-decides on a reward (TMR-15a). Version 2 can examine this function with
-parents (V-10).</td>
-</tr>
-<tr>
-<td>App calls during a session</td>
-<td>The guard knows only the name of the foreground app. Thus, it cannot
-find the difference between an app call and a chat in the same app
-[ASSUMPTION]. In the MVP, the parent stops the session to answer an app
-call (HND-25). Version 2 can examine this function.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="63-functions-for-version-2">6.3 Functions for version 2</h3>
-<p>These functions are not in the six weeks:</p>
-<ul>
-<li>All-day mode: The child has the phone at all times, for example a
-previous phone of a parent. The parent sets permitted apps for each time
-of day and a total time for each day. Calls with the family and calls to
-999 always operate.</li>
-<li>Device owner for all-day mode: On a phone for the child only, the
-app can be the device owner. Then, the app can use lock task mode. Lock
-task mode is not as easy to stop as an overlay [V4].</li>
-<li>Safe browser: The browser is OFF by default. The child can open only
-permitted websites and emergency pages. The browser records each website
-that the child opens. The child can see that the browser records these
-websites.</li>
-<li>AI summary for parents: This function sends data about websites from
-the phone. Thus, the parent must give consent first. A new privacy
-statement is also necessary.</li>
-</ul>
-<p>These functions increase the work on the guard and on privacy by two
-times. Thus, the MVP examines the handover first.</p>
-<hr />
-<h2 id="7-functional-requirements">7 Functional requirements</h2>
-<h3 id="71-f3-setup-set">7.1 F3: Setup (SET)</h3>
+<h2 id="5-functional-requirements">5 Functional requirements</h2>
+<h3 id="51-f3-setup-set">5.1 F3: Setup (SET)</h3>
 <table>
 <thead>
 <tr>
@@ -1107,7 +480,7 @@ ON.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="72-f1-handover-with-permitted-apps-hnd">7.2 F1: Handover with
+<h3 id="52-f1-handover-with-permitted-apps-hnd">5.2 F1: Handover with
 permitted apps (HND)</h3>
 <table>
 <thead>
@@ -1318,7 +691,7 @@ must show the cover screen.</td>
 <td>HND-27</td>
 <td>The spike must record the quick settings tiles that the child can
 use during a session, for example "Airplane mode" and "Wi-Fi". These
-tiles are a known limit of the MVP (section 10). If a tile opens an app,
+tiles are a known limit of the MVP (section 7). If a tile opens an app,
 the guard must show the cover screen.</td>
 <td>P1</td>
 <td>S-21</td>
@@ -1330,7 +703,7 @@ the guard must show the cover screen.</td>
 ON TOP OF THE EMERGENCY DIALER. IF THE GUARD DOES THIS, A PERSON CANNOT
 MAKE A CALL TO 999. THIS CAN CAUSE INJURY OR DEATH.</p>
 </blockquote>
-<h3 id="73-f2-timer-and-end-screen-tmr">7.3 F2: Timer and end screen
+<h3 id="53-f2-timer-and-end-screen-tmr">5.3 F2: Timer and end screen
 (TMR)</h3>
 <table>
 <thead>
@@ -1564,7 +937,7 @@ the number of grown-up apps that the child opened. It must also show
 <td>The summary must show the number of evenings in a row that ended
 without "+5 min", for example "৩ সন্ধ্যা +৫ ছাড়া / 3 evenings in a row
 without +5". The parent decides on a reward outside the app. The app
-must not give minutes as a reward (section 6.2).</td>
+must not give minutes as a reward (section 3.2).</td>
 <td>P2</td>
 <td>T-13b</td>
 </tr>
@@ -1598,7 +971,7 @@ open the PIN screen of the parent.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="74-daily-time-and-time-window-win">7.4 Daily time and time
+<h3 id="54-daily-time-and-time-window-win">5.4 Daily time and time
 window (WIN)</h3>
 <table>
 <thead>
@@ -1674,7 +1047,7 @@ than 0. After the end of the time window, WIN-04 applies.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="75-guard-failures-grd">7.5 Guard failures (GRD)</h3>
+<h3 id="55-guard-failures-grd">5.5 Guard failures (GRD)</h3>
 <table>
 <thead>
 <tr>
@@ -1724,9 +1097,9 @@ the events when the internet is available.</td>
 </tbody>
 </table>
 <hr />
-<h2 id="8-non-functional-requirements">8 Non-functional
+<h2 id="6-non-functional-requirements">6 Non-functional
 requirements</h2>
-<h3 id="81-privacy-prv">8.1 Privacy (PRV)</h3>
+<h3 id="61-privacy-prv">6.1 Privacy (PRV)</h3>
 <table>
 <thead>
 <tr>
@@ -1810,7 +1183,7 @@ app does not need access to the notifications.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="82-language-and-accessibility-lng">8.2 Language and
+<h3 id="62-language-and-accessibility-lng">6.2 Language and
 accessibility (LNG)</h3>
 <table>
 <thead>
@@ -1859,7 +1232,7 @@ selected language.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="83-performance-of-the-guard-prf">8.3 Performance of the guard
+<h3 id="63-performance-of-the-guard-prf">6.3 Performance of the guard
 (PRF)</h3>
 <table>
 <thead>
@@ -1894,7 +1267,7 @@ YouTube Kids without the guard [ASSUMPTION].</td>
 </tr>
 </tbody>
 </table>
-<h3 id="84-android-and-play-store-plt">8.4 Android and Play Store
+<h3 id="64-android-and-play-store-plt">6.4 Android and Play Store
 (PLT)</h3>
 <table>
 <thead>
@@ -1910,7 +1283,7 @@ YouTube Kids without the guard [ASSUMPTION].</td>
 <td>PLT-01</td>
 <td>The app must operate on Android 10 to Android 15 [ASSUMPTION].</td>
 <td>P0</td>
-<td>Section 0 of <code>test-cases.md</code></td>
+<td><code>test-cases.md</code> section 0</td>
 </tr>
 <tr>
 <td>PLT-02</td>
@@ -1953,304 +1326,43 @@ production [V9].</td>
 <td>One test phone must have curved edges. The tests of the time light
 must use gesture navigation and the 3 navigation buttons.</td>
 <td>P1</td>
-<td>Section 0 of <code>test-cases.md</code>, S-19</td>
+<td><code>test-cases.md</code> section 0, S-19</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2
-id="9-user-flow-from-the-first-start-to-the-first-satisfactory-result">9
-User flow: from the first start to the first satisfactory result</h2>
-<p>The parent does steps 1 to 4 one time, in approximately 3 minutes.
-After that, each evening is only step 4. The child sees steps 5 and
-6.</p>
-<h3 id="step-1-the-welcome-screen-parent">Step 1: The "Welcome" screen
-(parent)</h3>
-<ol type="1">
-<li>Select "বাংলা" or "English".</li>
-<li>Select the age group of the child: "3–5", "6–8", or "9–14".</li>
-<li>Set the daily time, for example 45 minutes.</li>
-<li>If you want a time window, set it, for example 6 pm to 10 pm.</li>
-<li>Tap "Start".</li>
-</ol>
-<h3 id="step-2-the-allowed-apps-screen-parent">Step 2: The "Allowed
-apps" screen (parent)</h3>
-<ol type="1">
-<li>Make sure that YouTube Kids has a check mark.</li>
-<li>Select the learning apps that the child can use.</li>
-<li>Enter a 4-digit PIN two times.</li>
-<li>Tap "Next".</li>
-</ol>
-<p>The grown-up apps show with a red "X". The parent cannot select
-them.</p>
-<h3 id="step-3-the-switch-on-protection-screen-parent">Step 3: The
-"Switch on protection" screen (parent)</h3>
-<ol type="1">
-<li>Set each permission to ON, and the "Do not disturb" access. The app
-shows pictures for the phone brand.</li>
-<li>Tap "Test it now".</li>
-<li>Look at the light check. If you cannot see all of the light, tap
-"Part is hidden". Do this step again until you can see all of the
-light.</li>
-</ol>
-<p>If the test is satisfactory, the screen shows "Protected · test
-passed 7:02 pm". If the test is not satisfactory, refer to section
-10.</p>
-<h3 id="step-4-the-hand-over-screen-parent-each-evening">Step 4: The
-"Hand over" screen (parent, each evening)</h3>
-<ol type="1">
-<li>Select the minutes: 10, 15, or 20.</li>
-<li>Tap "Give to child".</li>
-</ol>
-<h3 id="step-5-a-session-child">Step 5: A session (child)</h3>
-<p>The child sees YouTube Kids and the time light along the edge of the
-screen. The time light does not show numbers. When the light is almost
-back at the top-left corner, the session is almost complete. The parent
-can see the minutes in the session notification, and can pause or stop
-the session with the PIN. If the child opens a grown-up app, the cover
-screen shows. The voice speaks "এটা বড়দের অ্যাপ" in Bangla. The child
-taps "Back to my videos".</p>
-<h3 id="step-6-the-end-screen-child-then-parent">Step 6: The end screen
-(child, then parent)</h3>
-<p>At 0 minutes, the time light closes the loop. Then the end screen
-shows the Tin Shotti mark, confetti, and "Well done! দারুণ! আজকের সময়
-শেষ". The voice tells the child to give the phone back to the
-parent.</p>
-<p>One time each day, the child can tap "+5 min" without the PIN. Then
-the parent does these steps:</p>
-<ol type="1">
-<li>Enter the PIN.</li>
-<li>Tap "Done". Or tap "+2 min" (one time each day). After "+2 min", the
-end screen gives no more time on that day.</li>
-</ol>
-<p>The screen shows "Today: 20 min. Saved on this phone only."</p>
-<h3 id="the-first-satisfactory-result">The first satisfactory
-result</h3>
-<p>The first satisfactory result is the first evening session that stops
-on time. The phone, not the parent, tells the child that the time is
-finished.</p>
-<hr />
-<h2 id="10-a-failure-and-its-repair">10 A failure and its repair</h2>
-<p>The failure: the battery saver stops the guard, or a permission is
-OFF.</p>
-<p>The repair:</p>
-<ol type="1">
-<li>The app does a guard test before each handover.</li>
-<li>If the test is not satisfactory, the app shows "Not protected yet"
-and the repair for the phone brand.</li>
-<li>The "Give to child" button is not available until the test is
-satisfactory.</li>
-</ol>
-<p>The known limit: if the guard stops during a session, the app cannot
-tell the parent at that time. The spike measures how frequently this
-failure occurs. The app tells the parent at the next handover
+<h2 id="7-the-experience-failure-and-privacy">7 The experience, failure
+and privacy</h2>
+<p><strong>Flow.</strong> Parent, once (about 3 minutes): 1 Welcome
+(language, age group, daily time, optional window) → 2 Allowed apps +
+PIN → 3 Switch on protection + Test it now + light check. Each evening:
+4 Hand over (minutes, Give to child: 2 taps). Child: 5 Session (time
+light, grown-up cover with "Back to my videos") → 6 End screen (mark,
+confetti, "Well done!", +5 once, then the parent's PIN: Done or +2
+once). Screen-by-screen detail: the "Screens" tab of the workbook and
+<code>../design/ui/figma/</code>.</p>
+<p><strong>First useful result:</strong> the first evening session that
+ends on time on the phone's word.</p>
+<p><strong>The failure we design for:</strong> the battery saver kills
+the guard, or a permission is off. The guard test runs before every
+handover; on a fail the parent sees "Not protected yet" with the fix for
+that brand, and "Give to child" stays off (SET-20, SET-21, HND-06). A
+guard that dies mid-session is reported at the next handover
 (GRD-01).</p>
-<p>Other known limits of the MVP:</p>
-<ul>
-<li>The child can use some quick settings tiles during a session, for
-example "Airplane mode" (HND-27). Calls to 999 continue to operate in
-airplane mode [ASSUMPTION]. We did not close the quick settings with the
-Accessibility service. Cause: this also closes the session notification
-of the parent.</li>
-<li>The child cannot answer app calls during a session (HND-25).</li>
-<li>If the child knows the screen lock of the phone, the child can set a
-new PIN. The app cannot stop this, but it tells the parent at the next
-handover (TMR-11a).</li>
-</ul>
+<p><strong>Known MVP limits:</strong> some quick settings tiles work in
+a session (HND-27); app calls can't be answered (HND-25); a child who
+knows the phone's screen lock can reset the PIN, and the parent sees it
+at the next handover (TMR-11a).</p>
+<p><strong>Privacy decision and the three promises.</strong> The app
+knows only which app is in front, never the screen or the videos
+(PRV-04). No child account, name or photo. History stays on the phone
+(PRV-05); only the events in PRV-01 leave it. Notifications are
+silenced, never read (PRV-09). The child can see the rules: only the
+allowed apps open; the time light is always on screen; every session
+ends with the same end screen.</p>
 <hr />
-<h2 id="11-privacy-decision">11 Privacy decision</h2>
-<ul>
-<li>The app knows only the name of the foreground app. The app does not
-know the screen content or the videos.</li>
-<li>The app does not have a child account, the name of the child, or a
-photo of the child.</li>
-<li>The session history stays on the phone.</li>
-<li>The child always sees the time light. Tin Shotti does not monitor
-the child at times when the child cannot see the time light.</li>
-<li>During a session, the notifications of the parent do not show
-(PRV-09). Thus, the child does not see the messages or the bKash codes
-of the parent. The app does not read the notifications.</li>
-</ul>
-<p>The app always obeys these three conditions, and the child can see
-them:</p>
-<ul>
-<li>Only the permitted apps open.</li>
-<li>The time light is always on the screen.</li>
-<li>Each session stops with the same end screen.</li>
-</ul>
-<hr />
-<h2 id="12-price-and-payment-test">12 Price and payment test</h2>
-<h3 id="121-free-tools">12.1 Free tools</h3>
-<table>
-<thead>
-<tr>
-<th>Free tool</th>
-<th>Function on a shared phone</th>
-<th>Limit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>YouTube Kids</td>
-<td>An approved-content mode and a timer [V2]</td>
-<td>Operates only in YouTube Kids [V2]</td>
-</tr>
-<tr>
-<td>App pinning</td>
-<td>Keeps one app on the screen [V4]</td>
-<td>Only one app. The person who uses the phone can stop it [V4].</td>
-</tr>
-<tr>
-<td>Digital Wellbeing app timers</td>
-<td>A limit for one app for each day [V11]</td>
-<td>One limit for each app. No handover and no session.</td>
-</tr>
-<tr>
-<td>Samsung Kids</td>
-<td>A child mode with a PIN [V10]</td>
-<td>Only on Samsung Galaxy phones [V10]</td>
-</tr>
-<tr>
-<td>Family Link</td>
-<td>Controls for parents [V3]</td>
-<td>The child must have a Google Account [V3].</td>
-</tr>
-</tbody>
-</table>
-<h3 id="122-causes-for-a-payment">12.2 Causes for a payment</h3>
-<p>The free tools do not give these three functions on a shared
-phone:</p>
-<ol type="1">
-<li>A setup that the parent can complete: one guided setup in Bangla,
-with steps for the phone brand. This function gives a solution for
-comment 3.</li>
-<li>Control of the full phone, on all Android brands. Samsung phones and
-realme phones have a kid mode, but each kid mode operates only on its
-brand (assessment PDF, sources 10 and 15). Tin Shotti operates the same
-on all brands [ASSUMPTION: few parents find or use the kid modes].</li>
-<li>The same end screen each evening. Thus, the problem in comment 2 can
-decrease [ASSUMPTION until the closed test in week 5].</li>
-</ol>
-<p>All-day mode (version 2) can be a higher price tier subsequently.</p>
-<h3 id="123-price">12.3 Price</h3>
-<ul>
-<li>The price is BDT 99 each month after a 14-day free trial
-[ASSUMPTION].</li>
-<li>A price of less than BDT 100 keeps the decision small for the parent
-[ASSUMPTION].</li>
-<li>Subscriptions must use Google Play billing [V7].</li>
-<li>Some websites that are not from Google tell that bKash connects to
-Google Play in Bangladesh. We did not find this statement on the pages
-of Google [ASSUMPTION].</li>
-<li>In week 1, we examine this statement on an account in
-Bangladesh.</li>
-</ul>
-<h3 id="124-payment-test-before-the-build-week-2">12.4 Payment test
-before the build (week 2)</h3>
-<ul>
-<li>The budget is BDT 5,000 for ads. At BDT 10 for each click, this
-budget gives approximately 500 visitors [ASSUMPTION].</li>
-<li>The landing page is in Bangla. It has a 40-second video of the
-version that the spike shows is possible.</li>
-<li>We show the ads in parent groups on Facebook. Most of the ads go to
-Dhaka and Chattogram.</li>
-<li>First, the page shows: "Which device does your 3–8-year-old use
-most?" Each visitor selects one device. This selection examines
-A-01.</li>
-<li>Then, the page shows: "Reserve the founding price: pay BDT 99 by
-bKash, refunded on request or if we don't launch."</li>
-<li>A subsequent payment through Google Play has one more step. Thus,
-the result of this test is a maximum value.</li>
-</ul>
-<p>We set these decision conditions before the test:</p>
-<table>
-<thead>
-<tr>
-<th>Result of the test</th>
-<th>Decision</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2% or more of the visitors make the payment (approximately 10 of
-500)</td>
-<td>Continue.</td>
-</tr>
-<tr>
-<td>0.5% to 2% of the visitors make the payment</td>
-<td>Do a test with different text on the page. Or do a test with a price
-of BDT 49.</td>
-</tr>
-<tr>
-<td>Less than 0.5% make the payment, or most visitors tell that YouTube
-Kids or Samsung Kids is sufficient</td>
-<td>Remove the price of the app. Get revenue from a telco bundle or a
-school bundle. Or select a different problem.</td>
-</tr>
-</tbody>
-</table>
-<p>The limit of this test: 500 visitors can show only a clear "yes" or a
-clear "no". The limits in this table are estimates.</p>
-<hr />
-<h2 id="13-metric-for-the-first-two-weeks-after-launch">13 Metric for
-the first two weeks after launch</h2>
-<h3 id="131-the-metric-week-2-return-rate">13.1 The metric: week-2
-return rate</h3>
-<p><code>week-2 return rate = B / A</code></p>
-<ul>
-<li>A: The number of families who complete the setup in the launch
-week.</li>
-<li>B: The number of families in A who start 3 or more sessions in week
-2.</li>
-</ul>
-<p>Cause: three evenings show that the family uses the handover as a
-usual procedure [ASSUMPTION].</p>
-<h3 id="132-how-we-measure-the-metric">13.2 How we measure the
-metric</h3>
-<ul>
-<li>The app sends the events in PRV-01 to Firebase Analytics for each
-install ID.</li>
-<li>The events do not contain data about the child, app names, or video
-titles.</li>
-<li>We want 100 or more setups from the reservation list and from parent
-groups.</li>
-<li>We also speak with 10 parents in short phone calls.</li>
-</ul>
-<h3 id="133-decisions">13.3 Decisions</h3>
-<p>We set these decision conditions before the launch:</p>
-<table>
-<thead>
-<tr>
-<th>Result</th>
-<th>Decision</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Week-2 return rate of 40% or more</td>
-<td>Continue. Set the paywall to ON.</td>
-</tr>
-<tr>
-<td>Week-2 return rate of 20% to 40%</td>
-<td>Change. Speak with 10 families who stopped. First, repair the setup
-and the failures for each phone brand.</td>
-</tr>
-<tr>
-<td>Week-2 return rate of less than 20%</td>
-<td>Stop the work on new functions. Examine the problem selection
-again.</td>
-</tr>
-<tr>
-<td>On more than 50% of the week-2 days with a session, the parent gives
-"+2 min" or uses "Add time today"</td>
-<td>Change, at all return rates. This result shows that the end screen
-does not give a solution for comment 2. The "+5 min" of the child is
-part of the design, so it is not a failure.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="14-schedule-and-gate">14 Schedule and gate</h2>
+<h2 id="8-schedule-and-the-week-2-gate">8 Schedule and the week-2
+gate</h2>
 <table>
 <thead>
 <tr>
@@ -2262,71 +1374,144 @@ part of the design, so it is not a failure.</td>
 <tbody>
 <tr>
 <td>1</td>
-<td>Do the spike for 3 days on the 4 test phones (A-02 in section
-15).</td>
-<td>Make the Figma prototype. Examine bKash with Google Play on an
-account in Bangladesh. Prepare the landing page.</td>
+<td>3-day spike on the 4 test phones (section 10.2)</td>
+<td>Figma prototype; test bKash and carrier billing on a Bangladeshi
+Play account; landing page</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Build the setup (F3) and the timer (F2). All versions of Tin Shotti
-use these two functions.</td>
-<td>Do the payment test (section 12.4).</td>
+<td>Build setup (F3) and timer (F2): needed in every version</td>
+<td>Payment test (section 9.2)</td>
 </tr>
 <tr>
-<td>End of week 2</td>
-<td>Gate (refer to the table below)</td>
-<td>Gate</td>
-</tr>
-<tr>
-<td>3 and 4</td>
-<td>Build the guard (F1).</td>
-<td>Prepare the closed test. Find 15 families.</td>
+<td>3–4</td>
+<td>Build the guard (F1); internal Play build in week 3 to clear
+declarations</td>
+<td>Recruit 15 closed-test families</td>
 </tr>
 <tr>
 <td>5</td>
-<td>Repair the problems from the closed test.</td>
-<td>Do the closed test with 15 families. Monitor 10 families for one
-week.</td>
+<td>Fix closed-test issues</td>
+<td>Closed test, 15 families, one week</td>
 </tr>
 <tr>
 <td>6</td>
-<td>Send the app to Play review.</td>
-<td>Do the launch from the Nagorik developer account [V9].</td>
+<td>Play review</td>
+<td>Launch from Nagorik's organisation account [V9]</td>
 </tr>
 </tbody>
 </table>
-<p>The gate at the end of week 2:</p>
 <table>
 <thead>
 <tr>
-<th>Condition</th>
+<th>Gate, end of week 2</th>
 <th>Decision</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>The guard and the payment test are satisfactory.</td>
-<td>Build the guard in weeks 3 and 4.</td>
+<td>Guard and payment test pass</td>
+<td>Build the guard in weeks 3–4.</td>
 </tr>
 <tr>
-<td>The guard is not satisfactory.</td>
-<td>Make a guided setup of the free tools available. Do a new test of
-the price.</td>
+<td>Guard fails: S-01, S-03, S-08 or S-09 fails on 2+ phones with each
+guard method</td>
+<td>Ship a guided setup of the free tools instead. The "whole phone, any
+brand" reason to pay is gone, so it launches free; re-test pricing
+before charging.</td>
 </tr>
 <tr>
-<td>The payment test is not satisfactory.</td>
+<td>Payment test fails</td>
 <td>Stop.</td>
 </tr>
 </tbody>
 </table>
-<p>Do the guard tests with the two guard methods. If S-01, S-03, S-08,
-or S-09 is not satisfactory on 2 or more test phones with each method,
-the guard is not satisfactory.</p>
-<p>The AI coding platform makes the build of the screens faster. It does
-not make the tests on the test phones faster.</p>
+<p>AI coding speeds up screens, not testing on real phones.</p>
 <hr />
-<h2 id="15-risks-and-assumptions">15 Risks and assumptions</h2>
+<h2 id="9-pricing-and-the-success-metric">9 Pricing and the success
+metric</h2>
+<h3 id="91-price">9.1 Price</h3>
+<p>BDT 99 a month after a 14-day free trial [ASSUMPTION]. Subscriptions
+must use Google Play billing [V7] (PLT-02). Google's payment-methods
+page doesn't list Bangladesh, which means cards only; some third-party
+guides say bKash works, so week 1 tests it on a real account (A-06). If
+neither bKash nor carrier billing works: a telco or MFS bundle.</p>
+<p>Why pay when free tools exist (YouTube Kids [V2], app pinning [V4],
+Digital Wellbeing timers [V11], Samsung Kids [V10], Family Link [V3]):
+(1) a setup the parent can finish, (2) one rule for the whole phone on
+any brand [ASSUMPTION: few parents find the brand kid modes], (3) the
+same visible ending every evening [ASSUMPTION until the closed
+test].</p>
+<h3 id="92-payment-test-week-2-before-the-guard-is-built">9.2 Payment
+test (week 2, before the guard is built)</h3>
+<p>BDT 5,000 of Facebook ads to parent groups, about 500 visitors
+[ASSUMPTION]. A Bangla landing page with a 40-second prototype video
+asks "Which device does your 3–8-year-old use most?" (A-01), then
+"Reserve the founding price: pay BDT 99 by bKash, refunded on request or
+if we don't launch." It measures intent, so it is an upper bound.</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2% or more pay (about 10 of 500)</td>
+<td>Continue</td>
+</tr>
+<tr>
+<td>0.5% to 2%</td>
+<td>Retest the message, or BDT 49</td>
+</tr>
+<tr>
+<td>Under 0.5%, or most say YouTube Kids or Samsung Kids is enough</td>
+<td>Go free with a telco or school bundle, or pick another problem</td>
+</tr>
+</tbody>
+</table>
+<h3 id="93-metric-week-2-return-rate">9.3 Metric: week-2 return
+rate</h3>
+<p><code>B / A</code>: A = families who finish setup in launch week; B =
+those of A who start 3+ sessions in week 2. Events: PRV-01, PRV-02 via
+Firebase Analytics, advertising ID off, no backend (PLT-03). Aim for
+100+ setups and 10 parent calls. With about 100 families the rate is
+good to about ±10 points, so treat it as directional.</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40% or more</td>
+<td>Continue; switch on the paywall. Next check: day-15 trial-to-paid
+(under 5%: back to 9.2).</td>
+</tr>
+<tr>
+<td>20% to 40%</td>
+<td>Change: call 10 families who stopped; fix setup and brand failures
+first.</td>
+</tr>
+<tr>
+<td>Under 20%</td>
+<td>Stop new features; revisit the problem choice.</td>
+</tr>
+<tr>
+<td>Parent gives +2 or uses Add time today on more than half of week-2
+session days</td>
+<td>Change, whatever the return rate: the ending isn't solving comment
+2. The child's +5 is expected.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-assumptions-risks-and-the-spike">10 Assumptions, risks and
+the spike</h2>
+<h3 id="101-assumptions">10.1 Assumptions</h3>
 <table>
 <thead>
 <tr>
@@ -2349,8 +1534,8 @@ not make the tests on the test phones faster.</p>
 <td>A-02</td>
 <td>A usual Play Store app without device owner rights can keep a child
 in the permitted apps. This assumption has the highest risk.</td>
-<td>F1 is not possible. We make the guided setup of the free tools
-available.</td>
+<td>F1 is not possible. We ship a guided setup of the free tools, free
+(section 8).</td>
 <td>Tests S-01 to S-12 in the spike, on the 4 test phones</td>
 <td>1</td>
 </tr>
@@ -2367,7 +1552,7 @@ week 6.</td>
 <td>A time light that the child can see decreases the problem in comment
 2.</td>
 <td>F2 does not help the family.</td>
-<td>The closed test and the "+2 min" limit in section 13</td>
+<td>The closed test and the "+2 min" limit in section 9.3</td>
 <td>5 to 8</td>
 </tr>
 <tr>
@@ -2455,98 +1640,58 @@ session.</td>
 <td>Tests S-22 to S-24 in the spike</td>
 <td>1</td>
 </tr>
+<tr>
+<td>A-15</td>
+<td>A child of 3 to 8 years who usually watches YouTube accepts YouTube
+Kids in its place.</td>
+<td>Comment 1 ("what they watch next") is not solved. The fix is a
+separate decision, not a looser guard.</td>
+<td>Test H-11 in the closed test</td>
+<td>5</td>
+</tr>
 </tbody>
 </table>
-<h3 id="151-data-that-does-not-agree-with-a-02">15.1 Data that does not
-agree with A-02</h3>
-<ul>
-<li>Without device owner rights, Android has only app pinning. The
-person who uses the phone can stop app pinning [V4].</li>
-<li>On Xiaomi and Samsung phones, battery savers frequently stop
-background apps [V5].</li>
-</ul>
-<h3 id="152-spike-steps-for-the-developer-week-1-3-days">15.2 Spike
-steps for the developer (week 1, 3 days)</h3>
-<p>Do these steps on the 4 test phones with Android 10 to 15:</p>
+<p>Against A-02 (the riskiest): without device owner rights Android
+offers only app pinning, which the user can stop [V4]; Xiaomi and
+Samsung battery savers often stop background apps [V5].</p>
+<h3 id="102-spike-week-1-3-days-4-test-phones-android-10-to-15">10.2
+Spike (week 1, 3 days, 4 test phones, Android 10 to 15)</h3>
+<p>For both guard methods (Usage access + overlay, and an Accessibility
+service [V12]): time to cover a blocked app; 45 minutes on battery
+saver; calls and 999 in a session; escapes via notification shade,
+recent apps, split screen, restart, cloned apps, chat heads, the
+uninstall dialog; touches through the time light on Android 12 to 15
+(A-10); the light on round corners, cutouts and curved edges (A-13); Do
+not disturb silencing WhatsApp and bKash while calls ring (A-11); the
+Play declarations (<code>isMonitoringTool</code> [V8], foreground
+service type) and review time. Tests S-01 to S-24 in
+<code>test-cases.md</code>.</p>
+<h3 id="103-open-questions">10.3 Open questions</h3>
 <ol type="1">
-<li>Examine the two guard methods: "Usage access" with an overlay, and
-an Accessibility service [V12].</li>
-<li>Measure the time until the cover screen shows.</li>
-<li>Make sure that the guard operates for 45 minutes with the battery
-saver ON.</li>
-<li>Make sure that incoming calls and 999 operate during a session.</li>
-<li>Try to open a grown-up app from the notification shade, the recent
-apps, and a split screen.</li>
-<li>Try to open a grown-up app after a restart of the phone.</li>
-<li>Find the declarations that are necessary for Play review, for
-example <code>isMonitoringTool</code> [V8] and the foreground service
-type.</li>
-<li>Make sure that Play does not identify the app as an app for children
-(A-08).</li>
-<li>Record the number of days for the Play review of a test
-version.</li>
-<li>Make sure that all touches go through the time light to the
-permitted app, on Android 12 to 15, with the two guard methods
-(A-10).</li>
-<li>Make sure that the time light shows correctly with round corners, a
-camera cutout, curved edges, a full-screen video in landscape, gesture
-navigation, and the 3 navigation buttons (A-13).</li>
-<li>Make sure that "Do not disturb" stops the notifications of WhatsApp
-and bKash during a session, and that phone calls ring (A-11).</li>
-<li>Try to open a cloned WhatsApp, a Messenger chat head, and an Android
-chat bubble during a session (A-14).</li>
-<li>Try to remove Tin Shotti, or open "App info", from the home screen
-during a session (A-14).</li>
+<li>Does a timer the phone enforces end the evening argument, or does
+the parent give +2 every night? (closed test, +2 guard)</li>
+<li>Phone, tablet or TV: which device do 3 to 8-year-olds mostly use?
+(A-01)</li>
+<li>Will parents pay BDT 99 a month, and can they pay through Google
+Play without a card? (A-05, A-06)</li>
+<li>Trademark search for "Tin Shotti" in classes 9 and 42 before launch;
+<code>tinshotti.com</code> and <code>.app</code> were free on 3 Nov
+2026. The Play name must be "Tin Shotti", never "Teen Shotti" (too close
+to "Teen Patti" card apps).</li>
+<li>Which phone models do families own? (picks the 4 test phones)</li>
+<li>Do two children share one phone in the evening?</li>
+<li>Do WhatsApp or IMO calls from a parent abroad arrive during
+sessions? (v2 decision on app calls)</li>
 </ol>
+<h3 id="104-done-when">10.4 Done when</h3>
+<p>All P0 tests pass on the 4 test phones (or each accepted failure has
+a written reason); spike and Play answers (S-12 to S-17) are written
+before the end of week 2; P1 tests pass or are listed as known issues
+for the closed test; the Data safety form matches PRV-01 to PRV-03;
+closed-test notes for G-12, H-11, L-02 and W-03 are written.</p>
 <hr />
-<h2 id="16-open-problems">16 Open problems</h2>
-<ol type="1">
-<li>The primary open problem: does a timer that the phone controls
-decrease the problem in comment 2? Or does the child not agree after the
-"+5 min", so that the parent gives "+2 min" or adds time each night? The
-closed test and the "+2 min" limit in section 13 examine this
-problem.</li>
-<li>Do most children of 3 to 8 years in Bangladesh use the phone of a
-parent, a tablet, or a TV?</li>
-<li>Do parents make a payment of BDT 99 each month when free tools are
-available? Can they make the payment through Google Play without a
-card?</li>
-<li>Can we use the name Tin Shotti as a trademark in Bangladesh? We did
-not do a trademark search in classes 9 and 42. A trademark agent must do
-this search before the launch.</li>
-<li>On 3 November 2026, the registry had no data for
-<code>tinshotti.com</code> and <code>tinshotti.app</code>. We did not
-examine <code>.com.bd</code>.</li>
-<li>Until the app is on the Play Store, a search for "Tin Shotti" on the
-Play Store shows Teen Patti card apps. The app name must be "Tin
-Shotti", not "Teen Shotti". Cause: "Teen Shotti" is almost the same as
-"Teen Patti".</li>
-<li>Which phone models do the families have? We select the 4 test phones
-in week 1 from this data.</li>
-<li>Do two children of 3 to 8 years share one phone in the evening? Is
-one daily time for the phone sufficient for these families?</li>
-<li>In families where a parent works in a different country, do app
-calls (WhatsApp or IMO) come during the sessions? Must version 2 let
-these calls through?</li>
-</ol>
-<hr />
-<h2 id="17-acceptance-conditions">17 Acceptance conditions</h2>
-<p>The MVP is completed when these conditions are satisfactory:</p>
-<ul>
-<li>All P0 tests are satisfactory on the 4 test phones. For each P0
-failure that we accept, the product manager writes the cause.</li>
-<li>The spike results (S-12) and the Play review data (S-13 to S-17) are
-completed before the end of week 2.</li>
-<li>All P1 tests are satisfactory, or the list of known problems for the
-closed test includes them.</li>
-<li>The Data safety form agrees with PRV-01 to PRV-03.</li>
-<li>The closed-test reports for G-12, L-02, and W-03 are completed.</li>
-</ul>
-<hr />
-<h2 id="18-sources">18 Sources</h2>
-<p>We examined these sources on 3 and 4 November 2026. Sources V1 to V4,
-V6 to V12, and V14 to V17 are pages from Google or Samsung. V5 is a
-community site. V13 is a news article.</p>
+<h2 id="11-sources-checked-34-november-2026">11 Sources (checked 3–4
+November 2026)</h2>
 <ul>
 <li>[V1] <a
 href="https://support.google.com/youtubekids/answer/6130573?co=GENIE.Platform%3DAndroid">YouTube
@@ -2618,74 +1763,10 @@ access to the notification policy to change "Do not disturb". On Android
 15 (API level 35) and later, the app operates its own rule, not the
 global setting.</li>
 </ul>
-<hr />
-<h2 id="19-document-changes">19 Document changes</h2>
-<table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Date</th>
-<th>Change</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.4</td>
-<td>4 November 2026</td>
-<td>Children of 9 to 14 years: a third age group; the parent can allow a
-maximum of two more apps (SET-04a). The colors of the time light follow
-the Nagorik palette: Lilac, Violet, Electric. The author spoke
-informally with some parents (section 1.3).</td>
-</tr>
-<tr>
-<td>1.3</td>
-<td>3 November 2026</td>
-<td>Extra time. The child has one "+5 min" each day without the PIN
-(TMR-10, TMR-10a). Then the parent has one "+2 min" with the PIN
-(TMR-10b). Then the end screen gives no more time (TMR-10c). Real
-exceptions use "Add time today" in the settings (TMR-10d). The summary
-shows the evenings without "+5 min" to the parent (TMR-15a). We do not
-give minutes as a reward (section 6.2). Changed: F2, TMR-08, WIN-01,
-WIN-04, WIN-08, PRV-01, PRV-02, section 9, the decision in section 13.3,
-R-02, A-04, and open problem 1. Brand identity v3: new colors and the
-new mark.</td>
-</tr>
-<tr>
-<td>1.2</td>
-<td>3 November 2026</td>
-<td>Review of the edge cases. The time light: TMR-02b is now P0 and
-includes curved edges and the system bars; new TMR-02c, TMR-02d, the
-light check (SET-25 to SET-27), and PLT-07. The guard: "Do not disturb"
-during a session (HND-20, HND-21, SET-28, PRV-09), cloned apps (HND-22),
-the uninstall dialog (HND-23), floating chats (HND-24), app calls
-(HND-25), payment screens (HND-26), and quick settings tiles (HND-27).
-The PIN: TMR-11a and TMR-11b. "+5 min" after the daily time (WIN-08;
-WIN-01 changed). New: A-11 to A-14, V14 to V17, spike steps 12 to 14,
-open problems 8 and 9, and two functions in section 6.2.</td>
-</tr>
-<tr>
-<td>1.1</td>
-<td>3 November 2026</td>
-<td>The time light along the edge of the screen replaces the small timer
-display. The child does not see numbers. New: the session notification
-for the parent, with "Pause" and "Stop" (TMR-16 to TMR-18), and confetti
-on the end screen. Cause: a small display on top of the app can stop the
-child from using the app, and the child can start to dislike Tin
-Shotti.</td>
-</tr>
-<tr>
-<td>1.0</td>
-<td>3 November 2026</td>
-<td>First issue. We made this document from the assessment (version 3)
-and the test cases (version 3). The name of the app changed from "Shishu
-Mode" to "Tin Shotti".</td>
-</tr>
-</tbody>
-</table>
-<p>The author used Claude (Claude Code) to write the text in STE. Claude
-also examined the text against a version of the STE dictionary that is
-not from ASD. The decisions about Tin Shotti come from the
-assessment.</p>
+<p>Changes: 2.0 (4 Nov) cut from 765 lines to this, plain English
+instead of STE, with the workbook as the human view; added A-15 and H-11
+(does the child accept YouTube Kids?) and the free plan B at the gate.
+The full history is in the archived v1.4.</p>
   </article>
   <p style="margin-top:48px"><a href="../">← back to the submission</a></p>
 </main>

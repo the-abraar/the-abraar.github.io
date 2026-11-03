@@ -1,6 +1,6 @@
 # Tin Shotti: acceptance test cases
 
-**112 test cases for the MVP and 10 for v2.** P0 blocks launch, P1 is fixed before the closed test, P2 if time allows.
+**113 test cases for the MVP and 10 for v2.** P0 blocks launch, P1 is fixed before the closed test, P2 if time allows.
 
 
 These are product-level acceptance tests for the Tin Shotti MVP: what a parent or child does, and what must happen. They are not unit tests. Use them three ways:
@@ -63,7 +63,7 @@ The riskiest assumption in the plan. Build the smallest guard that works, then r
 | S-16 | If we use an Accessibility service: draft the in-app disclosure and consent screen, and record the review video Play asks for | Draft + video |
 | S-17 | How long did review take for a similar test build (internal or closed track)? | Days |
 
-**Gate rule:** if S-01, S-03, S-08 or S-09 fails on 2 or more of the 4 phones with both routes, the guard fails → ship the fallback (guided setup of the free tools).
+**Gate rule:** if S-01, S-03, S-08 or S-09 fails on 2 or more of the 4 phones with both routes, the guard fails → ship the fallback (guided setup of the free tools, launched free; pricing re-tested before charging).
 
 ---
 
@@ -106,6 +106,7 @@ The riskiest assumption in the plan. Build the smallest guard that works, then r
 | H-08 | A session is running | A link inside an allowed app tries to open a blocked app or the browser | The target is covered | P1 |
 | H-09 | A session is running | The parent needs the phone urgently (incoming call, or they take it back) | A parent exit is reachable from the session notification and the Tin Shotti icon: PIN, then the session ends as "stopped early" | P0 |
 | H-10 | A session is running in a learning app with in-app purchases | The child taps a "Buy" or "Unlock" button | The Google Play payment screen is covered; nothing can be bought | P1 |
+| H-11 | Closed test (week 5): a 3–8-year-old who usually watches YouTube; YouTube Kids is the only video app | The first 3 evenings of sessions | Record per family whether the child accepts YouTube Kids (watches 10+ minutes without asking for YouTube). Target: 12 of 15 families or more. Fewer: the "what they watch next" problem needs its own fix; a looser guard is not the fix (PRD A-15) | P1 |
 
 ---
 
@@ -229,7 +230,7 @@ The riskiest assumption in the plan. Build the smallest guard that works, then r
 | V-07 | Safe browser: AI summary | No browsing data leaves the phone until the parent gives explicit consent on a dedicated screen; turning consent off stops it | v2 |
 | V-08 | Profiles for siblings | Given two children with their own daily time, when one child's time runs out, the other child's time is unchanged (needs a way to tell them apart without names or photos) | v2 |
 | V-09 | App calls during a session | Given a WhatsApp or IMO call during a session, the child sees "Give the phone to a grown-up" instead of the grown-up cover (needs a reliable call signal, not only the app name) | v2 |
-| V-10 | A reward for evenings without +5 (e.g. +20 min after 3) | Only after parents ask for it in research: given 3 evenings without +5, the parent is offered (never auto-given) a one-time +20. Risk to test first: it teaches that screen time is the prize (PRD section 6.2) | v2 |
+| V-10 | A reward for evenings without +5 (e.g. +20 min after 3) | Only after parents ask for it in research: given 3 evenings without +5, the parent is offered (never auto-given) a one-time +20. Risk to test first: it teaches that screen time is the prize (PRD section 3.2) | v2 |
 
 ## Bug report template
 
@@ -250,11 +251,13 @@ How often: x of y tries
 - [ ] Spike results (S-12) and Play answers (S-13 to S-17) written up before the end of week 2
 - [ ] P1 cases pass, or are listed as known issues for the closed test
 - [ ] Data safety form matches P-01
-- [ ] Closed-test notes from G-12, L-02 and W-03 written up, plus two questions for parents: does your child know the phone's pattern (T-10c), and do two children share this phone in the evening (PRD section 16)?
+- [ ] Closed-test notes from G-12, H-11, L-02 and W-03 written up, plus two questions for parents: does your child know the phone's pattern (T-10c), and do two children share this phone in the evening (PRD section 10.3)?
 
 *Sources: the numbered list in the assessment PDF. I talked informally with a few parents I know; that is not research. Every "target" and "proposed" item is a guess to be confirmed.*
 
 ## Change log
+
+**v3.5 (4 Nov):** H-11, does the child accept YouTube Kids instead of YouTube (PRD A-15)? These files live next to the PRD (`prd/`, the copy in `notion/` is made by the build), and every case is also in the product map workbook (`prd/tin-shotti-product-map.xlsx`). PRD 2.0.
 
 **v3.4 (4 Nov):** a third age band, 9–14: the same handover, and the parent can allow up to two more apps (G-02, PRD SET-04a). The time light follows Nagorik's palette: Lilac → Violet → Electric (T-01b, T-18). PRD 1.4.
 
