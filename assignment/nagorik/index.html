@@ -18,7 +18,11 @@
     .btns { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
     .btns a { border: 1px solid var(--accent-green); color: var(--accent-green); padding: 8px 14px; text-decoration: none; }
     .btns a:hover, .btns a:focus-visible { background: var(--accent-green); color: var(--bg-color); }
-    .pdf { width: 100%; height: 85vh; border: 1px solid #333; background: #fff; }
+    .hero { display: grid; grid-template-columns: minmax(0, 340px) 1fr; gap: 32px; align-items: start; margin-top: 32px; }
+    .hero h2 { margin-top: 0; }
+    .hero .btns { flex-direction: column; align-items: flex-start; }
+    .demo video { width: 100%; height: auto; display: block; background: #000; }
+    @media (max-width: 640px) { .hero { grid-template-columns: 1fr; } .demo { max-width: 340px; } }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
     figure { background: var(--bg-panel); border: 1px solid #262626; padding: 10px; margin: 0; }
     figure img { width: 100%; height: auto; display: block; background: #fff; }
@@ -33,19 +37,24 @@
   <p><span class="logo-prompt">abraar@root:</span><span class="logo-dir">~/assignments/nagorik</span>$ cat README</p>
   <h1>Tin Shotti (তিন সত্যি): a child mode for the parent's phone</h1>
   <p class="lead">My submission for the <b>Junior Product Manager</b> assessment at <a href="https://www.nagorik.tech">Nagorik Technologies Ltd.</a> (November 2026). The brief: a child digital-safety MVP for families in Bangladesh with children aged 3–14, one developer with an AI coding platform, six weeks. The two-page PDF is the answer; everything below is optional background on how I got there.</p>
-  <div class="btns">
-    <a href="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf">Open the PDF</a>
-    <a href="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf" download>Download PDF</a>
-    <a href="docs/tin-shotti-product-map.xlsx">Product map (xlsx)</a>
-    <a href="prd/">PRD</a>
-  </div>
+  <section class="hero">
+    <figure class="demo">
+      <video src="stageshow/tin-shotti-demo.mp4" poster="stageshow/still-handover.png" width="800" height="1400" autoplay muted loop playsinline controls aria-label="Tin Shotti product demo"></video>
+      <figcaption>One evening with Tin Shotti: the handover, the time light, time's up.</figcaption>
+    </figure>
+    <div>
+      <h2>## downloads</h2>
+      <div class="btns">
+        <a href="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf" download>The submission (PDF, 2 pages)</a>
+        <a href="docs/tin-shotti-prd.md" download>PRD (md)</a>
+        <a href="docs/tin-shotti-product-map.xlsx" download>Product map (xlsx)</a>
+        <a href="brand/brand-sheet.png" download>Brand identity (png)</a>
+        <a href="brand/ui-samples.png" download>Mock UI (png)</a>
+      </div>
+    </div>
+  </section>
 
-  <h2>## the answer (PDF, 2 pages)</h2>
-  <object class="pdf" data="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf" type="application/pdf" aria-label="Assessment PDF">
-    <p>Your browser can't show the PDF here. <a href="Abraar_Masud_Nafiz_JuniorPM_Assessment.pdf">Open it directly</a>.</p>
-  </object>
-
-  <h2>## working notes</h2>
+  <h2>## how I got there</h2>
   <div class="grid">
     <figure><a href="notion/01-problem-framing.png"><img src="notion/01-problem-framing.png" alt="Problem framing canvas" loading="lazy"></a><figcaption><b>Problem framing</b> (PDF §1). Four comments, one problem statement, and the assumption that could make it wrong.</figcaption></figure>
     <figure><a href="notion/02-opportunity-tree.png"><img src="notion/02-opportunity-tree.png" alt="Opportunity solution tree" loading="lazy"></a><figcaption><b>Opportunity solution tree</b> (PDF §1). Outcome, parent problems, chosen and rejected options, deciding tests.</figcaption></figure>
