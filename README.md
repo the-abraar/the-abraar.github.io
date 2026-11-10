@@ -1,6 +1,6 @@
 # Abraar Masud Nafiz - Portfolio Site
 
-This repository contains the source code for my personal portfolio website, designed with a raw Linux terminal aesthetic to reflect my background as a Data & Automation Engineer, Startup Founder, and AI Product Manager.
+This repository contains the source code for my personal portfolio website, designed with a raw Linux terminal aesthetic for my work as a Product Engineer and as founder of BlankFrame Technologies.
 
 You can view the live site here: [blankframe.tech/abraar](https://blankframe.tech/abraar) (or [the-abraar.github.io](https://the-abraar.github.io)).
 
@@ -13,8 +13,7 @@ You can view the live site here: [blankframe.tech/abraar](https://blankframe.tec
 ## 🚀 Features
 - **Terminal UI**: Bash window styling, `root@host` prompts, and ASCII-inspired elements.
 - **Dynamic Typing**: Custom JS-powered typing effect in the hero section.
-- **Experience Timeline**: A clean timeline mapping out my professional history across Samsung R&D, Inovace Technologies, and SUST.
-- **Startup Showcase**: Dedicated section for [BlankFrame Technologies](http://blankframe.tech) and my flagship product, ThrottleIQ.
+- **Shipped**: three things with links: ThrottleIQ (public beta repo), my Kestra blueprints and plugin fix, and rafatemon.site.
 - **Fully Responsive**: Adapts seamlessly to all screen sizes.
 
 ## 🛠️ Local Development
