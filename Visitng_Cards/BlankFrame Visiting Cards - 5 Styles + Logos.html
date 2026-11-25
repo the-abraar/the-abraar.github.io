@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BlankFrame Visiting Cards: Sand + Noir</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--ink:#2B2823;--paper:#FEFBF8;--bg:#EEEBE5;--mute:#898680;--line:#E1DDD8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;padding:72px 40px 96px}
+.wrap{max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:64px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:34px;letter-spacing:-.5px}
+h2{font-family:'Space Grotesk',sans-serif;font-size:22px;letter-spacing:-.4px;margin-bottom:18px}
+.lead{color:#66635D;font-size:14px;margin-top:8px;max-width:640px;line-height:1.5}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.pair{display:flex;gap:40px;flex-wrap:wrap}.side{display:flex;flex-direction:column;gap:12px}
+.card{width:700px;height:400px;border-radius:10px;position:relative;overflow:hidden;box-shadow:0 2px 4px rgba(43,40,35,.06),0 40px 70px -40px rgba(43,40,35,.4)}
+.abs{position:absolute}
+.lk{display:flex;align-items:center;gap:14px}
+.lk .t{display:flex;flex-direction:column}
+.lk .w{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.4px;line-height:1}
+.lk .s{font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:.34em;text-transform:uppercase;margin-top:.5em;opacity:.75}
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px}
+.lg{display:grid;grid-template-columns:1fr 1fr;border-radius:12px;overflow:hidden;border:1px solid var(--line);height:170px}
+.lg>div{display:flex;align-items:center;justify-content:center}
+.qr{background:#fff;padding:9px;display:flex;align-items:center;justify-content:center}
+/* sand */
+.sand{background:#F7F4EE;color:#111;font-family:'Montserrat',sans-serif}
+.sand .blk{position:absolute;background:#E4D3BE}.sand .bar{position:absolute;background:#141414}
+.sand .nm{font-weight:700;letter-spacing:.2em;font-size:17px}.sand small{font-size:10.5px;letter-spacing:.3em;color:#555;font-weight:500}
+.sand .tx{font-size:12.5px;line-height:1.7;color:#222;font-weight:500}
+.sand .hd{font-weight:700;font-size:23px;line-height:1.2;letter-spacing:-.2px}
+.sand .hd span{color:#E8101E}
+.sand .sub{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#555;line-height:1.6}
+/* noir */
+.noir{background:#0B0B0B;color:#F4F4F4;font-family:'Space Grotesk',sans-serif}
+.noir .nm{font-weight:500;letter-spacing:.1em;font-size:20px}.noir .rl{font-size:14px;color:#cfcfcf;font-weight:500;margin-top:2px}
+.noir .sm{font-size:13px;color:#cfcfcf;line-height:1.6;font-weight:500}
+.noir .hd{font-weight:700;font-size:28px;line-height:1.12;letter-spacing:-.5px}.noir .hd span{color:#E8101E}
+.noir .sub{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#A8A8A8;line-height:1.6}
+.noir .cta{font-weight:600;font-size:18px;letter-spacing:-.3px}.noir .cta span{color:#E8101E}
+.noir .sc{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#A8A8A8}.noir .sc span{color:#F4F4F4}
+.note{font-size:12.5px;color:#66635D;max-width:620px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="cpOv"><rect x="12" y="38" width="48" height="48"/></clipPath></defs>
+<symbol id="s-ov" viewBox="0 0 100 100"><rect x="12" y="38" width="48" height="48" fill="none" stroke="currentColor" stroke-width="3.5"/><rect x="38" y="14" width="46" height="46" fill="none" stroke="currentColor" stroke-width="3.5" transform="rotate(26 61 37)"/><g clip-path="url(#cpOv)"><rect x="38" y="14" width="46" height="46" fill="currentColor" transform="rotate(26 61 37)"/></g></symbol>
+<symbol id="s-px" viewBox="0 0 100 100" fill="currentColor"><rect x="10" y="10" width="16" height="16"/><rect x="26" y="10" width="16" height="16"/><rect x="42" y="10" width="16" height="16"/><rect x="58" y="10" width="16" height="16"/><rect x="74" y="10" width="16" height="16"/><rect x="74" y="26" width="16" height="16"/><rect x="74" y="42" width="16" height="16"/><rect x="74" y="58" width="16" height="16"/><rect x="74" y="74" width="16" height="16"/><rect x="58" y="74" width="16" height="16"/><rect x="42" y="74" width="16" height="16"/><rect x="10" y="26" width="16" height="16"/><rect x="10" y="42" width="16" height="16"/><rect x="26" y="58" width="16" height="16" style="fill:var(--acc,currentColor)"/><rect x="10" y="74" width="16" height="16" style="fill:var(--acc,currentColor)"/></symbol></svg>
+<div class="wrap">
+<header><h1>BlankFrame cards: Sand + Noir</h1><p class="lead">Two card styles x two logos (Overlap, Pixel frame). The back carries the full message from the founder v2 card.</p></header>
+<section><h2>Chosen logos</h2><div class="logos"><div class="lg"><div style="background:#FEFBF8"><div class="lk"><svg style="width:76px;height:76px;color:#141414;--acc:#E8101E;flex:none"><use href="#s-ov"/></svg><div class="t" style="color:#141414"><span class="w" style="font-size:28px">BlankFrame</span><span class="s" style="font-size:10.1px">Technologies</span></div></div></div><div style="background:#0D0D0D"><div class="lk"><svg style="width:76px;height:76px;color:#fff;--acc:#E8101E;flex:none"><use href="#s-ov"/></svg><div class="t" style="color:#fff"><span class="w" style="font-size:28px">BlankFrame</span><span class="s" style="font-size:10.1px">Technologies</span></div></div></div></div><div class="lg"><div style="background:#FEFBF8"><div class="lk"><svg style="width:76px;height:76px;color:#141414;--acc:#E8101E;flex:none"><use href="#s-px"/></svg><div class="t" style="color:#141414"><span class="w" style="font-size:28px">BlankFrame</span><span class="s" style="font-size:10.1px">Technologies</span></div></div></div><div style="background:#0D0D0D"><div class="lk"><svg style="width:76px;height:76px;color:#fff;--acc:#E8101E;flex:none"><use href="#s-px"/></svg><div class="t" style="color:#fff"><span class="w" style="font-size:28px">BlankFrame</span><span class="s" style="font-size:10.1px">Technologies</span></div></div></div></div></div></section><section><h2>Sand · Overlap</h2><div class="pair"><div class="side"><div class="card sand"><div class="blk" style="left:430px;top:0;width:190px;height:215px"></div><div class="bar" style="left:56px;top:0;width:26px;height:80px"></div>
+<div class="abs" style="left:112px;top:118px"><div class="lk"><svg style="width:74px;height:74px;color:#141414;--acc:#E8101E;flex:none"><use href="#s-ov"/></svg><div class="t" style="color:#141414"><span class="w" style="font-size:30px">BlankFrame</span><span class="s" style="font-size:10.8px">Technologies</span></div></div></div>
+<div class="abs" style="left:112px;top:262px"><div class="nm">ABRAR MASUD NAFIZ</div><small style="display:block;margin-top:6px">FOUNDER</small></div>
+<div class="abs tx" style="left:112px;top:318px">the.abraar.rar@gmail.com<br>+880 1327045005</div><small class="abs" style="right:80px;bottom:46px">DHAKA, BD</small></div><span class="mono">Front</span></div><div class="side"><div class="card sand"><div class="bar" style="left:56px;top:48px;width:6px;height:200px"></div>
+<div class="abs hd" style="left:92px;top:46px">You bring the problem.<br><span>We ship the system.</span></div>
+<div class="abs sub" style="left:94px;top:122px;width:420px">End to end · Idea → working software · Support all the way</div>
+<div class="abs" style="left:94px;top:178px;font-weight:600;font-size:14px;color:#555">We build the frame. <span style="color:#111">You create what matters.</span></div>
+<div class="blk" style="left:62px;top:278px;width:420px;height:74px"></div>
+<div class="abs" style="left:92px;top:288px;font-weight:700;font-size:15px">Have a system to build? <span style="color:#E8101E">Let's talk.</span></div>
+<small class="abs" style="left:92px;top:318px;letter-spacing:.14em;font-size:10px">SCAN TO SEE OUR WORK · WWW.BLANKFRAME.TECH</small>
+<div class="qr abs" data-url="https://www.blankframe.tech/" style="right:56px;top:240px;width:112px;height:112px;border:1.5px solid #141414"></div>
+<svg style="position:absolute;right:56px;top:48px;width:40px;height:40px;color:#141414;--acc:#E8101E;flex:none"><use href="#s-ov"/></svg></div><span class="mono">Back</span></div></div></section><section><h2>Sand · Pixel frame</h2><div class="pair"><div class="side"><div class="card sand"><div class="blk" style="left:430px;top:0;width:190px;height:215px"></div><div class="bar" style="left:56px;top:0;width:26px;height:80px"></div>
+<div class="abs" style="left:112px;top:118px"><div class="lk"><svg style="width:74px;height:74px;color:#141414;--acc:#E8101E;flex:none"><use href="#s-px"/></svg><div class="t" style="color:#141414"><span class="w" style="font-size:30px">BlankFrame</span><span class="s" style="font-size:10.8px">Technologies</span></div></div></div>
+<div class="abs" style="left:112px;top:262px"><div class="nm">ABRAR MASUD NAFIZ</div><small style="display:block;margin-top:6px">FOUNDER</small></div>
+<div class="abs tx" style="left:112px;top:318px">the.abraar.rar@gmail.com<br>+880 1327045005</div><small class="abs" style="right:80px;bottom:46px">DHAKA, BD</small></div><span class="mono">Front</span></div><div class="side"><div class="card sand"><div class="bar" style="left:56px;top:48px;width:6px;height:200px"></div>
+<div class="abs hd" style="left:92px;top:46px">You bring the problem.<br><span>We ship the system.</span></div>
+<div class="abs sub" style="left:94px;top:122px;width:420px">End to end · Idea → working software · Support all the way</div>
+<div class="abs" style="left:94px;top:178px;font-weight:600;font-size:14px;color:#555">We build the frame. <span style="color:#111">You create what matters.</span></div>
+<div class="blk" style="left:62px;top:278px;width:420px;height:74px"></div>
+<div class="abs" style="left:92px;top:288px;font-weight:700;font-size:15px">Have a system to build? <span style="color:#E8101E">Let's talk.</span></div>
+<small class="abs" style="left:92px;top:318px;letter-spacing:.14em;font-size:10px">SCAN TO SEE OUR WORK · WWW.BLANKFRAME.TECH</small>
+<div class="qr abs" data-url="https://www.blankframe.tech/" style="right:56px;top:240px;width:112px;height:112px;border:1.5px solid #141414"></div>
+<svg style="position:absolute;right:56px;top:48px;width:40px;height:40px;color:#141414;--acc:#E8101E;flex:none"><use href="#s-px"/></svg></div><span class="mono">Back</span></div></div></section><section><h2>Noir · Overlap</h2><div class="pair"><div class="side"><div class="card noir"><svg class="abs" style="left:56px;top:46px;width:210px;height:210px;color:#fff" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M200 76V1.2H1.2V198.8H200V128"/></svg>
+<div class="abs" style="left:150px;top:134px"><div class="nm">ABRAR MASUD NAFIZ</div><div class="rl">Founder</div></div>
+<div class="abs sm" style="left:56px;top:300px">the.abraar.rar@gmail.com<br>+880 1327045005</div><div class="abs sub" style="left:56px;top:350px">Dhaka, BD</div>
+<div class="abs" style="right:48px;bottom:44px"><div class="lk"><svg style="width:50px;height:50px;color:#fff;--acc:#E8101E;flex:none"><use href="#s-ov"/></svg><div class="t" style="color:#fff"><span class="w" style="font-size:22px">BlankFrame</span><span class="s" style="font-size:7.9px">Technologies</span></div></div></div></div><span class="mono">Front</span></div><div class="side"><div class="card noir"><div class="abs hd" style="left:56px;top:48px">You bring the problem.<br><span>We ship the system.</span></div>
+<div class="abs sub" style="left:56px;top:134px;width:560px">End to end · Idea → working software · Support all the way</div>
+<div class="abs" style="left:56px;top:172px;font-weight:500;font-size:17px;color:#A8A8A8">We build the frame. <span style="color:#F4F4F4">You create what matters.</span></div>
+<div class="qr abs" data-url="https://www.blankframe.tech/" style="left:56px;top:228px;width:124px;height:124px;border:2px solid #fff;outline:6px solid #0B0B0B;box-shadow:0 0 0 8px #0B0B0B"></div>
+<div class="abs cta" style="left:214px;top:262px">Have a system to build? <span>Let's talk.</span></div>
+<div class="abs sc" style="left:214px;top:298px">Scan to see our work<br><span>www.blankframe.tech</span></div></div><span class="mono">Back</span></div></div></section><section><h2>Noir · Pixel frame</h2><div class="pair"><div class="side"><div class="card noir"><svg class="abs" style="left:56px;top:46px;width:210px;height:210px;color:#fff" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M200 76V1.2H1.2V198.8H200V128"/></svg>
+<div class="abs" style="left:150px;top:134px"><div class="nm">ABRAR MASUD NAFIZ</div><div class="rl">Founder</div></div>
+<div class="abs sm" style="left:56px;top:300px">the.abraar.rar@gmail.com<br>+880 1327045005</div><div class="abs sub" style="left:56px;top:350px">Dhaka, BD</div>
+<div class="abs" style="right:48px;bottom:44px"><div class="lk"><svg style="width:50px;height:50px;color:#fff;--acc:#E8101E;flex:none"><use href="#s-px"/></svg><div class="t" style="color:#fff"><span class="w" style="font-size:22px">BlankFrame</span><span class="s" style="font-size:7.9px">Technologies</span></div></div></div></div><span class="mono">Front</span></div><div class="side"><div class="card noir"><div class="abs hd" style="left:56px;top:48px">You bring the problem.<br><span>We ship the system.</span></div>
+<div class="abs sub" style="left:56px;top:134px;width:560px">End to end · Idea → working software · Support all the way</div>
+<div class="abs" style="left:56px;top:172px;font-weight:500;font-size:17px;color:#A8A8A8">We build the frame. <span style="color:#F4F4F4">You create what matters.</span></div>
+<div class="qr abs" data-url="https://www.blankframe.tech/" style="left:56px;top:228px;width:124px;height:124px;border:2px solid #fff;outline:6px solid #0B0B0B;box-shadow:0 0 0 8px #0B0B0B"></div>
+<div class="abs cta" style="left:214px;top:262px">Have a system to build? <span>Let's talk.</span></div>
+<div class="abs sc" style="left:214px;top:298px">Scan to see our work<br><span>www.blankframe.tech</span></div></div><span class="mono">Back</span></div></div></section><p class="note">Trim size 3.5 x 2 in. Add 3 mm bleed and keep text 4 mm inside the edge for print. Contact details and copy come from the founder v2 card.</p></div>
+<script>window.addEventListener('load',function(){if(typeof QRCode==='undefined')return;document.querySelectorAll('.qr').forEach(function(el){var s=el.clientWidth-2*(parseFloat(getComputedStyle(el).paddingLeft)||0)-4;new QRCode(el,{text:el.dataset.url,width:s,height:s,colorDark:'#0D0D0D',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});});});</script></body></html>

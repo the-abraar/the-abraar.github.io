@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BlankFrame Visiting Cards: 5 Styles + Logo Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--ink:#2B2823;--paper:#FEFBF8;--bg:#EEEBE5;--mute:#898680;--green:#537D5C;--lime:#C8FF3D;--line:#E1DDD8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;padding:72px 40px 96px}
+.wrap{max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:72px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:34px;letter-spacing:-.5px}
+h2{font-family:'Space Grotesk',sans-serif;font-size:24px;letter-spacing:-.4px}
+.lead{color:#66635D;font-size:14px;margin-top:8px;max-width:640px;line-height:1.5}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+/* logo sheet */
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:24px;margin-top:28px}
+.lg{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.lg .row{display:grid;grid-template-columns:1fr 1fr;height:170px}
+.lg .row>div{display:flex;align-items:center;justify-content:center;gap:12px}
+.lg .l{background:var(--paper)}.lg .d{background:#0D0D0D;color:#F4F4F4}
+.lg svg.m{width:84px;height:84px}
+.lg .cap{padding:14px 18px 18px;border-top:1px solid var(--line)}
+.lg .cap b{font-family:'Space Grotesk',sans-serif;font-size:16px}
+.lg .cap p{font-size:13px;color:#66635D;margin-top:4px;line-height:1.45}
+.wm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:-.3px;line-height:1.05}
+.tag{display:inline-block;margin-left:8px;font-size:10px;font-family:'IBM Plex Mono',monospace;background:var(--lime);color:#0D0D0D;padding:2px 7px;border-radius:20px;vertical-align:2px;letter-spacing:.08em}
+/* cards */
+.set{display:flex;flex-direction:column;gap:20px}
+.pair{display:flex;gap:40px;flex-wrap:wrap}
+.side{display:flex;flex-direction:column;gap:12px}
+.card{width:700px;height:400px;border-radius:10px;position:relative;overflow:hidden;box-shadow:0 2px 4px rgba(43,40,35,.06),0 40px 70px -40px rgba(43,40,35,.4)}
+.card svg.ic{width:100%;height:100%}
+.qr{background:#fff;padding:10px;display:flex;align-items:center;justify-content:center}
+.qr img,.qr canvas{display:block}
+.note{font-size:12.5px;color:#66635D;max-width:620px}
+/* C1 bracket */
+.c1{background:#fff;color:#111;font-family:'Montserrat',sans-serif}
+.c1 .name{font-family:'Fraunces',serif;font-weight:300;font-size:36px;letter-spacing:.2px}
+.c1 .role{font-size:11px;letter-spacing:.28em;text-transform:uppercase;margin-top:6px;color:#555}
+.c1b{display:flex}.c1b .k{width:42%;background:#0B0B0B;position:relative}
+.c1b .k i{position:absolute;right:-17px;width:34px;height:34px;border-radius:50%;background:#fff;color:#0B0B0B;display:flex;align-items:center;justify-content:center}
+.c1b .k i svg{width:16px;height:16px}
+.c1b .t{padding:0 0 0 70px;display:flex;flex-direction:column;justify-content:center;gap:44px;font-size:13px;letter-spacing:.06em;color:#333;height:100%}
+.c1b .t span{height:34px;display:flex;align-items:center}
+/* C2 slate */
+.c2{background:#F1F1EF;color:#4A4A4A;font-family:'Montserrat',sans-serif;display:flex}
+.c2 .pan{width:260px;margin:26px 0 26px 26px;background:#D5D5D1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#444}
+.c2 .pan svg{width:76px;height:76px}
+.c2 .pan b{font-size:15px;letter-spacing:.2em;font-weight:600}.c2 .pan hr{width:56px;border:0;border-top:2px solid #444}
+.c2 .info{flex:1;padding:44px 40px;display:flex;flex-direction:column;justify-content:space-between}
+.c2 .n{font-size:24px;font-weight:600;color:#3F3F3F}.c2 .r{font-size:14px;margin-top:6px;color:#666}
+.c2 ul{list-style:none;display:flex;flex-direction:column;gap:12px;font-size:12.5px;color:#4A4A4A}
+.c2 li{display:flex;gap:12px;align-items:center}.c2 li i{width:24px;height:24px;border-radius:3px;background:#5E5E5E;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.c2 li i svg{width:13px;height:13px}
+.c2b{background:#6A6A6A;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.c2b svg{width:92px;height:92px}.c2b b{font-family:'Montserrat',sans-serif;font-size:19px;letter-spacing:.24em;font-weight:600}.c2b hr{width:68px;border:0;border-top:2px solid #fff}
+/* C3 noir */
+.c3{background:#0B0B0B;color:#F4F4F4;font-family:'Space Grotesk',sans-serif}
+.c3 .nm{font-weight:500;letter-spacing:.1em;font-size:24px}.c3 .rl{font-size:15px;color:#cfcfcf;margin-top:2px;font-weight:500}
+.c3 .rows{display:flex;flex-direction:column;gap:11px;font-size:15px;color:#cfcfcf;font-weight:500}
+.c3 .rows div{display:flex;gap:12px;align-items:center}.c3 .rows svg{width:15px;height:15px;flex:none;color:#fff}
+/* C4 sand */
+.c4{background:#F7F4EE;color:#111;font-family:'Montserrat',sans-serif}
+.c4 .blk{position:absolute;background:#E4D3BE}
+.c4 .bar{position:absolute;background:#141414}
+.c4 .wd{position:absolute;font-weight:700;letter-spacing:.28em;font-size:26px}.c4 .wd span{font-weight:400}
+.c4 small{position:absolute;font-size:10.5px;letter-spacing:.3em;color:#555;font-weight:500}
+.c4 .tx{position:absolute;font-size:13px;line-height:1.7;color:#222;font-weight:500}
+/* C5 green */
+.c5f{background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center}
+.c5f .pat{position:absolute;inset:0}
+.c5f .plate{position:relative;width:200px;height:200px;background:#fff;color:var(--green);display:flex;align-items:center;justify-content:center}
+.c5f .plate svg{width:140px;height:140px}
+.c5b{background:#FBFAF6;color:#1C2A21;font-family:'Space Grotesk',sans-serif;padding:48px 52px;display:flex;justify-content:space-between}
+.c5b .l{display:flex;flex-direction:column;justify-content:space-between}
+.c5b .n{font-size:30px;font-weight:700;letter-spacing:-.5px}.c5b .r{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-top:8px;font-weight:500}
+.c5b ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-family:'IBM Plex Sans',sans-serif;font-size:14px}
+.c5b .rt{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end}
+.c5b .rt svg{width:44px;height:44px;color:var(--green)}
+.c5b .qr{width:112px;height:112px;border:1.5px solid #1C2A21;padding:8px}
+</style>
+</head>
+<body>
+
+<!-- shared logo + icon symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="cpOv"><rect x="12" y="38" width="48" height="48"/></clipPath>
+  </defs>
+  <!-- 0 current -->
+  <symbol id="s-cur" viewBox="0 0 100 100"><rect x="18" y="18" width="64" height="64" fill="none" stroke="currentColor" stroke-width="9"/></symbol>
+  <!-- 1 overlap -->
+  <symbol id="s-ov" viewBox="0 0 100 100">
+    <rect x="12" y="38" width="48" height="48" fill="none" stroke="currentColor" stroke-width="3.5"/>
+    <rect x="38" y="14" width="46" height="46" fill="none" stroke="currentColor" stroke-width="3.5" transform="rotate(26 61 37)"/>
+    <g clip-path="url(#cpOv)"><rect x="38" y="14" width="46" height="46" fill="currentColor" transform="rotate(26 61 37)"/></g>
+  </symbol>
+  <!-- 2 3D frame -->
+  <symbol id="s-3d" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linejoin="miter">
+    <rect x="12" y="30" width="58" height="58"/><rect x="27" y="45" width="28" height="28"/>
+    <path d="M12 30 27 45M70 30 55 45M70 88 55 73M12 88 27 73"/>
+    <path d="M28 14H88V72M12 30 28 14M70 30 86 14M70 88 88 72"/>
+  </symbol>
+  <!-- 3 pixel frame -->
+  <symbol id="s-px" viewBox="0 0 100 100" fill="currentColor">
+    <rect x="10" y="10" width="16" height="16"/><rect x="26" y="10" width="16" height="16"/><rect x="42" y="10" width="16" height="16"/><rect x="58" y="10" width="16" height="16"/><rect x="74" y="10" width="16" height="16"/>
+    <rect x="74" y="26" width="16" height="16"/><rect x="74" y="42" width="16" height="16"/><rect x="74" y="58" width="16" height="16"/><rect x="74" y="74" width="16" height="16"/>
+    <rect x="58" y="74" width="16" height="16"/><rect x="42" y="74" width="16" height="16"/>
+    <rect x="10" y="26" width="16" height="16"/><rect x="10" y="42" width="16" height="16"/>
+    <rect x="26" y="58" width="16" height="16" style="fill:var(--acc,currentColor)"/>
+    <rect x="10" y="74" width="16" height="16" style="fill:var(--acc,currentColor)"/>
+  </symbol>
+  <!-- 4 open frame -->
+  <symbol id="s-op" viewBox="0 0 100 100"><path d="M88 42V14H14V86H88V58" fill="none" stroke="currentColor" stroke-width="4.5"/><circle cx="88" cy="50" r="4.5" style="fill:var(--acc,currentColor)"/></symbol>
+  <!-- 5 pinwheel -->
+  <symbol id="s-pin" viewBox="0 0 100 100" fill="currentColor">
+    <g id="pp"><path d="M8 8H46V24L30 40H8Z"/></g>
+    <use href="#pp" transform="rotate(90 50 50)"/><use href="#pp" transform="rotate(180 50 50)"/><use href="#pp" transform="rotate(270 50 50)"/>
+  </symbol>
+  <!-- 6 monogram -->
+  <symbol id="s-b" viewBox="0 0 100 100">
+    <path d="M68 88H12V12H88V68" fill="none" stroke="currentColor" stroke-width="6"/>
+    <rect x="72" y="72" width="16" height="16" style="fill:var(--acc,currentColor)"/>
+    <text x="50" y="64" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="46" fill="currentColor">B</text>
+  </symbol>
+  <!-- icons -->
+  <symbol id="i-ph" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1z"/></symbol>
+  <symbol id="i-ml" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 5h18v14H3zM3 6l9 7 9-7"/></symbol>
+  <symbol id="i-wb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></g></symbol>
+  <symbol id="i-pn" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.500a2.500 2.500 0 1 1 0-5 2.500 2.500 0 0 1 0 5z"/></symbol>
+</svg>
+
+<div class="wrap">
+
+<header>
+  <h1>BlankFrame: cards + logo concepts</h1>
+  <p class="lead">Five card styles built from the new_ideas references, plus six new logo marks. Every mark is a "frame", so the idea stays: <i>we build the frame, you create what matters.</i></p>
+</header>
+
+<!-- ============ LOGOS ============ -->
+<section>
+  <h2>Logo concepts</h2>
+  <p class="lead">Each shows on light and dark with a wordmark lockup. Pick one and I'll swap it across every card.</p>
+  <div class="logos">
+
+    <div class="lg"><div class="row">
+      <div class="l"><svg class="m"><use href="#s-cur"/></svg><span class="wm">BlankFrame</span></div>
+      <div class="d"><svg class="m"><use href="#s-cur"/></svg><span class="wm">BlankFrame</span></div></div>
+      <div class="cap"><b>0 · Current</b><p>Plain square outline. Clean, but easy to mistake for a generic box.</p></div></div>
+
+    <div class="lg"><div class="row">
+      <div class="l"><svg class="m"><use href="#s-ov"/></svg><span class="wm">BlankFrame</span></div>
+      <div class="d"><svg class="m"><use href="#s-ov"/></svg><span class="wm">BlankFrame</span></div></div>
+      <div class="cap"><b>1 · Overlap</b><p>Two frames cross; the shared corner is solid. Your idea meets our build, and something real appears where they meet.</p></div></div>
+
+    <div class="lg"><div class="row">
+      <div class="l"><svg class="m"><use href="#s-3d"/></svg><span class="wm">BlankFrame</span></div>
+      <div class="d"><svg class="m"><use href="#s-3d"/></svg><span class="wm">BlankFrame</span></div></div>
+      <div class="cap"><b>2 · Depth frame</b><p>A hollow frame with depth. "Blank" turned into a space you can step into. Strongest on black.</p></div></div>
+
+    <div class="lg"><div class="row">
+      <div class="l" style="--acc:#537D5C"><svg class="m"><use href="#s-px"/></svg><span class="wm">BlankFrame</span></div>
+      <div class="d" style="--acc:#C8FF3D"><svg class="m"><use href="#s-px"/></svg><span class="wm">BlankFrame</span></div></div>
+      <div class="cap"><b>3 · Pixel frame</b><p>A frame made of pixels, with two accent cells. Reads as software, scales down to a favicon.</p></div></div>
+
+    <div class="lg"><div class="row">
+      <div class="l" style="--acc:#537D5C"><svg class="m"><use href="#s-op"/></svg><span class="wm">BlankFrame</span></div>
+      <div class="d" style="--acc:#C8FF3D"><svg class="m"><use href="#s-op"/></svg><span class="wm">BlankFrame</span></div></div>
+      <div class="cap"><b>4 · Open frame <span class="tag">SIMPLEST</span></b><p>The current square, opened on one side with a dot in the gap. The dot is "you". Easiest upgrade from today's mark.</p></div></div>
+
+    <div class="lg"><div class="row">
+      <div class="l"><svg class="m"><use href="#s-pin"/></svg><span class="wm">BlankFrame</span></div>
+      <div class="d"><svg class="m"><use href="#s-pin"/></svg><span class="wm">BlankFrame</span></div></div>
+      <div class="cap"><b>5 · Four corners</b><p>Four corner pieces point inward and leave a star-shaped blank. Bold and tileable as a pattern (used on card 5).</p></div></div>
+
+    <div class="lg"><div class="row">
+      <div class="l" style="--acc:#537D5C"><svg class="m"><use href="#s-b"/></svg><span class="wm">BlankFrame</span></div>
+      <div class="d" style="--acc:#C8FF3D"><svg class="m"><use href="#s-b"/></svg><span class="wm">BlankFrame</span></div></div>
+      <div class="cap"><b>6 · B monogram</b><p>B inside a frame with a notch cut in the corner. Good for avatars and stamps; less abstract than the others.</p></div></div>
+
+  </div>
+</section>
+
+<!-- ============ CARDS ============ -->
+<section class="set">
+  <h2>Card 1 · Bracket <span class="mono" style="margin-left:8px">white, serif, split back</span></h2>
+  <div class="pair">
+    <div class="side"><div class="card c1">
+      <svg style="position:absolute;left:70px;top:90px;width:220px;height:220px;color:#111;--acc:transparent" viewBox="0 0 100 100"><use href="#s-op"/></svg>
+      <div style="position:absolute;left:200px;top:178px"><div class="name">Abrar Masud Nafiz</div><div class="role">Founder</div></div>
+    </div><span class="mono">Front</span></div>
+    <div class="side"><div class="card c1 c1b">
+      <div class="k"><i style="top:107px"><svg><use href="#i-ph"/></svg></i><i style="top:185px"><svg><use href="#i-wb"/></svg></i><i style="top:263px"><svg><use href="#i-pn"/></svg></i></div>
+      <div class="t"><span>+880 1327045005</span><span>www.blankframe.tech<br>the.abraar.rar@gmail.com</span><span>Dhaka, Bangladesh</span></div>
+    </div><span class="mono">Back</span></div>
+  </div>
+</section>
+
+<section class="set">
+  <h2>Card 2 · Slate <span class="mono" style="margin-left:8px">grey panel, icon chips, monogram</span></h2>
+  <div class="pair">
+    <div class="side"><div class="card c2">
+      <div class="pan" style="--acc:#8a8a85"><svg><use href="#s-b"/></svg><b>BLANKFRAME</b><hr></div>
+      <div class="info"><div><div class="n">Abrar Masud Nafiz</div><div class="r">Founder</div></div>
+        <ul><li><i><svg><use href="#i-pn"/></svg></i>Dhaka, Bangladesh</li><li><i><svg><use href="#i-ph"/></svg></i>+880 1327045005</li><li><i><svg><use href="#i-ml"/></svg></i>the.abraar.rar@gmail.com</li><li><i><svg><use href="#i-wb"/></svg></i>www.blankframe.tech</li></ul></div>
+    </div><span class="mono">Front</span></div>
+    <div class="side"><div class="card c2b" style="--acc:#d8d8d4"><svg><use href="#s-b"/></svg><b>BLANKFRAME</b><hr></div><span class="mono">Back</span></div>
+  </div>
+</section>
+
+<section class="set">
+  <h2>Card 3 · Noir <span class="mono" style="margin-left:8px">black, thin line, QR in a frame</span></h2>
+  <div class="pair">
+    <div class="side"><div class="card c3">
+      <svg style="position:absolute;left:84px;top:84px;width:236px;height:236px;color:#fff" viewBox="0 0 236 236" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M236 118V0H0V236H236V150" transform="translate(1.200 1.200) scale(.995)"/></svg>
+      <div style="position:absolute;left:214px;top:158px"><div class="nm">ABRAR MASUD NAFIZ</div><div class="rl">Founder</div></div>
+      <svg style="position:absolute;right:44px;bottom:40px;width:46px;height:46px;color:#fff" viewBox="0 0 100 100"><use href="#s-3d"/></svg>
+    </div><span class="mono">Front</span></div>
+    <div class="side"><div class="card c3">
+      <div class="qr" data-url="https://www.blankframe.tech/" style="position:absolute;left:56px;top:106px;width:188px;height:188px;border:2px solid #fff;outline:6px solid #0B0B0B;box-shadow:0 0 0 8px #0B0B0B"></div>
+      <div style="position:absolute;left:290px;top:112px"><div class="nm" style="font-size:20px">ABRAR MASUD NAFIZ</div><div class="rl">Founder</div></div>
+      <div class="rows" style="position:absolute;left:290px;top:182px">
+        <div><svg><use href="#i-ph"/></svg>+880 1327045005</div><div><svg><use href="#i-ml"/></svg>the.abraar.rar@gmail.com</div><div><svg><use href="#i-wb"/></svg>www.blankframe.tech</div><div><svg><use href="#i-pn"/></svg>Dhaka, Bangladesh</div></div>
+    </div><span class="mono">Back</span></div>
+  </div>
+</section>
+
+<section class="set">
+  <h2>Card 4 · Sand <span class="mono" style="margin-left:8px">cream, tan block, black bar, pixel mark</span></h2>
+  <div class="pair">
+    <div class="side"><div class="card c4">
+      <div class="blk" style="left:430px;top:0;width:190px;height:215px"></div>
+      <div class="bar" style="left:56px;top:0;width:26px;height:80px"></div>
+      <svg style="position:absolute;left:118px;top:150px;width:82px;height:82px;color:#141414;--acc:#8C6A44" viewBox="0 0 100 100"><use href="#s-px"/></svg>
+      <div class="wd" style="left:226px;top:158px">BLANK<span>FRAME</span></div>
+      <small style="left:228px;top:204px">WE BUILD THE FRAME</small>
+    </div><span class="mono">Front</span></div>
+    <div class="side"><div class="card c4">
+      <div class="bar" style="left:56px;top:56px;width:6px;height:240px"></div>
+      <div class="wd" style="left:96px;top:56px;font-size:21px;line-height:1.35;white-space:pre">ABRAR MASUD
+NAFIZ</div>
+      <small style="left:98px;top:132px">FOUNDER</small>
+      <div class="blk" style="left:62px;top:262px;width:540px;height:78px"></div>
+      <div class="tx" style="left:98px;top:272px">+880 1327045005<br>the.abraar.rar@gmail.com</div>
+      <div class="tx" style="left:372px;top:272px">www.blankframe.tech<br>Dhaka, Bangladesh</div>
+      <svg style="position:absolute;right:56px;top:50px;width:42px;height:42px;color:#141414;--acc:#8C6A44" viewBox="0 0 100 100"><use href="#s-px"/></svg>
+    </div><span class="mono">Back</span></div>
+  </div>
+</section>
+
+<section class="set">
+  <h2>Card 5 · Pattern <span class="mono" style="margin-left:8px">brand green, tiled pinwheel, white back</span></h2>
+  <div class="pair">
+    <div class="side"><div class="card c5f">
+      <svg class="pat" width="100%" height="100%"><defs><pattern id="pt" width="110" height="110" patternUnits="userSpaceOnUse" patternTransform="rotate(0)"><g style="color:#fff;opacity:.11"><use href="#s-pin" width="80" height="80" x="15" y="15"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#pt)"/></svg>
+      <div class="plate"><svg><use href="#s-pin"/></svg></div>
+    </div><span class="mono">Front</span></div>
+    <div class="side"><div class="card c5b">
+      <div class="l"><div><div class="n">Abrar Masud Nafiz</div><div class="r">Founder · BlankFrame</div></div>
+        <ul><li>+880 1327045005</li><li>the.abraar.rar@gmail.com</li><li>www.blankframe.tech</li><li>Dhaka, Bangladesh</li></ul></div>
+      <div class="rt"><svg viewBox="0 0 100 100"><use href="#s-pin"/></svg><div class="qr" data-url="https://www.blankframe.tech/"></div></div>
+    </div><span class="mono">Back</span></div>
+  </div>
+</section>
+
+<p class="note">Trim size 3.5 × 2 in per card. Add 3&nbsp;mm bleed and keep text 4&nbsp;mm inside the edge when sending to the printer. Phone, email and site are copied from the founder v2 card.</p>
+</div>
+
+<script>
+window.addEventListener('load',function(){
+  if(typeof QRCode==='undefined')return;
+  document.querySelectorAll('.qr').forEach(function(el){
+    var cs=getComputedStyle(el),pad=parseFloat(cs.paddingLeft)||0;
+    var s=el.clientWidth-2*pad-4;
+    new QRCode(el,{text:el.dataset.url,width:s,height:s,colorDark:'#0D0D0D',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
+  });
+});
+</script>
+</body>
+</html>
